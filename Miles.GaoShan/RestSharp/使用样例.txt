@@ -1,0 +1,54 @@
+﻿01、支持.NET4.5.2+ 和 .NET Standard 2.0 平台
+02、使用NuGet轻松安装开发包
+03、自动 XML 和 JSON 反序列化
+04、通过 ISerializer 和 IDeserializer 自定义序列化和反序列化为
+05、模糊匹配元素名称 (例如：XML或JSON中的product_id将匹配名为ProductId的C#属性)
+06、自动检测返回内容的类型
+07、指出 GET, POST, PUT, PATCH, HEAD, OPTIONS, DELETE 和 COPY 请求，支持其它非标准 HTTP 方法
+08、OAuth 1.0、OAuth 2.0、Basic、NTLM 和基于参数的身份认证
+09、通过 IAuthenticator 接口自定义身份验证方案
+10、支持异步操作
+
+官方提供的一些示例：
+
+var client = new RestClient("https://www.xcode.me");
+// client.Authenticator = new HttpBasicAuthenticator(username, password);
+
+var request = new RestRequest("resource/{id}", Method.POST);
+request.AddParameter("name", "value"); // adds to POST or URL querystring based on Method
+request.AddUrlSegment("id", "123"); // replaces matching token in request.Resource
+
+// add parameters for all properties on an object
+request.AddObject(object);
+
+// or just whitelisted properties
+request.AddObject(object, "PersonId", "Name", ...);
+
+// easily add HTTP Headers
+request.AddHeader("header", "value");
+
+// add files to upload (works with compatible verbs)
+request.AddFile("file", path);
+
+// execute the request
+IRestResponse response = client.Execute(request);
+var content = response.Content; // raw content as string
+
+// or automatically deserialize result
+// return content type is sniffed but can be explicitly set via RestClient.AddHandler();
+IRestResponse<Person> response2 = client.Execute<Person>(request);
+var name = response2.Data.Name;
+
+// or download and save file to disk
+client.DownloadData(request).SaveAs(path);
+
+// easy async support
+await client.ExecuteAsync(request);
+
+// async with deserialization
+var asyncHandle = client.ExecuteAsync<Person>(request, response => {
+    Console.WriteLine(response.Data.Name);
+});
+
+// abort the request on demand
+asyncHandle.Abort();

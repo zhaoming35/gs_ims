@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <AutoUpdate Date="2018/03/30 13:56:44" />
+  <DataBase Name="DbName" Type="sqlserver" Encrypt="0" DbProviderDll="Miles.DbProviderSqlServer.dll" DbProviderClassName="Miles.DbProviderSqlServer" ConStr="Data Source=127.0.0.1;Initial Catalog=GaoShan_db;User Id=sa;Password=tonish;Connect Timeout=2" />
+</root>
+

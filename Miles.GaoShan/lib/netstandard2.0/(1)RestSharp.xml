@@ -1,0 +1,2323 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RestSharp</name>
+    </assembly>
+    <members>
+        <member name="T:RestSharp.Authenticators.JwtAuthenticator">
+            <summary>
+                JSON WEB TOKEN (JWT) Authenticator class.
+                <remarks>https://tools.ietf.org/html/draft-ietf-oauth-json-web-token</remarks>
+            </summary>
+        </member>
+        <member name="T:RestSharp.Authenticators.NtlmAuthenticator">
+            <summary>
+                Tries to Authenticate with the credentials of the currently logged in user, or impersonate a user
+            </summary>
+        </member>
+        <member name="M:RestSharp.Authenticators.NtlmAuthenticator.#ctor">
+            <summary>
+                Authenticate with the credentials of the currently logged in user
+            </summary>
+        </member>
+        <member name="M:RestSharp.Authenticators.NtlmAuthenticator.#ctor(System.String,System.String)">
+            <summary>
+                Authenticate by impersonation
+            </summary>
+            <param name="username"></param>
+            <param name="password"></param>
+        </member>
+        <member name="M:RestSharp.Authenticators.NtlmAuthenticator.#ctor(System.Net.ICredentials)">
+            <summary>
+                Authenticate by impersonation, using an existing <c>ICredentials</c> instance
+            </summary>
+            <param name="credentials"></param>
+        </member>
+        <member name="T:RestSharp.Authenticators.OAuth1Authenticator">
+            <seealso href="http://tools.ietf.org/html/rfc5849" />
+        </member>
+        <member name="T:RestSharp.Authenticators.OAuth2Authenticator">
+            <summary>
+                Base class for OAuth 2 Authenticators.
+            </summary>
+            <remarks>
+                Since there are many ways to authenticate in OAuth2,
+                this is used as a base class to differentiate between
+                other authenticators.
+                Any other OAuth2 authenticators must derive from this
+                abstract class.
+            </remarks>
+        </member>
+        <member name="F:RestSharp.Authenticators.OAuth2Authenticator.accessToken">
+            <summary>
+                Access token to be used when authenticating.
+            </summary>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth2Authenticator.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:RestSharp.Authenticators.OAuth2Authenticator" /> class.
+            </summary>
+            <param name="accessToken">
+                The access token.
+            </param>
+        </member>
+        <member name="P:RestSharp.Authenticators.OAuth2Authenticator.AccessToken">
+            <summary>
+                Gets the access token.
+            </summary>
+        </member>
+        <member name="T:RestSharp.Authenticators.OAuth2UriQueryParameterAuthenticator">
+            <summary>
+                The OAuth 2 authenticator using URI query parameter.
+            </summary>
+            <remarks>
+                Based on http://tools.ietf.org/html/draft-ietf-oauth-v2-10#section-5.1.2
+            </remarks>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth2UriQueryParameterAuthenticator.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:RestSharp.Authenticators.OAuth2UriQueryParameterAuthenticator" /> class.
+            </summary>
+            <param name="accessToken">
+                The access token.
+            </param>
+        </member>
+        <member name="T:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator">
+            <summary>
+                The OAuth 2 authenticator using the authorization request header field.
+            </summary>
+            <remarks>
+                Based on http://tools.ietf.org/html/draft-ietf-oauth-v2-10#section-5.1.1
+            </remarks>
+        </member>
+        <member name="F:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator.authorizationValue">
+            <summary>
+                Stores the Authorization header value as "[tokenType] accessToken". used for performance.
+            </summary>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator" /> class.
+            </summary>
+            <param name="accessToken">
+                The access token.
+            </param>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator.#ctor(System.String,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:RestSharp.Authenticators.OAuth2AuthorizationRequestHeaderAuthenticator" /> class.
+            </summary>
+            <param name="accessToken">
+                The access token.
+            </param>
+            <param name="tokenType">
+                The token type.
+            </param>
+        </member>
+        <member name="F:RestSharp.Authenticators.OAuth.OAuthTools.encoding">
+            <summary>
+                All text parameters are UTF-8 encoded (per section 5.1).
+            </summary>
+        </member>
+        <member name="F:RestSharp.Authenticators.OAuth.OAuthTools.uriRfc3986CharsToEscape">
+            <summary>
+                The set of characters that are unreserved in RFC 2396 but are NOT unreserved in RFC 3986.
+            </summary>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetNonce">
+            <summary>
+                Generates a random 16-byte lowercase alphanumeric string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetTimestamp">
+            <summary>
+                Generates a timestamp based on the current elapsed seconds since '01/01/1970 0000 GMT"
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetTimestamp(System.DateTime)">
+            <summary>
+                Generates a timestamp based on the elapsed seconds of a given time since '01/01/1970 0000 GMT"
+            </summary>
+            <param name="dateTime">A specified point in time.</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.UrlEncodeRelaxed(System.String)">
+            <summary>
+                URL encodes a string based on section 5.1 of the OAuth spec.
+                Namely, percent encoding with [RFC3986], avoiding unreserved characters,
+                upper-casing hexadecimal characters, and UTF-8 encoding for text value pairs.
+            </summary>
+            <param name="value">The value to escape.</param>
+            <returns>The escaped value.</returns>
+            <remarks>
+                The <see cref="M:System.Uri.EscapeDataString(System.String)" /> method is <i>supposed</i> to take on
+                RFC 3986 behavior if certain elements are present in a .config file.  Even if this
+                actually worked (which in my experiments it <i>doesn't</i>), we can't rely on every
+                host actually having this configuration element present.
+            </remarks>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.UrlEncodeStrict(System.String)">
+            <summary>
+                URL encodes a string based on section 5.1 of the OAuth spec.
+                Namely, percent encoding with [RFC3986], avoiding unreserved characters,
+                upper-casing hexadecimal characters, and UTF-8 encoding for text value pairs.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.NormalizeRequestParameters(RestSharp.Authenticators.OAuth.WebParameterCollection)">
+            <summary>
+                Sorts a collection of key-value pairs by name, and then value if equal,
+                concatenating them into a single string. This string should be encoded
+                prior to, or after normalization is run.
+            </summary>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.SortParametersExcludingSignature(RestSharp.Authenticators.OAuth.WebParameterCollection)">
+            <summary>
+                Sorts a <see cref="T:RestSharp.Authenticators.OAuth.WebParameterCollection" /> by name, and then value if equal.
+            </summary>
+            <param name="parameters">A collection of parameters to sort</param>
+            <returns>A sorted parameter collection</returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.ConstructRequestUrl(System.Uri)">
+            <summary>
+                Creates a request URL suitable for making OAuth requests.
+                Resulting URLs must exclude port 80 or port 443 when accompanied by HTTP and HTTPS, respectively.
+                Resulting URLs must be lower case.
+            </summary>
+            <param name="url">The original request URL</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.ConcatenateRequestElements(System.String,System.String,RestSharp.Authenticators.OAuth.WebParameterCollection)">
+            <summary>
+                Creates a request elements concatenation value to send with a request.
+                This is also known as the signature base.
+            </summary>
+            <param name="method">The request HTTP method type</param>
+            <param name="url">The request URL</param>
+            <param name="parameters">The request parameters</param>
+            <returns>A signature base string</returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetSignature(RestSharp.Authenticators.OAuth.OAuthSignatureMethod,System.String,System.String)">
+            <summary>
+                Creates a signature value given a signature base and the consumer secret.
+                This method is used when the token secret is currently unknown.
+            </summary>
+            <param name="signatureMethod">The hashing method</param>
+            <param name="signatureBase">The signature base</param>
+            <param name="consumerSecret">The consumer key</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetSignature(RestSharp.Authenticators.OAuth.OAuthSignatureMethod,RestSharp.Authenticators.OAuth.OAuthSignatureTreatment,System.String,System.String)">
+            <summary>
+                Creates a signature value given a signature base and the consumer secret.
+                This method is used when the token secret is currently unknown.
+            </summary>
+            <param name="signatureMethod">The hashing method</param>
+            <param name="signatureTreatment">The treatment to use on a signature value</param>
+            <param name="signatureBase">The signature base</param>
+            <param name="consumerSecret">The consumer key</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetSignature(RestSharp.Authenticators.OAuth.OAuthSignatureMethod,System.String,System.String,System.String)">
+            <summary>
+                Creates a signature value given a signature base and the consumer secret and a known token secret.
+            </summary>
+            <param name="signatureMethod">The hashing method</param>
+            <param name="signatureBase">The signature base</param>
+            <param name="consumerSecret">The consumer secret</param>
+            <param name="tokenSecret">The token secret</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthTools.GetSignature(RestSharp.Authenticators.OAuth.OAuthSignatureMethod,RestSharp.Authenticators.OAuth.OAuthSignatureTreatment,System.String,System.String,System.String)">
+            <summary>
+                Creates a signature value given a signature base and the consumer secret and a known token secret.
+            </summary>
+            <param name="signatureMethod">The hashing method</param>
+            <param name="signatureTreatment">The treatment to use on a signature value</param>
+            <param name="signatureBase">The signature base</param>
+            <param name="consumerSecret">The consumer secret</param>
+            <param name="tokenSecret">The token secret</param>
+            <returns></returns>
+        </member>
+        <member name="T:RestSharp.Authenticators.OAuth.OAuthWorkflow">
+            <summary>
+                A class to encapsulate OAuth authentication flow.
+            </summary>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthWorkflow.BuildRequestTokenInfo(System.String)">
+            <summary>
+                Generates a <see cref="T:RestSharp.Authenticators.OAuth.OAuthWebQueryInfo" /> instance to pass to an
+                <see cref="T:RestSharp.Authenticators.IAuthenticator" /> for the purpose of requesting an
+                unauthorized request token.
+            </summary>
+            <param name="method">The HTTP method for the intended request</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthWorkflow.BuildRequestTokenInfo(System.String,RestSharp.Authenticators.OAuth.WebParameterCollection)">
+            <summary>
+                Generates a <see cref="T:RestSharp.Authenticators.OAuth.OAuthWebQueryInfo" /> instance to pass to an
+                <see cref="T:RestSharp.Authenticators.IAuthenticator" /> for the purpose of requesting an
+                unauthorized request token.
+            </summary>
+            <param name="method">The HTTP method for the intended request</param>
+            <param name="parameters">Any existing, non-OAuth query parameters desired in the request</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthWorkflow.BuildAccessTokenInfo(System.String)">
+            <summary>
+                Generates a <see cref="T:RestSharp.Authenticators.OAuth.OAuthWebQueryInfo" /> instance to pass to an
+                <see cref="T:RestSharp.Authenticators.IAuthenticator" /> for the purpose of exchanging a request token
+                for an access token authorized by the user at the Service Provider site.
+            </summary>
+            <param name="method">The HTTP method for the intended request</param>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthWorkflow.BuildAccessTokenInfo(System.String,RestSharp.Authenticators.OAuth.WebParameterCollection)">
+            <summary>
+                Generates a <see cref="T:RestSharp.Authenticators.OAuth.OAuthWebQueryInfo" /> instance to pass to an
+                <see cref="T:RestSharp.Authenticators.IAuthenticator" /> for the purpose of exchanging a request token
+                for an access token authorized by the user at the Service Provider site.
+            </summary>
+            <param name="method">The HTTP method for the intended request</param>
+            <param name="parameters">Any existing, non-OAuth query parameters desired in the request</param>
+        </member>
+        <member name="M:RestSharp.Authenticators.OAuth.OAuthWorkflow.BuildClientAuthAccessTokenInfo(System.String,RestSharp.Authenticators.OAuth.WebParameterCollection)">
+            <summary>
+                Generates a <see cref="T:RestSharp.Authenticators.OAuth.OAuthWebQueryInfo" /> instance to pass to an
+                <see cref="T:RestSharp.Authenticators.IAuthenticator" /> for the purpose of exchanging user credentials
+                for an access token authorized by the user at the Service Provider site.
+            </summary>
+            <param name="method">The HTTP method for the intended request</param>
+            <param name="parameters">Any existing, non-OAuth query parameters desired in the request</param>
+        </member>
+        <member name="T:RestSharp.Deserializers.DeserializeAsAttribute">
+            <summary>
+            Allows control how class and property names and values are deserialized by XmlAttributeDeserializer
+            </summary>
+        </member>
+        <member name="P:RestSharp.Deserializers.DeserializeAsAttribute.Name">
+            <summary>
+            The name to use for the serialized element
+            </summary>
+        </member>
+        <member name="P:RestSharp.Deserializers.DeserializeAsAttribute.Attribute">
+            <summary>
+            Sets if the property to Deserialize is an Attribute or Element (Default: false)
+            </summary>
+        </member>
+        <member name="P:RestSharp.Deserializers.DeserializeAsAttribute.Content">
+            <summary>
+            Sets if the property to Deserialize is a content of current Element (Default: false)
+            </summary>
+        </member>
+        <member name="T:RestSharp.Deserializers.DotNetXmlDeserializer">
+            <summary>
+            Wrapper for System.Xml.Serialization.XmlSerializer.
+            </summary>
+        </member>
+        <member name="T:RestSharp.ParameterType">
+            <summary>
+             Types of parameters that can be added to requests
+            </summary>
+        </member>
+        <member name="T:RestSharp.DataFormat">
+            <summary>
+            Data formats
+            </summary>
+        </member>
+        <member name="T:RestSharp.Method">
+            <summary>
+            HTTP method to use when making requests
+            </summary>
+        </member>
+        <member name="T:RestSharp.DateFormat">
+            <summary>
+            Format strings for commonly-used date formats
+            </summary>
+        </member>
+        <member name="F:RestSharp.DateFormat.ISO_8601">
+            <summary>
+            .NET format string for ISO 8601 date format
+            </summary>
+        </member>
+        <member name="F:RestSharp.DateFormat.ROUND_TRIP">
+            <summary>
+            .NET format string for roundtrip date format
+            </summary>
+        </member>
+        <member name="T:RestSharp.ResponseStatus">
+            <summary>
+            Status for responses (surprised?)
+            </summary>
+        </member>
+        <member name="T:RestSharp.Extensions.MiscExtensions">
+            <summary>
+                Extension method overload!
+            </summary>
+        </member>
+        <member name="M:RestSharp.Extensions.MiscExtensions.SaveAs(System.Byte[],System.String)">
+            <summary>
+                Save a byte array to a file
+            </summary>
+            <param name="input">Bytes to save</param>
+            <param name="path">Full path to save file to</param>
+        </member>
+        <member name="M:RestSharp.Extensions.MiscExtensions.ReadAsBytes(System.IO.Stream)">
+            <summary>
+                Read a stream into a byte array
+            </summary>
+            <param name="input">Stream to read</param>
+            <returns>byte[]</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.MiscExtensions.CopyTo(System.IO.Stream,System.IO.Stream)">
+            <summary>
+                Copies bytes from one stream to another
+            </summary>
+            <param name="input">The input stream.</param>
+            <param name="output">The output stream.</param>
+        </member>
+        <member name="M:RestSharp.Extensions.MiscExtensions.AsString(System.Byte[])">
+            <summary>
+                Converts a byte array to a string, using its byte order mark to convert it to the right encoding.
+                http://www.shrinkrays.net/code-snippets/csharp/an-extension-method-for-converting-a-byte-array-to-a-string.aspx
+            </summary>
+            <param name="buffer">An array of bytes to convert</param>
+            <returns>The byte as a string.</returns>
+        </member>
+        <member name="T:RestSharp.Extensions.ReflectionExtensions">
+            <summary>
+            Reflection extensions
+            </summary>
+        </member>
+        <member name="M:RestSharp.Extensions.ReflectionExtensions.GetAttribute``1(System.Reflection.MemberInfo)">
+            <summary>
+            Retrieve an attribute from a member (property)
+            </summary>
+            <typeparam name="T">Type of attribute to retrieve</typeparam>
+            <param name="prop">Member to retrieve attribute from</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Extensions.ReflectionExtensions.GetAttribute``1(System.Type)">
+            <summary>
+            Retrieve an attribute from a type
+            </summary>
+            <typeparam name="T">Type of attribute to retrieve</typeparam>
+            <param name="type">Type to retrieve attribute from</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Extensions.ReflectionExtensions.IsSubclassOfRawGeneric(System.Type,System.Type)">
+            <summary>
+            Checks a type to see if it derives from a raw generic (e.g. List[[]])
+            </summary>
+            <param name="toCheck"></param>
+            <param name="generic"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Extensions.ReflectionExtensions.FindEnumValue(System.Type,System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Find a value from a System.Enum by trying several possible variants
+            of the string value of the enum.
+            </summary>
+            <param name="type">Type of enum</param>
+            <param name="value">Value for which to search</param>
+            <param name="culture">The culture used to calculate the name variants</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Extensions.ResponseStatusExtensions.ToWebException(RestSharp.ResponseStatus)">
+            <summary>
+            Convert a <see cref="T:RestSharp.ResponseStatus"/> to a <see cref="T:System.Net.WebException"/> instance.
+            </summary>
+            <param name="responseStatus">The response status.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">responseStatus</exception>
+        </member>
+        <member name="M:RestSharp.Extensions.RSACryptoServiceProviderExtensions.FromXmlString2(System.Security.Cryptography.RSACryptoServiceProvider,System.String)">
+            <summary>
+            Imports the specified XML String into the crypto service provider
+            </summary>
+            <remarks>
+             .NET Core 2.0 doesn't provide an implementation of RSACryptoServiceProvider.FromXmlString/ToXmlString, so we have to do it ourselves.
+            Source: https://gist.github.com/Jargon64/5b172c452827e15b21882f1d76a94be4/
+            </remarks>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.UrlEncode(System.String)">
+            <summary>
+                Uses Uri.EscapeDataString() based on recommendations on MSDN
+                http://blogs.msdn.com/b/yangxind/archive/2006/11/09/don-t-use-net-system-uri-unescapedatastring-in-url-decoding.aspx
+            </summary>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.HasValue(System.String)">
+            <summary>
+                Check that a string is not null or empty
+            </summary>
+            <param name="input">String to check</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.RemoveUnderscoresAndDashes(System.String)">
+            <summary>
+                Remove underscores from a string
+            </summary>
+            <param name="input">String to process</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.ParseJsonDate(System.String,System.Globalization.CultureInfo)">
+            <summary>
+                Parses most common JSON date formats
+            </summary>
+            <param name="input">JSON value to parse</param>
+            <param name="culture"></param>
+            <returns>DateTime</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.RemoveSurroundingQuotes(System.String)">
+            <summary>
+                Remove leading and trailing " from a string
+            </summary>
+            <param name="input">String to parse</param>
+            <returns>String</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.ToPascalCase(System.String,System.Globalization.CultureInfo)">
+            <summary>
+                Converts a string to pascal case
+            </summary>
+            <param name="lowercaseAndUnderscoredWord">String to convert</param>
+            <param name="culture"></param>
+            <returns>string</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.ToPascalCase(System.String,System.Boolean,System.Globalization.CultureInfo)">
+            <summary>
+                Converts a string to pascal case with the option to remove underscores
+            </summary>
+            <param name="text">String to convert</param>
+            <param name="removeUnderscores">Option to remove underscores</param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.ToCamelCase(System.String,System.Globalization.CultureInfo)">
+            <summary>
+                Converts a string to camel case
+            </summary>
+            <param name="lowercaseAndUnderscoredWord">String to convert</param>
+            <param name="culture"></param>
+            <returns>String</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.MakeInitialLowerCase(System.String)">
+            <summary>
+                Convert the first letter of a string to lower case
+            </summary>
+            <param name="word">String to convert</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.IsUpperCase(System.String)">
+            <summary>
+                Checks to see if a string is all uppper case
+            </summary>
+            <param name="inputString">String to check</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.AddUnderscores(System.String)">
+            <summary>
+                Add underscores to a pascal-cased string
+            </summary>
+            <param name="pascalCasedWord">String to convert</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.AddDashes(System.String)">
+            <summary>
+                Add dashes to a pascal-cased string
+            </summary>
+            <param name="pascalCasedWord">String to convert</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.AddUnderscorePrefix(System.String)">
+            <summary>
+                Add an undescore prefix to a pascasl-cased string
+            </summary>
+            <param name="pascalCasedWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.AddSpaces(System.String)">
+            <summary>
+                Add spaces to a pascal-cased string
+            </summary>
+            <param name="pascalCasedWord">String to convert</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:RestSharp.Extensions.StringExtensions.GetNameVariants(System.String,System.Globalization.CultureInfo)">
+            <summary>
+                Return possible variants of a name for name matching.
+            </summary>
+            <param name="name">String to convert</param>
+            <param name="culture">The culture to use for conversion</param>
+            <returns>IEnumerable&lt;string&gt;</returns>
+        </member>
+        <member name="T:RestSharp.Extensions.XmlExtensions">
+            <summary>
+            XML Extension Methods
+            </summary>
+        </member>
+        <member name="M:RestSharp.Extensions.XmlExtensions.AsNamespaced(System.String,System.String)">
+            <summary>
+            Returns the name of an element with the namespace if specified
+            </summary>
+            <param name="name">Element name</param>
+            <param name="namespace">XML Namespace</param>
+            <returns></returns>
+        </member>
+        <member name="T:RestSharp.FileParameter">
+            <summary>
+            Container for files to be uploaded with requests
+            </summary>
+        </member>
+        <member name="M:RestSharp.FileParameter.Create(System.String,System.Byte[],System.String,System.String)">
+            <summary>
+             Creates a file parameter from an array of bytes.
+            </summary>
+            <param name="name">The parameter name to use in the request.</param>
+            <param name="data">The data to use as the file's contents.</param>
+            <param name="filename">The filename to use in the request.</param>
+            <param name="contentType">The content type to use in the request.</param>
+            <returns>The <see cref="T:RestSharp.FileParameter"/></returns>
+        </member>
+        <member name="M:RestSharp.FileParameter.Create(System.String,System.Byte[],System.String)">
+            <summary>
+             Creates a file parameter from an array of bytes.
+            </summary>
+            <param name="name">The parameter name to use in the request.</param>
+            <param name="data">The data to use as the file's contents.</param>
+            <param name="filename">The filename to use in the request.</param>
+            <returns>The <see cref="T:RestSharp.FileParameter"/> using the default content type.</returns>
+        </member>
+        <member name="P:RestSharp.FileParameter.ContentLength">
+            <summary>
+            The length of data to be sent
+            </summary>
+        </member>
+        <member name="P:RestSharp.FileParameter.Writer">
+            <summary>
+            Provides raw data for file
+            </summary>
+        </member>
+        <member name="P:RestSharp.FileParameter.FileName">
+            <summary>
+            Name of the file to use when uploading
+            </summary>
+        </member>
+        <member name="P:RestSharp.FileParameter.ContentType">
+            <summary>
+            MIME content type of file
+            </summary>
+        </member>
+        <member name="P:RestSharp.FileParameter.Name">
+            <summary>
+            Name of the parameter
+            </summary>
+        </member>
+        <member name="T:RestSharp.Http">
+            <summary>
+                HttpWebRequest wrapper (async methods)
+            </summary>
+            <summary>
+                HttpWebRequest wrapper
+            </summary>
+            <summary>
+                HttpWebRequest wrapper (sync methods)
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.AsPostAsync(System.Action{RestSharp.HttpResponse},System.String)">
+            <summary>
+                Execute an async POST-style request with the specified HTTP Method.
+            </summary>
+            <param name="action"></param>
+            <param name="httpMethod">The HTTP method to execute.</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Http.AsGetAsync(System.Action{RestSharp.HttpResponse},System.String)">
+            <summary>
+                Execute an async GET-style request with the specified HTTP Method.
+            </summary>
+            <param name="action"></param>
+            <param name="httpMethod">The HTTP method to execute.</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Http.#ctor">
+            <summary>
+                Default constructor
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.HasParameters">
+            <summary>
+                True if this HTTP request has any HTTP parameters
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.HasCookies">
+            <summary>
+                True if this HTTP request has any HTTP cookies
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.HasBody">
+            <summary>
+                True if a request body has been specified
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.HasFiles">
+            <summary>
+                True if files have been set to be uploaded
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.AutomaticDecompression">
+            <summary>
+            Enable or disable automatic gzip/deflate decompression
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.AlwaysMultipartFormData">
+            <summary>
+                Always send a multipart/form-data request - even when no Files are present.
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.UserAgent">
+            <summary>
+                UserAgent to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Timeout">
+            <summary>
+                Timeout in milliseconds to be used for the request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.ReadWriteTimeout">
+            <summary>
+                The number of milliseconds before the writing or reading times out.
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Credentials">
+            <summary>
+                System.Net.ICredentials to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.CookieContainer">
+            <summary>
+                The System.Net.CookieContainer to be used for the request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.AdvancedResponseWriter">
+            <summary>
+                The delegate to use to write the response instead of reading into RawBytes
+                Here you can also check the request details
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.ResponseWriter">
+            <summary>
+                The delegate to use to write the response instead of reading into RawBytes
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Files">
+            <summary>
+                Collection of files to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.FollowRedirects">
+            <summary>
+                Whether or not HTTP 3xx response redirects should be automatically followed
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Pipelined">
+            <summary>
+                Whether or not to use pipelined connections
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.ClientCertificates">
+            <summary>
+                X509CertificateCollection to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.MaxRedirects">
+            <summary>
+                Maximum number of automatic redirects to follow if FollowRedirects is true
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.UseDefaultCredentials">
+            <summary>
+                Determine whether or not the "default credentials" (e.g. the user account under which the current process is
+                running) ///     will be sent along to the server.
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.ConnectionGroupName">
+            <summary>
+                The ConnectionGroupName property enables you to associate a request with a connection group. 
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Encoding">
+            <summary>
+                Encoding for the request, UTF8 is the default
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Headers">
+            <summary>
+                HTTP headers to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Parameters">
+            <summary>
+                HTTP parameters (QueryString or Form values) to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Cookies">
+            <summary>
+                HTTP cookies to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.RequestBody">
+            <summary>
+                Request body to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.RequestContentType">
+            <summary>
+                Content type of the request body.
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.RequestBodyBytes">
+            <summary>
+                An alternative to RequestBody, for when the caller already has the byte array.
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Url">
+            <summary>
+                URL to call for this request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Host">
+            <summary>
+            Explicit Host header value to use in requests independent from the request URI.
+            If null, default host value extracted from URI is used.
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.AllowedDecompressionMethods">
+            <summary>
+            List of Allowed Decompression Methods
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.PreAuthenticate">
+            <summary>
+                Flag to send authorisation header with the HttpWebRequest
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.UnsafeAuthenticatedConnectionSharing">
+            <summary>
+            Flag to reuse same connection in the HttpWebRequest
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.Proxy">
+            <summary>
+                Proxy info to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.CachePolicy">
+            <summary>
+                Caching policy for requests created with this wrapper.
+            </summary>
+        </member>
+        <member name="P:RestSharp.Http.RemoteCertificateValidationCallback">
+            <summary>
+                Callback function for handling the validation of remote certificates.
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.Create">
+            <summary>
+                Creates an IHttp
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Http.Post">
+            <summary>
+                Execute a POST request
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.Put">
+            <summary>
+                Execute a PUT request
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.Get">
+            <summary>
+                Execute a GET request
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.Head">
+            <summary>
+                Execute a HEAD request
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.Options">
+            <summary>
+                Execute an OPTIONS request
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.Delete">
+            <summary>
+                Execute a DELETE request
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.Patch">
+            <summary>
+                Execute a PATCH request
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.Merge">
+            <summary>
+                Execute a MERGE request
+            </summary>
+        </member>
+        <member name="M:RestSharp.Http.AsGet(System.String)">
+            <summary>
+                Execute a GET-style request with the specified HTTP Method.
+            </summary>
+            <param name="httpMethod">The HTTP method to execute.</param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.Http.AsPost(System.String)">
+            <summary>
+                Execute a POST-style request with the specified HTTP Method.
+            </summary>
+            <param name="httpMethod">The HTTP method to execute.</param>
+            <returns></returns>
+        </member>
+        <member name="T:RestSharp.HttpCookie">
+            <summary>
+            Representation of an HTTP cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Comment">
+            <summary>
+            Comment of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.CommentUri">
+            <summary>
+            Comment of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Discard">
+            <summary>
+            Indicates whether the cookie should be discarded at the end of the session
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Domain">
+            <summary>
+            Domain of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Expired">
+            <summary>
+            Indicates whether the cookie is expired
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Expires">
+            <summary>
+            Date and time that the cookie expires
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.HttpOnly">
+            <summary>
+            Indicates that this cookie should only be accessed by the server
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Name">
+            <summary>
+            Name of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Path">
+            <summary>
+            Path of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Port">
+            <summary>
+            Port of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Secure">
+            <summary>
+            Indicates that the cookie should only be sent over secure channels
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.TimeStamp">
+            <summary>
+            Date and time the cookie was created
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Value">
+            <summary>
+            Value of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpCookie.Version">
+            <summary>
+            Version of the cookie
+            </summary>
+        </member>
+        <member name="T:RestSharp.HttpFile">
+            <summary>
+            Container for HTTP file
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpFile.ContentLength">
+            <summary>
+            The length of data to be sent
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpFile.Writer">
+            <summary>
+            Provides raw data for file
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpFile.FileName">
+            <summary>
+            Name of the file to use when uploading
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpFile.ContentType">
+            <summary>
+            MIME content type of file
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpFile.Name">
+            <summary>
+            Name of the parameter
+            </summary>
+        </member>
+        <member name="T:RestSharp.HttpHeader">
+            <summary>
+            Representation of an HTTP header
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpHeader.Name">
+            <summary>
+            Name of the header
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpHeader.Value">
+            <summary>
+            Value of the header
+            </summary>
+        </member>
+        <member name="T:RestSharp.HttpParameter">
+            <summary>
+            Representation of an HTTP parameter (QueryString or Form value)
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpParameter.Name">
+            <summary>
+            Name of the parameter
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpParameter.Value">
+            <summary>
+            Value of the parameter
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpParameter.ContentType">
+            <summary>
+            Content-Type of the parameter
+            </summary>
+        </member>
+        <member name="T:RestSharp.HttpResponse">
+            <summary>
+            HTTP response data
+            </summary>
+        </member>
+        <member name="M:RestSharp.HttpResponse.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.ContentType">
+            <summary>
+            MIME content type of response
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.ContentLength">
+            <summary>
+            Length in bytes of the response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.ContentEncoding">
+            <summary>
+            Encoding of the response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.Content">
+            <summary>
+            Lazy-loaded string representation of response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.StatusCode">
+            <summary>
+            HTTP response status code
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.StatusDescription">
+            <summary>
+            Description of HTTP status returned
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.RawBytes">
+            <summary>
+            Response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.ResponseUri">
+            <summary>
+            The URL that actually responded to the content (different from request if redirected)
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.Server">
+            <summary>
+            HttpWebResponse.Server
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.Headers">
+            <summary>
+            Headers returned by server with the response
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.Cookies">
+            <summary>
+            Cookies returned by server with the response
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.ResponseStatus">
+            <summary>
+            Status of the request. Will return Error for transport errors.
+            HTTP errors will still return ResponseStatus.Completed, check StatusCode instead
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.ErrorMessage">
+            <summary>
+            Transport or other non-HTTP error generated while attempting request
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.ErrorException">
+            <summary>
+            Exception thrown when error is encountered.
+            </summary>
+        </member>
+        <member name="P:RestSharp.HttpResponse.ProtocolVersion">
+            <summary>
+            The HTTP protocol version (1.0, 1.1, etc)
+            </summary>
+            <remarks>Only set when underlying framework supports it.</remarks>
+        </member>
+        <member name="P:RestSharp.IHttp.AutomaticDecompression">
+            <summary>
+            Enable or disable automatic gzip/deflate decompression
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttp.AlwaysMultipartFormData">
+            <summary>
+            Always send a multipart/form-data request - even when no Files are present.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttp.RequestBodyBytes">
+            <summary>
+            An alternative to RequestBody, for when the caller already has the byte array.
+            </summary>
+        </member>
+        <member name="T:RestSharp.IHttpResponse">
+            <summary>
+            HTTP response data
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.ContentType">
+            <summary>
+            MIME content type of response
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.ContentLength">
+            <summary>
+            Length in bytes of the response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.ContentEncoding">
+            <summary>
+            Encoding of the response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.Content">
+            <summary>
+            String representation of response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.StatusCode">
+            <summary>
+            HTTP response status code
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.StatusDescription">
+            <summary>
+            Description of HTTP status returned
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.RawBytes">
+            <summary>
+            Response content
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.ResponseUri">
+            <summary>
+            The URL that actually responded to the content (different from request if redirected)
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.Server">
+            <summary>
+            HttpWebResponse.Server
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.Headers">
+            <summary>
+            Headers returned by server with the response
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.Cookies">
+            <summary>
+            Cookies returned by server with the response
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.ResponseStatus">
+            <summary>
+            Status of the request. Will return Error for transport errors.
+            HTTP errors will still return ResponseStatus.Completed, check StatusCode instead
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.ErrorMessage">
+            <summary>
+            Transport or other non-HTTP error generated while attempting request
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.ErrorException">
+            <summary>
+            Exception thrown when error is encountered.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IHttpResponse.ProtocolVersion">
+            <summary>
+            The HTTP protocol version (1.0, 1.1, etc)
+            </summary>
+            <remarks>Only set when underlying framework supports it.</remarks>
+        </member>
+        <member name="P:RestSharp.IRestClient.ClientCertificates">
+            <summary>
+            X509CertificateCollection to be sent with request
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestClient.RemoteCertificateValidationCallback">
+            <summary>
+            Callback function for handling the validation of remote certificates. Useful for certificate pinning and
+            overriding certificate errors in the scope of a request.
+            </summary>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteAsyncGet(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle},System.String)">
+            <summary>
+            Executes a GET-style request and callback asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+            <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
+            <param name="httpMethod">The HTTP method to execute</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteAsyncPost(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle},System.String)">
+            <summary>
+            Executes a POST-style request and callback asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+            <param name="callback">Callback function to be executed upon completion providing access to the async handle.</param>
+            <param name="httpMethod">The HTTP method to execute</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteAsyncGet``1(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse{``0},RestSharp.RestRequestAsyncHandle},System.String)">
+            <summary>
+            Executes a GET-style request and callback asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+            <param name="callback">Callback function to be executed upon completion</param>
+            <param name="httpMethod">The HTTP method to execute</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteAsyncPost``1(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse{``0},RestSharp.RestRequestAsyncHandle},System.String)">
+            <summary>
+            Executes a GET-style request and callback asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+            <param name="callback">Callback function to be executed upon completion</param>
+            <param name="httpMethod">The HTTP method to execute</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ConfigureWebRequest(System.Action{System.Net.HttpWebRequest})">
+            <summary>
+            Add a delegate to apply custom configuration to HttpWebRequest before making a call
+            </summary>
+            <param name="configurator">Configuration delegate for HttpWebRequest</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.AddHandler(System.String,RestSharp.Deserializers.IDeserializer)">
+            <summary>
+            Adds or replaces a deserializer for the specified content type
+            </summary>
+            <param name="contentType">Content type for which the deserializer will be replaced</param>
+            <param name="deserializer">Custom deserializer</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.RemoveHandler(System.String)">
+            <summary>
+            Removes custom deserialzier for the specified content type
+            </summary>
+            <param name="contentType">Content type for which deserializer needs to be removed</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ClearHandlers">
+            <summary>
+            Remove deserializers for all content types
+            </summary>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
+            <summary>
+            Executes the request and callback asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+            <param name="token">The cancellation token</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync``1(RestSharp.IRestRequest,RestSharp.Method)">
+            <summary>
+            Executes the request asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+            <param name="httpMethod">Override the request method</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync``1(RestSharp.IRestRequest)">
+            <summary>
+            Executes the request asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteGetTaskAsync``1(RestSharp.IRestRequest)">
+            <summary>
+            Executes a GET-style request asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteGetTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
+            <summary>
+            Executes a GET-style request asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+            <param name="token">The cancellation token</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecutePostTaskAsync``1(RestSharp.IRestRequest)">
+            <summary>
+            Executes a POST-style request asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecutePostTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
+            <summary>
+            Executes a POST-style request asynchronously, authenticating if needed
+            </summary>
+            <typeparam name="T">Target deserialization type</typeparam>
+            <param name="request">Request to be executed</param>
+            <param name="token">The cancellation token</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
+            <summary>
+            Executes the request and callback asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+            <param name="token">The cancellation token</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken,RestSharp.Method)">
+            <summary>
+            Executes the request and callback asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+            <param name="token">The cancellation token</param>
+            <param name="httpMethod">Override the request method</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync(RestSharp.IRestRequest)">
+            <summary>
+            Executes the request asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteGetTaskAsync(RestSharp.IRestRequest)">
+            <summary>
+            Executes a GET-style asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecuteGetTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
+            <summary>
+            Executes a GET-style asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+            <param name="token">The cancellation token</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecutePostTaskAsync(RestSharp.IRestRequest)">
+            <summary>
+            Executes a POST-style asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+        </member>
+        <member name="M:RestSharp.IRestClient.ExecutePostTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
+            <summary>
+            Executes a POST-style asynchronously, authenticating if needed
+            </summary>
+            <param name="request">Request to be executed</param>
+            <param name="token">The cancellation token</param>
+        </member>
+        <member name="P:RestSharp.IRestRequest.AlwaysMultipartFormData">
+            <summary>
+            Always send a multipart/form-data request - even when no Files are present.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.JsonSerializer">
+            <summary>
+            Serializer to use when writing JSON request bodies. Used if RequestFormat is Json.
+            By default the included JsonSerializer is used (currently using SimpleJson default serialization).
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.XmlSerializer">
+            <summary>
+            Serializer to use when writing XML request bodies. Used if RequestFormat is Xml.
+            By default the included XmlSerializer is used.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.AdvancedResponseWriter">
+            <summary>
+            Set this to handle the response stream yourself, based on the response details
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.ResponseWriter">
+            <summary>
+            Set this to write response to Stream rather than reading into memory.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.Parameters">
+            <summary>
+            Container of all HTTP parameters to be passed with the request. 
+            See AddParameter() for explanation of the types of parameters that can be passed
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.Files">
+            <summary>
+            Container of all the files to be uploaded with the request.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.Method">
+            <summary>
+            Determines what HTTP method to use for this request. Supported methods: GET, POST, PUT, DELETE, HEAD, OPTIONS
+            Default is GET
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.Resource">
+            <summary>
+            The Resource URL to make the request against.
+            Tokens are substituted with UrlSegment parameters and match by name.
+            Should not include the scheme or domain. Do not include leading slash.
+            Combined with RestClient.BaseUrl to assemble final URL:
+            {BaseUrl}/{Resource} (BaseUrl is scheme + domain, e.g. http://example.com)
+            </summary>
+            <example>
+            // example for url token replacement
+            request.Resource = "Products/{ProductId}";
+            request.AddParameter("ProductId", 123, ParameterType.UrlSegment);
+            </example>
+        </member>
+        <member name="P:RestSharp.IRestRequest.RequestFormat">
+            <summary>
+            Serializer to use when writing XML request bodies. Used if RequestFormat is Xml.
+            By default XmlSerializer is used.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.RootElement">
+            <summary>
+            Used by the default deserializers to determine where to start deserializing from.
+            Can be used to skip container or root elements that do not have corresponding deserialzation targets.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.DateFormat">
+            <summary>
+            Used by the default deserializers to explicitly set which date format string to use when parsing dates.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.XmlNamespace">
+            <summary>
+            Used by XmlDeserializer. If not specified, XmlDeserializer will flatten response by removing namespaces from element names.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.Credentials">
+            <summary>
+            In general you would not need to set this directly. Used by the NtlmAuthenticator. 
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.Timeout">
+            <summary>
+            Timeout in milliseconds to be used for the request. This timeout value overrides a timeout set on the RestClient.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.ReadWriteTimeout">
+            <summary>
+            The number of milliseconds before the writing or reading times out.  This timeout value overrides a timeout set on the RestClient.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.Attempts">
+            <summary>
+            How many attempts were made to send this Request?
+            </summary>
+            <remarks>
+            This Number is incremented each time the RestClient sends the request.
+            Useful when using Asynchronous Execution with Callbacks
+            </remarks>
+        </member>
+        <member name="P:RestSharp.IRestRequest.UseDefaultCredentials">
+            <summary>
+            Determine whether or not the "default credentials" (e.g. the user account under which the current process is running)
+            will be sent along to the server. The default is false.
+            </summary>
+        </member>
+        <member name="P:RestSharp.IRestRequest.AllowedDecompressionMethods">
+            <summary>
+            List of Allowed Decompression Methods
+            </summary>
+        </member>
+        <member name="M:RestSharp.IRestRequest.AddFile(System.String,System.String,System.String)">
+            <summary>
+            Adds a file to the Files collection to be included with a POST or PUT request 
+            (other methods do not support file uploads).
+            </summary>
+            <param name="name">The parameter name to use in the request</param>
+            <param name="path">Full path to file to upload</param>
+            <param name="contentType">The MIME type of the file to upload</param>
+            <returns>This request</returns>
+        </member>
+        <member name="M:RestSharp.IRestRequest.AddFile(System.String,System.Byte[],System.String,System.String)">
+            <summary>
+            Adds the bytes to the Files collection with the specified file name and content type
+            </summary>
+            <param name="name">The parameter name to use in the request</param>
+            <param name="bytes">The file data</param>
+            <param name="fileName">The file name to use for the uploaded file</param>
+            <param name="contentType">The MIME type of the file to upload</param>
+            <returns>This request</returns>
+        </member>
+        <member name="M:RestSharp.IRestRequest.AddFile(System.String,System.Action{System.IO.Stream},System.String,System.Int64,System.String)">
+            <summary>
+            Adds the bytes to the Files collection with the specified file name and content type
+            </summary>
+            <param name="name">The parameter name to use in the request</param>
+            <param name="writer">A function that writes directly to the stream.  Should NOT close the stream.</param>
+            <param name="fileName">The file name to use for the uploaded file</param>
+            <param name="contentLength">The length (in bytes) of the file content.</param>
+            <param name="contentType">The MIME type of the file to upload</param>
+            <returns>This request</returns>
+        </member>
+        <member name="M:RestSharp.IRestRequest.AddFileBytes(System.String,System.Byte[],System.String,System.String)">
+            <summary>
+            Add bytes to the Files collection as if it was a file of specific type
+            </summary>
+            <param name="name">A form parameter name</param>
+            <param name="bytes">The file data</param>
+            <param name="filename">The file name to use for the uploaded file</param>
+            <param name="contentType">Specific content type. Es: application/x-gzip </param>
+            <returns></returns>
+        </member>
+        <member name="M:RestSharp.IRestRequest.AddBody(System.Object,System.String)">
+            <summary>
+            Serializes obj to format specified by RequestFormat, but passes xmlNamespace if using the default XmlSerializer
+            The default format is XML. Change RequestFormat if you wish to use a different serialization format.
+            </summary>
+            <param name="obj">The object to serialize</param>
+            <param name="xmlNamespace">The XML namespace to use when serializing</param>
+            <returns>This request</returns>
+        </member>
+        <member name="M:RestSharp.IRestRequest.AddBody(System.Object)">
+            <summary>
+            Serializes obj to data format specified by RequestFormat and adds it to the request body.
+            The default format is XML. Change RequestFormat if you wish to use a different serialization format.
+            </summary>
+            <param name="obj">The object to serialize</param>
+            <returns>This request</returns>
+        </member>
+        <member name="M:RestSharp.IRestRequest.AddJsonBody(System.Object)">
+            <summary>
+            Serializes obj to JSON format and adds it to the request body.
+            </summary>
+  hared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     d  System.Data
+	e  	f             ôÊˇˇÛ˚ˇˇ    òÊˇˇÚ˚ˇˇ   
+
+
+   	i  ®	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     j  System
+	k  	l             ìÊˇˇÛ˚ˇˇ    íÊˇˇÚ˚ˇˇ   
+
+
+   	o  ©	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     p  System.Core
+	q  	r             çÊˇˇÛ˚ˇˇ    åÊˇˇÚ˚ˇˇ   
+
+
+   	u  ™	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     v  System.Drawing
+	w  	x             áÊˇˇÛ˚ˇˇ    ÜÊˇˇÚ˚ˇˇ   
+
+
+   	{  ´	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     |  System.Data.DataSetExtensions
+	}  	~             ÅÊˇˇÛ˚ˇˇ    ÄÊˇˇÚ˚ˇˇ   
+
+
+   	Å  ¨	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Ç  
+System.Xml
+	É  	Ñ             {ÊˇˇÛ˚ˇˇ    zÊˇˇÚ˚ˇˇ   
+
+
+   	á  ≠	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     à  System.Windows.Forms
+	â  	ä             uÊˇˇÛ˚ˇˇ    tÊˇˇÚ˚ˇˇ   
+
+
+   	ç  ∞	                   µ	        	      ∂	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     è  mscorlib
+	ê  	ë             nÊˇˇÛ˚ˇˇ    mÊˇˇÚ˚ˇˇ   
+
+
+   	î  ∑	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ï  Miles.Coro.Common
+	  	ó             hÊˇˇÛ˚ˇˇ    gÊˇˇÚ˚ˇˇ   
+
+
+   	ö  π	  †    $  Ä  î      $  RSA1     Ø‘†ÁrAQ’›RÀ#£Ì| ëÃœÈK+ÕÖ≥ÙÓ„ƒÿˆA{ˇv7c©ñ÷≤ﬂ¡Á¬õœ∏)óyﬂáÖÕ‚¡hŒÓHW%ÚFéx*ú$0,ˆ‹·é“7∫ÈiÉW≠!Ë∂ﬂ¥u—náÎ«D•”(ô†€≈ñ¶≤œ°Â	æ_Ω	˙œ∫	     qÈº·ÈBúª	                   ¿	        	+      ¡	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ú  mscorlib
+	ù  	û             aÊˇˇÛ˚ˇˇ    `ÊˇˇÚ˚ˇˇ   
+
+
+   	°  ¬	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ¢  office
+	£  	§             [ÊˇˇÛ˚ˇˇ    ZÊˇˇÚ˚ˇˇ   
+
+
+   	ß  √	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ®  Microsoft.Vbe.Interop
+	©  	™             UÊˇˇÛ˚ˇˇ    TÊˇˇÚ˚ˇˇ   
+
+
+   	≠  ∆	                   À	        	$      Ã	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Ø  mscorlib
+	∞  	±             NÊˇˇÛ˚ˇˇ    MÊˇˇÚ˚ˇˇ   
+
+
+   	¥  Õ	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     µ  System.Data
+	∂  	∑             HÊˇˇÛ˚ˇˇ    GÊˇˇÚ˚ˇˇ   
+
+
+   	∫  Œ	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ª  System
+	º  	Ω             BÊˇˇÛ˚ˇˇ    AÊˇˇÚ˚ˇˇ   
+
+
+   	¿  œ	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ¡  System.Core
+	¬  	√             <ÊˇˇÛ˚ˇˇ    ;ÊˇˇÚ˚ˇˇ   
+
+
+   	∆  –	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     «  System.Drawing
+	»  	…             6ÊˇˇÛ˚ˇˇ    5ÊˇˇÚ˚ˇˇ   
+
+
+   	Ã  —	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Õ  System.Data.DataSetExtensions
+	Œ  	œ             0ÊˇˇÛ˚ˇˇ    /ÊˇˇÚ˚ˇˇ   
+
+
+   	“  “	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ”  
+System.Xml
+	‘  	’             *ÊˇˇÛ˚ˇˇ    )ÊˇˇÚ˚ˇˇ   
+
+
+   	ÿ  ”	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Ÿ  System.Windows.Forms
+	⁄  	€             $ÊˇˇÛ˚ˇˇ    #ÊˇˇÚ˚ˇˇ   
+
+
+   	ﬁ  ’	  †    $  Ä  î      $  RSA1     —˙WƒÆŸ£.Ñ™Æ˝ÈË˝jÏèá˚vlÉLôí≤;ÁöŸ’‹¡›ö“6!êr<˘Äïƒ·wè∆wO)Ë2íÍÏ‰Ë!¿•ÔËÒd\Lì¡´ô(]b,™e,˙÷=t]o-ÂÒ~^Øƒñ=&äCe m¿ì4MZ“ì÷	     ∞?_’
+:◊	    
+               €	        	+      ‹	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ‡  mscorlib
+	·  	‚             ÊˇˇÛ˚ˇˇ    ÊˇˇÚ˚ˇˇ   
+
+
+   	Â  ﬂ	                   ‰	        	]      Â	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Á  mscorlib
+	Ë  	È             ÊˇˇÛ˚ˇˇ    ÊˇˇÚ˚ˇˇ   
+
+
+   	Ï  Ê	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Ì  System.Data
+	Ó  	Ô             ÊˇˇÛ˚ˇˇ    ÊˇˇÚ˚ˇˇ   
+
+
+   	Ú  Á	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Û  System
+	Ù  	ı             
+ÊˇˇÛ˚ˇˇ    	ÊˇˇÚ˚ˇˇ   
+
+
+   	¯  Ë	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ˘  System.Core
+	˙  	˚             ÊˇˇÛ˚ˇˇ    ÊˇˇÚ˚ˇˇ   
+
+
+   	˛  È	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ˇ  System.Drawing
+	   	             ˛ÂˇˇÛ˚ˇˇ    ˝ÂˇˇÚ˚ˇˇ   
+
+
+   	  Í	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	       System.Data.DataSetExtensions
+	  	             ¯ÂˇˇÛ˚ˇˇ    ˜ÂˇˇÚ˚ˇˇ   
+
+
+   	
+  Î	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	       
+System.Xml
+	  	             ÚÂˇˇÛ˚ˇˇ    ÒÂˇˇÚ˚ˇˇ   
+
+
+   	  Ï	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	       System.Windows.Forms
+	  	             ÏÂˇˇÛ˚ˇˇ    ÎÂˇˇÚ˚ˇˇ   
+
+
+   	  Ì	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	       mscorlib
+	  	             ÊÂˇˇÛ˚ˇˇ    ÂÂˇˇÚ˚ˇˇ   
+
+
+   	  Ó	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	       System.Configuration
+	  	             ‡ÂˇˇÛ˚ˇˇ    ﬂÂˇˇÚ˚ˇˇ   
+
+
+   	"  Ô	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     #  
+System.Xml
+	$  	%             ⁄ÂˇˇÛ˚ˇˇ    ŸÂˇˇÚ˚ˇˇ   
+
+
+   	(  Ú	                   ˜	        	€
+      ¯	  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     *  mscorlib
+	+  	,             ”ÂˇˇÛ˚ˇˇ    “ÂˇˇÚ˚ˇˇ   
+
+
+   	/  ˚	                    
+        	]      
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     1  mscorlib
+	2  	3             ÃÂˇˇÛ˚ˇˇ    ÀÂˇˇÚ˚ˇˇ   
+
+
+   	6  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     7  Miles.Coro.DataBase
+	  	9             ∆ÂˇˇÛ˚ˇˇ    ≈ÂˇˇÚ˚ˇˇ   
+
+
+   	<  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     =  System.Data
+	>  	?             ¿ÂˇˇÛ˚ˇˇ    øÂˇˇÚ˚ˇˇ   
+
+
+   	B  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     C  System.Core
+	D  	E             ∫ÂˇˇÛ˚ˇˇ    πÂˇˇÚ˚ˇˇ   
+
+
+   	H  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     I  mscorlib
+	J  	K             ¥ÂˇˇÛ˚ˇˇ    ≥ÂˇˇÚ˚ˇˇ   
+
+
+   	N  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     O  System
+	P  	Q             ÆÂˇˇÛ˚ˇˇ    ≠ÂˇˇÚ˚ˇˇ   
+
+
+   	T  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     U  System.Data.SqlXml
+	V  	W             ®ÂˇˇÛ˚ˇˇ    ßÂˇˇÚ˚ˇˇ   
+
+
+   	Z  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     [  System.Configuration
+	\  	]             ¢ÂˇˇÛ˚ˇˇ    °ÂˇˇÚ˚ˇˇ   
+
+
+   	`  
+                   
+        	+      
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     b  mscorlib
+	c  	d             õÂˇˇÛ˚ˇˇ    öÂˇˇÚ˚ˇˇ   
+
+
+   	g  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     h  	Miles.Log
+	  	j             ïÂˇˇÛ˚ˇˇ    îÂˇˇÚ˚ˇˇ   
+
+
+   	m  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     n  System.Data
+	o  	p             èÂˇˇÛ˚ˇˇ    éÂˇˇÚ˚ˇˇ   
+
+
+   	s  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     t  Miles.DbProvider
+	  	v             âÂˇˇÛ˚ˇˇ    àÂˇˇÚ˚ˇˇ   
+
+
+   	y  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     z  System
+	{  	|             ÉÂˇˇÛ˚ˇˇ    ÇÂˇˇÚ˚ˇˇ   
+
+
+   	  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Ä  Miles.Coro.Common
+	  	Ç             }ÂˇˇÛ˚ˇˇ    |ÂˇˇÚ˚ˇˇ   
+
+
+   	Ö  
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     Ü  System.Core
+	á  	à             wÂˇˇÛ˚ˇˇ    vÂˇˇÚ˚ˇˇ   
+
+
+   	ã  
+                   
+        	B
+       
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ç  mscorlib
+	é  	è             pÂˇˇÛ˚ˇˇ    oÂˇˇÚ˚ˇˇ   
+
+
+   	í  !
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ì  Miles.Coro.Common
+	  	ï             jÂˇˇÛ˚ˇˇ    iÂˇˇÚ˚ˇˇ   
+
+
+   	ò  $
+                   )
+        	√      *
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ö  mscorlib
+	õ  	ú             cÂˇˇÛ˚ˇˇ    bÂˇˇÚ˚ˇˇ   
+
+
+   	ü  +
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     †  	Miles.Log
+	  	¢             ]ÂˇˇÛ˚ˇˇ    \ÂˇˇÚ˚ˇˇ   
+
+
+   	•  ,
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ¶  System.Data
+	ß  	®             WÂˇˇÛ˚ˇˇ    VÂˇˇÚ˚ˇˇ   
+
+
+   	´  -
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ¨  Miles.DbProvider
+	  	Æ             QÂˇˇÛ˚ˇˇ    PÂˇˇÚ˚ˇˇ   
+
+
+   	±  .
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ≤  System
+	≥  	¥             KÂˇˇÛ˚ˇˇ    JÂˇˇÚ˚ˇˇ   
+
+
+   	∑  /
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     ∏  Miles.Coro.Common
+	  	∫             EÂˇˇÛ˚ˇˇ    DÂˇˇÚ˚ˇˇ   
+
+
+   	Ω  0
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility¥System.Collections.Generic.HashSet`1[[Microsoft.Build.Shared.AssemblyNameExtension, Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a]]	     æ  System.Core
+	ø  	¿             ?ÂˇˇÛ˚ˇˇ    >ÂˇˇÚ˚ˇˇ   
+
+
+   	√  2
+      3
+                   8
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   ƒ  mscorlib
+	≈  	∆             9ÂˇˇÛ˚ˇˇ    8ÂˇˇÚ˚ˇˇ   
+
+
+   
+9
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   …  System
+	   	À             4ÂˇˇÛ˚ˇˇ    3ÂˇˇÚ˚ˇˇ   
+
+
+   
+:
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   Œ  System.Windows.Forms
+	œ  	–             /ÂˇˇÛ˚ˇˇ    .ÂˇˇÚ˚ˇˇ   
+
+
+   
+;
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   ”  Miles.Framework.UI
+	‘  	’             *ÂˇˇÛ˚ˇˇ    )ÂˇˇÚ˚ˇˇ   
+
+
+   
+<
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   ÿ  Miles.Coro.ORM
+	Ÿ  	⁄             %ÂˇˇÛ˚ˇˇ    $ÂˇˇÚ˚ˇˇ   
+
+
+   
+=
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   ›  System.Data
+	ﬁ  	ﬂ              ÂˇˇÛ˚ˇˇ    ÂˇˇÚ˚ˇˇ   
+
+
+   
+>
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   ‚  Miles.Coro.Common
+	„  	‰             ÂˇˇÛ˚ˇˇ    ÂˇˇÚ˚ˇˇ   
+
+
+   
+?
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   Á  System.Drawing
+	Ë  	È             ÂˇˇÛ˚ˇˇ    ÂˇˇÚ˚ˇˇ   
+
+
+   
+@
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   Ï  System.Core
+	Ì  	Ó             ÂˇˇÛ˚ˇˇ    ÂˇˇÚ˚ˇˇ   
+
+
+   
+A
+  ,Microsoft.Build.Shared.AssemblyNameExtension   hasANnamepkpktverflagscpuarchhasCIcihashAlg	verCompatcodebasekeypairasStrisSName
+hasCpuArch	immutableremapped        System.Version5System.Configuration.Assemblies.AssemblyHashAlgorithm<System.Configuration.Assemblies.AssemblyVersionCompatibility   Ò  Miles.Coro.DataBase
+	Ú  	Û             ÂˇˇÛ˚ˇˇ    ÂˇˇÚ˚ˇˇ   
+
+
+   
+B
+  +Microsoft.Build.Shared.AssemblyNameComparer   considerRetargetableFlag    D
+     ∑z\V4‡âE
+                   H
+        	B
+      J
+     ∑z\V4‡âK
+                   N
+        	B
+      P
+     ∑z\V4‡âQ
+                   T
+        	B
+      W
+                   Z
+        	B
+      ]
+                   `
+        	B
+      b
+     ∑z\V4‡âc
+                   f
+        	B
+      i
+                   l
+        	B
+      n
+     ∞?_’
+:o
+                   r
+        	B
+      t
+     ∑z\V4‡âu
+                   x
+        	B
+      {
+                   ~
+        	B
+      Å
+     ∑z\V4‡âÇ
+                   Ö
+        	B
+      á
+     ∑z\V4‡âà
+                   ã
+        	B
+      ç
+     ∑z\V4‡âé
+                   ë
+        	B
+      ì
+     ∑z\V4‡âî
+                   ó
+        	B
+      ô
+     ∞?_’
+:ö
+                   ù
+        	B
+      ü
+     ∑z\V4‡â†
+                   £
+        	B
+      •
+     ∑z\V4‡â¶
+                   ©
+        	B
+      ´
+     ∑z\V4‡â¨
+                   Ø
+        	B
+      ≤
+     ∑z\V4‡â≥
+                   ∂
+        	B
+      π
+                   º
+        	B
+      æ
+     ∑z\V4‡âø
+                   ¬
+        	B
+      ≈
+                   »
+        	B
+       
+     ∑z\V4‡âÀ
+                   Œ
+        	B
+      —
+                   ‘
+        	B
+      ÷
+     ∑z\V4‡â◊
+                   ⁄
+        	B
+      €
+  B
+  ›
+     ∑z\V4‡âﬁ
+                   ·
+        	€
+      „
+     ∑z\V4‡â‰
+                   Á
+        	€
+      È
+     ∑z\V4‡âÍ
+                   Ì
+        	€
+      Ô
+     ∞?_’
+:
+                   Û
+        	€
+      ı
+     ∑z\V4‡âˆ
+                   ˘
+        	€
+      ˚
+     ∞?_’
+:¸
+                   ˇ
+        	€
+                                 	€
+           ∑z\V4‡â                           	€
+           qÈº·ÈBú                           	€
+           ∆∆⁄ëÇ7                          	€
+           0≠OÊ≤¶ÆÌ    	                       	€
+           ∞?_’
+:     
+               #        	€
+      $  B
+  &     ∑z\V4‡â'                   *        	$      +  B
+  -     ∑z\V4‡â.                   1        	Ï      4                   7        	Ï      :                   =        	Ï      @                   C        	Ï      F                   I        	Ï      L                   O        	Ï      Q     ∑z\V4‡âR                   U        	Ï      X     ∑z\V4‡âY           ‰      \        	Ï      ]  B
+  _     ∑z\V4‡â`                   c        	]      f                   i        	]      l                   o        	]      r                   u        	]      x                   {        	]      ~                   Å        	]      É     ∑z\V4‡âÑ                   á        	]      â     ∑z\V4‡âä                   é      è                   ì     ∑z\V4‡âî                   ò      ô                   ù     ∑z\V4‡âû                   ¢      £                   ß     ∑z\V4‡â®                   ¨     ∑z\V4‡â≠                   ±     ∞?_’
+:≤    
+               ∂     ∞?_’
+:∑                   ª     ∑z\V4‡âº                   ¿     ∑z\V4‡â¡                   ≈     ∞?_’
+:∆                         ∑z\V4‡âÀ                   œ     ∑z\V4‡â–                   ’     ∑z\V4‡â÷                   Ÿ        	$      ‹                   ﬂ        	$      ·     ∑z\V4‡â‚                   Â        	$      Á     ∑z\V4‡âË                   Î        	$      Ï  B
+  Ó     ∑z\V4‡âÔ                   Ú        	Ï      Ù     ∞?_’
+:ı    
+               ¯        	Ï      ˙     ∞?_’
+:˚                   ˛        	Ï            ∑z\V4‡â                           	Ï           ∑z\V4‡â                   
+        	Ï           ∞?_’
+:                           	Ï           ∑z\V4‡â                           	Ï           ∑z\V4‡â                           	Ï        B
+       ∑z\V4‡â                    #        	      %     ∑z\V4‡â&                   )        	      +     ∑z\V4‡â,                   /        	      1     ∑z\V4‡â2                   5        	      7     ∞?_’
+:8                   ;        	      =     ∑z\V4‡â>                   A        	      C     ∑z\V4‡âD                   G        	      I     ∑z\V4‡âJ                   M        	      O     ∑z\V4‡âP                   T      U                   Y     ∑z\V4‡âZ                   ^     ∑z\V4‡â_                   c     ∑z\V4‡âd                   g        	Ï      i     ∑z\V4‡âj                   m        	Ï      o     ∑z\V4‡âp                   s        	Ï      u     ∑z\V4‡âv                   y        	Ï      {     ∞?_’
+:|                           	Ï      Å     ∑z\V4‡âÇ                   á     ∑z\V4‡âà                   ã        	€
+      ç     ∞?_’
+:é    
+               ë        	€
+      ì     ∞?_’
+:î                   ó        	€
+      ô     ∑z\V4‡âö                   ù        	€
+      ü     ∑z\V4‡â†                   £        	€
+      •     ∞?_’
+:¶                   ©        	€
+      ´     ∑z\V4‡â¨                   Ø        	€
+      ±     ∑z\V4‡â≤                   µ        	€
+      ∏     ∑z\V4‡âπ                   º        	$      ø                   ¬        	$      √  B
+  ≈     ∑z\V4‡â∆                   …        	√      Ã                   œ        	√      —     ∑z\V4‡â“                   ’        	Ï      ◊     ∑z\V4‡âÿ                   €        	Ï      ›     ∞?_’
+:ﬁ                   ·        	Ï      ‰     ∑z\V4‡âÂ                   Ë        	Ï      Í     ∑z\V4‡âÎ                   Ó        	Ï      Ò     ∑z\V4‡âÚ                   ı        	√      ¯                   ˚        	√      ˝     ∑z\V4‡â˛                           	√           ∑z\V4‡â                           	√      
+     ∑z\V4‡â                           	           ∑z\V4‡â                           	$           ∑z\V4‡â                           	$           ∑z\V4‡â                   !        	$      #     ∞?_’
+:$                   '        	$      )     ∑z\V4‡â*                   -        	$      /     ∞?_’
+:0                   3        	$      6                   9        	$      ;     ∑z\V4‡â<                   ?        	$      A     qÈº·ÈBúB                   E        	$      G     ∆∆⁄ëÇ7H                  K        	$      M     0≠OÊ≤¶ÆÌN    	               Q        	$      S     ∞?_’
+:T    
+               W        	$      Z     ∑z\V4‡â[                   ^        	      `     ∞?_’
+:a    
+               d        	      f     ∞?_’
+:g                   j        	      l     ∑z\V4‡âm                   p        	      r     ∑z\V4‡âs                   v        	      x     ∞?_’
+:y                   |        	      ~     ∑z\V4‡â                   Ç        	      Ñ     ∑z\V4‡âÖ                   à        	      ã     ∑z\V4‡âå                   è        	]      ë     ∑z\V4‡âí                   ï        	]      ó     ∑z\V4‡âò                   õ        	]      ù     ∞?_’
+:û                   °        	]      £     ∑z\V4‡â§                   ß        	]      ©     ∞?_’
+:™                   ≠        	]      ∞                   ≥        	]      µ     ∑z\V4‡â∂                   π        	]      ª     qÈº·ÈBúº                   ø        	]      ¡     ∆∆⁄ëÇ7¬                  ≈        	]      «     0≠OÊ≤¶ÆÌ»    	               À        	]      Õ     ∞?_’
+:Œ    
+               —        	]      ‘     ∑z\V4‡â’                   ÿ        	B
+      €                   ﬁ        	B
+      ·                   ‰        	B
+      Á                   Í        	B
+      Ì                           	B
+      Û                   ˆ        	B
+      ¯     ∑z\V4‡â˘                   ¸        	B
+      ˇ     ∑z\V4‡â                            	√        B
+       ∑z\V4‡â                   
+        	                                 	                                 	                                 	                         "        	      %                   (        	      *     ∑z\V4‡â+                   .        	      1     ∑z\V4‡â2                   5        	Ï      8                   ;        	Ï      <  B
+  >     ∑z\V4‡â?                   B        	<      E     ∑z\V4‡âF                   I        	<      K     ∑z\V4‡âL                   O        	<      Q     ∑z\V4‡âR                   U        	<      W     ∞?_’
+:X                   [        	<      ]     ∑z\V4‡â^                   a        	<      c     ∞?_’
+:d                   g        	<      j                   m        	<      o     ∑z\V4‡âp                   s        	<      u     qÈº·ÈBúv                   y        	<      {     ∆∆⁄ëÇ7|                          	<      Å     0≠OÊ≤¶ÆÌÇ    	               Ö        	<      á     ∞?_’
+:à    
+               ã        	<      é     ∑z\V4‡âè                   í        	Ï      î     ∑z\V4‡âï                   ò        	Ï      ö     ∑z\V4‡âõ                   û        	Ï      °                   §        	Ï      ß                   ™        	Ï      ¨     ∑z\V4‡â≠                   ∞        	Ï      ≥                   ∂        	Ï      ∏     ∞?_’
+:π                   º        	Ï      æ     ∑z\V4‡âø                   ¬        	Ï      ≈                   »        	Ï            ∑z\V4‡âÀ                   Œ        	Ï      –     ∑z\V4‡â—                   ‘        	Ï      ÷     ∑z\V4‡â◊                   ⁄        	Ï      ‹     ∑z\V4‡â›                   ‡        	Ï      ‚     ∑z\V4‡â„                   Ê        	Ï      Ë     ∑z\V4‡âÈ                   Ï        	Ï      Ó     ∑z\V4‡âÔ                   Ú        	Ï      Ù     ∑z\V4‡âı                   ¯        	Ï      ˙     ∞?_’
+:˚                   ˛        	Ï            ∑z\V4‡â                           	Ï           ∑z\V4‡â                   
+        	Ï           ∞?_’
+:                           	Ï           ∑z\V4‡â                           	Ï           ∞?_’
+:                           	Ï           ∞?_’
+:                   "        	Ï      $     ∞?_’
+:%                   (        	Ï      *     ∞?_’
+:+                   .        	Ï      1     ∑z\V4‡â2                   5        	      7     ∑z\V4‡â8                   <      =                   A      B                   F      G                   K      L                   P      Q                   U     ∑z\V4‡âV                   [     ∑z\V4‡â\                   _        	      a     ∞?_’
+:b    
+               e        	      g     ∞?_’
+:h                   k        	      m     ∑z\V4‡ân                   q        	      s     ∑z\V4‡ât                   w        	      y     ∞?_’
+:z                   }        	           ∑z\V4‡âÄ                   É        	      Ö     ∑z\V4‡âÜ                   â        	      å     ∑z\V4‡âç                   ê        	]      ì     ∑z\V4‡âî                   ó        	Ï      ô     ∑z\V4‡âö                   ù        	Ï      †     ∑z\V4‡â°                   §        	<      ß                   ™        	<      ¨     ∑z\V4‡â≠                   ∞        	<      ≥                   ∂        	<      ∏     ∑z\V4‡âπ                   º        	<      ø                   ¬        	<      ƒ     ∑z\V4‡â≈                   »        	<      À     ∑z\V4‡âÃ                   œ        	      “                   ’        	      ÿ                   €        	      ﬁ                   ·        	      ‰                   Á        	      Í                   Ì        	      Ô     ∑z\V4‡â                   Û        	      ˆ     ∑z\V4‡â˜                   ˙        	      ˝                            	           ∑z\V4‡â                           	      	                           	           ∑z\V4‡â                           	                                 	           ∑z\V4‡â                           	      !     ∑z\V4‡â"                   %        	Ï      '     ∑z\V4‡â(                   +        	Ï      -     ∑z\V4‡â.                   1        	Ï      3     ∑z\V4‡â4                   7        	Ï      9     ∑z\V4‡â:                   =        	Ï      ?     ∑z\V4‡â@                   C        	Ï      E     ∑z\V4‡âF                   I        	Ï      K     ∑z\V4‡âL                   O        	Ï      R     ∑z\V4‡âS                   V        	€
+      X     ∑z\V4‡âY                   \        	€
+      ^     ∑z\V4‡â_                   b        	€
+      e                   h        	€
+      k                   n        	€
+      p     ∑z\V4‡âq                   t        	€
+      w                   z        	€
+      |     ∞?_’
+:}                   Ä        	€
+      Ç     ∑z\V4‡âÉ                   Ü        	€
+      â                   å        	€
+      è     ∑z\V4‡âê                   ì        	$      ï     ∑z\V4‡âñ                   ô        	$      õ     ∑z\V4‡âú                   ü        	$      ¢                   •        	$      ®                   ´        	$      ≠     ∑z\V4‡âÆ                   ±        	$      ¥                   ∑        	$      π     ∞?_’
+:∫                   Ω        	$      ø     ∑z\V4‡â¿                   √        	$      ∆                   …        	$      À     ∑z\V4‡âÃ                   –     ∑z\V4‡â—                   ‘        	Ï      ÷     ∞?_’
+:◊                   ⁄        	Ï      ‹     ∑z\V4‡â›                   ‡        	Ï      ‚     ∑z\V4‡â„                   Ê        	Ï      Ë     ∑z\V4‡âÈ                   Ï        	Ï      Ó     ∞?_’
+:Ô                   Ú        	Ï      Ù     ∑z\V4‡âı                   ¯        	Ï      ˙     ∑z\V4‡â˚                   ˛        	Ï            ∑z\V4‡â                           	Ï           1ø8V≠6N5                   
+        	Ï           ∑z\V4‡â                           	Ï           1ø8V≠6N5                           	Ï           ∞?_’
+:                           	Ï           ∑z\V4‡â                   "        	Ï      $     1ø8V≠6N5%                   (        	Ï      *     ∑z\V4‡â+                   .        	Ï      0     ∞?_’
+:1                   4        	Ï      7     ∑z\V4‡â8                   ;        	€
+      >                   A        	€
+      D                   G        	€
+      J                   M        	€
+      P                   S        	€
+      V                   Y        	€
+      [     ∑z\V4‡â\                   _        	€
+      b     ∑z\V4‡âc                   f        	      h     ∑z\V4‡âi                   l        	      n     ∑z\V4‡âo                   r        	      t     ∞?_’
+:u                   x        	      z     ∑z\V4‡â{                   ~        	      Ä     ∞?_’
+:Å                   Ñ        	      á                   ä        	      å     ∑z\V4‡âç                   ê        	      í     qÈº·ÈBúì                   ñ        	      ò     ∆∆⁄ëÇ7ô                  ú        	      û     0≠OÊ≤¶ÆÌü    	               ¢        	      §     ∞?_’
+:•    
+               ®        	      ´     ∑z\V4‡â¨                   Ø        	$      ±     ∞?_’
+:≤    
+               µ        	$      ∑     ∞?_’
+:∏                   ª        	$      Ω     ∑z\V4‡âæ                   ¡        	$      √     ∑z\V4‡âƒ                   «        	$      …     ∞?_’
+:                    Õ        	$      œ     ∑z\V4‡â–                   ”        	$      ’     ∑z\V4‡â÷                   Ÿ        	$      ‹     ∑z\V4‡â›                   ‡        	<      „                   Ê        	<      Ë     ∑z\V4‡âÈ                   Ï        	<      Ó     ∑z\V4‡âÔ                   Ú        	<      ı     ∑z\V4‡âˆ           à      ˘        	Ï      ˚     qÈº·ÈBú¸                   ˇ        	Ï           ∑z\V4‡â                           	B
+      	     ∑z\V4‡â
+                           	Ï           ∑z\V4‡â           à              	Ï           ∞?_’
+:           ‰              	Ï           ∑z\V4‡â                   !        	√      $                   '        	√      *                   -        	√      0                   3        	√      6                   9        	√      <                   ?        	√      A     ∑z\V4‡âB                   E        	√      H     ∑z\V4‡âI                   L        	<      O                   R        	<      T     ∑z\V4‡âU                   X        	Ï      Z     ∑z\V4‡â[                   ^        	Ï      `     ∑z\V4‡âa                   d        	Ï      f     ∑z\V4‡âg                   j        	Ï      l     ∑z\V4‡âm                   p        	Ï      r     ∑z\V4‡âs                   w      x                   |     ∑z\V4‡â}                   Ä        	Ï      Ç     ∑z\V4‡âÉ                   Ü        	Ï      à     ∑z\V4‡ââ                   å        	Ï      é     ∞?_’
+:è                   í        	Ï      î     ∑z\V4‡âï                   ò        	Ï      ö     ∑z\V4‡âõ                   û        	Ï      †     ∞?_’
+:°                   §        	Ï      ß     ∑z\V4‡â®                   ´        	$      Æ     ∑z\V4‡âØ                   ≤        	<      µ     ∑z\V4‡â∂                   π        	      ª     ∑z\V4‡âº                   ø        	      ¡     ∑z\V4‡â¬                   ≈        	      »                   À        	      Œ                   —        	      ”     ∑z\V4‡â‘                   ◊        	      ⁄                   ›        	      ﬂ     ∞?_’
+:‡                   „        	      Â     ∑z\V4‡âÊ                   È        	      Ï                   Ô        	      Ú     ∑z\V4‡âÛ                   ˆ        	Ï      ¯     ∑z\V4‡â˘                   ¸        	Ï      ˛     ∞?_’
+:ˇ                           	Ï           ∑z\V4‡â                           	Ï      
+     ∑z\V4‡â                           	Ï           ∑z\V4‡â                           	Ï           ∑z\V4‡â                           	√           ∑z\V4‡â                   !        	√      #     ∑z\V4‡â$                   '        	√      *                   -        	√      0                   3        	√      5     ∑z\V4‡â6                   9        	√      <                   ?        	√      A     ∞?_’
+:B                   E        	√      G     ∑z\V4‡âH                   K        	√      N                   Q        	√      T     ∑z\V4‡âU                   X        	      [     ∑z\V4‡â\                   _        	√      a     ∑z\V4‡âb                   e        	√      g     ∑z\V4‡âh                   k        	√      m     ∑z\V4‡ân                   q        	√      s     ∞?_’
+:t                   w        	√      y     ∑z\V4‡âz                   }        	√           ∑z\V4‡âÄ                   É        	√      Ö     ∑z\V4‡âÜ                   â        	√      å     ∑z\V4‡âç                   ê        	Ï      ì     ∑z\V4‡âî                   ó        	<      ö                   ù        	<      †                   £        	<      ¶                   ©        	<      ¨                   Ø        	<      ≤                   µ        	<      ∑     ∑z\V4‡â∏                   ª        	<      º  B
+  ø     ∑z\V4‡â¿                   √        	B
+      ≈     ∞?_’
+:∆    
+               …        	B
+      À     ∞?_’
+:Ã                   œ        	B
+      —     ∑z\V4‡â“                   ’        	B
+      ◊     ∑z\V4‡âÿ                   €        	B
+      ›     ∞?_’
+:ﬁ                   ·        	B
+      „     ∑z\V4‡â‰                   Á        	B
+      È     ∑z\V4‡âÍ                   Ì        	B
+           ∑z\V4‡âÒ                   Ù        	      ˜     ∑z\V4‡â¯                   ˚        	<      ˝     ∑z\V4‡â˛                           	<           ∑z\V4‡â                           	<      
+                           	<                                 	<           ∑z\V4‡â                           	<                                 	<      !     ∞?_’
+:"                   %        	<      '     ∑z\V4‡â(                   +        	<      .                   1        	<      4     ∑z\V4‡â5                   8        	      :     ∑z\V4‡â;                   >        	      @     ∑z\V4‡âA                   D        	      F     ∞?_’
+:G                   J        	      L     ∑z\V4‡âM                   P        	      R     ∞?_’
+:S                   V        	      Y                   \        	      ^     ∑z\V4‡â_                   b        	      d     qÈº·ÈBúe                   h        	      j     ∆∆⁄ëÇ7k                  n        	      p     0≠OÊ≤¶ÆÌq    	               t        	      v     ∞?_’
+:w    
+               z        	      }     ∑z\V4‡â~                   Å        	]      Ñ                   á        	]      â     ∑z\V4‡âä                   ç        	]      ê                   ì        	]      ï     ∑z\V4‡âñ                   ô        	]      ú                   ü        	]      °     ∑z\V4‡â¢                   •        	]      ®     ∑z\V4‡â©                   ¨        	$      Ø                   ≤        	$      ¥     ∑z\V4‡âµ                   ∏        	$      ª                   æ        	$      ¿     ∑z\V4‡â¡                   ƒ        	$      «                            	$      Ã     ∑z\V4‡âÕ                   –        	$      “     ∑z\V4‡â”                   ÷        	Ï      ÿ     ∑z\V4‡âŸ                   ‹        	Ï      ﬁ     1ø8V≠6N5ﬂ                   ‚        	Ï      ‰     ∑z\V4‡âÂ                   Ë        	Ï      Í     1ø8V≠6N5Î                   Ó        	Ï           ∞?_’
+:Ò                   Ù        	Ï      ˆ     ∑z\V4‡â˜                   ˙        	Ï      ¸     ∑z\V4‡â˝                            	Ï           1ø8V≠6N5                           	Ï           1ø8V≠6N5	                           	Ï           1ø8V≠6N5                           	Ï           1ø8V≠6N5                           	Ï           1ø8V≠6N5                           	Ï            ∞?_’
+:!                   $        	Ï      &     ∞?_’
+:'                   *        	Ï      ,     ∑z\V4‡â-                   1     ∑z\V4‡â2                   6     ∑z\V4‡â7                   ;     ∑z\V4‡â<                   @     ∞?_’
+:A                   E     ∑z\V4‡âF                   J     ∑z\V4‡âK                   O     ∑z\V4‡âP                   U     ∑z\V4‡âV                   Y        	Ï      [     ∑z\V4‡â\                   _        	Ï      a     ∑z\V4‡âb                   e        	Ï      g     ∞?_’
+:h                   k        	Ï      m     ∑z\V4‡ân                   q        	Ï      s     ∞?_’
+:t                   w        	Ï      z                   }        	Ï           ∑z\V4‡âÄ                   É        	Ï      Ö     qÈº·ÈBúÜ                   â        	Ï      ã     ∆∆⁄ëÇ7å                  è        	Ï      ë     0≠OÊ≤¶ÆÌí    	               ï        	Ï      ó     ∞?_’
+:ò    
+               õ        	Ï      û     ∑z\V4‡âü                   ¢        	      •                   ®        	      ™     ∑z\V4‡â´                   Æ        	      ∞     ∑z\V4‡â±                   ¥        	      ∂     ∑z\V4‡â∑                   ª     ∑z\V4‡âº                   ¿     ∑z\V4‡â¡                   ≈     ∞?_’
+:∆                         ∑z\V4‡âÀ                   œ     ∞?_’
+:–                   ‘      ’                   Ÿ     ∑z\V4‡â⁄                   ﬁ     qÈº·ÈBúﬂ                   „     ∆∆⁄ëÇ7‰                  Ë     0≠OÊ≤¶ÆÌÈ    	               Ì     ∞?_’
+:Ó    
+               Û     ∑z\V4‡âÙ                   ˜        	]      ˘     ∑z\V4‡â˙                   ˝        	]      ˇ     ∑z\V4‡â                            	]                         	        	]                                 	]           ∑z\V4‡â                           	]                                 	]           ∞?_’
+:                   !        	]      #     ∑z\V4‡â$                   '        	]      *                   -        	]      0     ∑z\V4‡â1                   4        	$      7                   :        	$      =                   @        	$      C                   F        	$      I                   L        	$      O                   R        	$      T     ∑z\V4‡âU                   X        	$      [     ∑z\V4‡â\                   _        	€
+      b                   e        	€
+      g     ∑z\V4‡âh                   k        	€
+      m     ∑z\V4‡ân                   q        	€
+      t     ∑z\V4‡âu                   x        	]      {     ∑z\V4‡â|                           	B
+      Ç     ∑z\V4‡âÉ                   Ü        	√      â     ∑z\V4‡âä                   ç        	€
+      ê                   ì        	€
+      ï     ∑z\V4‡âñ                   ô        	€
+      ú                   ü        	€
+      °     ∑z\V4‡â¢                   •        	€
+      ®                   ´        	€
+      ≠     ∑z\V4‡âÆ                   ±        	€
+      ¥     ∑z\V4‡âµ                   ∏        	      ∫     ∑z\V4‡âª                   æ        	      ¿     ∑z\V4‡â¡                   ƒ        	      «                            	      Õ                   –        	      “     ∑z\V4‡â”                   ÷        	      Ÿ                   ‹        	      ﬁ     ∞?_’
+:ﬂ                   ‚        	      ‰     ∑z\V4‡âÂ                   Ë        	      Î                   Ó        	      Ò     ∑z\V4‡âÚ                   ı        	B
+      ¯                   ˚        	B
+      ˝     ∑z\V4‡â˛                           	B
+           ∑z\V4‡â                           	B
+      
+     ∑z\V4‡â                           	                                 	           ∑z\V4‡â                           	           ∑z\V4‡â                            	      #     ∑z\V4‡â$                   '        	]      *                   -        	]      /     ∑z\V4‡â0                   3        	Ï      5     ∑z\V4‡â6                   9        	Ï      ;     ∑z\V4‡â<                   ?        	Ï      A     ∑z\V4‡âB                   E        	Ï      G     ∑z\V4‡âH                   K        	Ï      M     ∞?_’
+:N                   Q        	Ï      S     ∑z\V4‡âT                   W        	Ï      Y     ∞?_’
+:Z                   ]        	Ï      `     ∑z\V4‡âa                   d        	      g                   j        	      l     ∑z\V4‡âm                   p        	      s                   v        	      x     ∑z\V4‡ây                   |        	                         Ç        	      Ñ     ∑z\V4‡âÖ                   à        	      ã     ∑z\V4‡âå                   è        	€
+      í     ∑z\V4‡âì                   ñ        	Ï      ò     ∑z\V4‡âô                   ú        	Ï      û     ∑z\V4‡âü                   ¢        	Ï      §     ∞?_’
+:•    
+               ®        	Ï      ™     ∞?_’
+:´    
+               Æ        	Ï      ∞     ∞?_’
+:±                   ¥        	Ï      ∂     ∑z\V4‡â∑                   ∫        	Ï      º     ∑z\V4‡âΩ                   ¿        	Ï      ¬     ∞?_’
+:√                   ∆        	Ï      »     ∞?_’
+:…                   Ã        	Ï      œ     ∑z\V4‡â–                   ”        	      ÷                   Ÿ        	      ‹     ∑z\V4‡â›                   ‡        	Ï      ‚     ∑z\V4‡â„                   Ê        	Ï      Ë     ∑z\V4‡âÈ                   Ï        	Ï      Ó     ∑z\V4‡âÔ                   Ú        	Ï      Ù     ∞?_’
+:ı                   ¯        	Ï      ˙     ∑z\V4‡â˚                   ˛        	Ï            ∑z\V4‡â                           	Ï           ∑z\V4‡â                   
+        	Ï           ∑z\V4‡â                           	Ï           ∆∆⁄ëÇ7        V                 	Ï           ∑z\V4‡â                           	Ï           ∞?_’
+:                    #        	Ï      %     ∑z\V4‡â&                   )        	Ï      +     ∑z\V4‡â,                   /        	Ï      1     ∞?_’
+:2                   5        	Ï      8     ∑z\V4‡â9                   <        	√      >     ∑z\V4‡â?                   B        	√      D     ∑z\V4‡âE                   H        	√      J     ∞?_’
+:K                   N        	√      P     ∑z\V4‡âQ                   T        	√      V     ∞?_’
+:W                   Z        	√      ]                   `        	√      b     ∑z\V4‡âc                   f        	√      h     qÈº·ÈBúi                   l        	√      n     ∆∆⁄ëÇ7o                  r        	√      t     0≠OÊ≤¶ÆÌu    	               x        	√      z     ∞?_’
+:{    
+               ~        	√      Å     ∑z\V4‡âÇ                   Ö        	Ï      á     ∑z\V4‡âà                   ã        	Ï      é     ∑z\V4‡âè                   í        	<      î     ∑z\V4‡âï                   ò        	<      ö     ∑z\V4‡âõ                   û        	<      †     ∑z\V4‡â°                   §        	<      ¶     ∞?_’
+:ß                   ™        	<      ¨     ∑z\V4‡â≠                   ∞        	<      ≤     ∑z\V4‡â≥                   ∂        	<      ∏     ∑z\V4‡âπ                   º        	<      ø     ∑z\V4‡â¿                   √        	B
+      ≈     ∑z\V4‡â∆                   …        	B
+      À     ∑z\V4‡âÃ                   œ        	B
+      —     ∞?_’
+:“                   ’        	B
+      ◊     ∑z\V4‡âÿ                   €        	B
+      ›     ∞?_’
+:ﬁ                   ·        	B
+      ‰                   Á        	B
+      È     ∑z\V4‡âÍ                   Ì        	B
+      Ô     qÈº·ÈBú                   Û        	B
+      ı     ∆∆⁄ëÇ7ˆ                  ˘        	B
+      ˚     0≠OÊ≤¶ÆÌ¸    	               ˇ        	B
+           ∞?_’
+:    
+                       	B
+           ∑z\V4‡â	                           	€
+                                 	€
+           ∑z\V4‡â                           	           ∑z\V4‡â                           	      !     ∑z\V4‡â"                   %        	      '     ∑z\V4‡â(                   +        	      -     ∞?_’
+:.                   1        	      3     ∑z\V4‡â4                   7        	      9     ∑z\V4‡â:                   =        	      ?     ∑z\V4‡â@                   C        	      F     ∑z\V4‡âG                   J        	Ï      M                   P        	Ï      R     ∑z\V4‡âS                   V        	Ï      X     ∑z\V4‡âY                   \        	Ï      _     ∑z\V4‡â`                   c        	€
+      e     ∑z\V4‡âf                   i        	€
+      k     ∑z\V4‡âl                   o        	€
+      q     ∑z\V4‡âr                   u        	€
+      w     ∞?_’
+:x                   {        	€
+      }     ∑z\V4‡â~                   Å        	€
+      É     ∑z\V4‡âÑ                   á        	€
+      â     ∑z\V4‡âä                   ç        	€
+      ê     ∑z\V4‡âë                   î        	      ó                   ö        	      ù     ∑z\V4‡âû           à      °        	Ï      £     qÈº·ÈBú§                   ß        	Ï      ©     qÈº·ÈBú™                   ≠        	Ï      ∞     ∑z\V4‡â±                   ¥        	$      ∂     ∑z\V4‡â∑                   ∫        	$      º     ∑z\V4‡âΩ                   ¿        	$      ¬     ∑z\V4‡â√                   ∆        	$      »     ∞?_’
+:…                   Ã        	$      Œ     ∑z\V4‡âœ                   “        	$      ‘     ∑z\V4‡â’                   ÿ        	$      ⁄     ∑z\V4‡â€                   ﬁ        	$      ·     ∑z\V4‡â‚                   Â        	Ï      Ë     ∑z\V4‡âÈ                   Ï        	]      Ó     ∑z\V4‡âÔ                   Ú        	]      Ù     ∑z\V4‡âı                   ¯        	]      ˙     ∑z\V4‡â˚                   ˛        	]            ∞?_’
+:                           	]           ∑z\V4‡â                   
+        	]           ∑z\V4‡â                           	]           ∑z\V4‡â                           	]           ∑z\V4‡â                           	Ï           ∞?_’
+:                   "        	Ï      $     ∑z\V4‡â%                   (        	Ï      +     ∑z\V4‡â,                   /        	€
+      2     ∑z\V4‡â3                   6        	]      9                   <        	]      >     ∑z\V4‡â?                   B        	]      D     ∑z\V4‡âE                   H        	]      J     ∑z\V4‡âK                   N        	Ï      P     ∑z\V4‡âQ                   T        	Ï      V     ∑z\V4‡âW                   Z        	Ï      \     ∞?_’
+:]                   `        	Ï      c     ∑z\V4‡âd                   g        	Ï      j                   m        	Ï      o     ∑z\V4‡âp                   s        	Ï      v                   y        	Ï      {     ∑z\V4‡â|                           	Ï      Ç                   Ö        	Ï      á     ∑z\V4‡âà                   ã        	Ï      é     ∑z\V4‡âè                   í        	B
+      ï                   ò        	B
+      õ     ∑z\V4‡âú                   ü        	√      ¢                   •        	√      ß     ∑z\V4‡â®                   ´        	√      Æ                   ±        	√      ≥     ∑z\V4‡â¥                   ∑        	√      ∫                   Ω        	√      ø     ∑z\V4‡â¿                   √        	√      ≈     ∑z\V4‡â∆                         ∑z\V4‡âÀ                   œ     ∑z\V4‡â–                   ‘      ’                   Ÿ      ⁄                   ﬁ     ∑z\V4‡âﬂ                   „      ‰                   Ë     ∞?_’
+:È                   Ì     ∑z\V4‡âÓ                   Ú      Û                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Üß1 Ü∏ﬁ    Ü&|ãá–ﬁ    Ü5| á‹ﬁ    Ü¶8ãàÙﬁ    Ü¥8 à ﬂ    Ü√íãâﬂ    Üœí â$ﬂ    Üh5ãä<ﬂ    Üy5 äHﬂ    Ü‹ã`ﬂ    Ü.ßãlﬂ    Üt@ãåÑﬂ    Üà@ åêﬂ    Ü+òãç®ﬂ    Ü?ò ç¥ﬂ    ÜF\ãéÃﬂ    Ü\\ éÿﬂ    Ü¯)ãèﬂ    Ü
+* è¸ﬂ    ÜÕ8ãê‡    Ü·8 ê ‡    Ü…Dãë8‡    ÜﬁD ëD‡    Ü„Lãí\‡    Ü˜L íh‡    ÜÔ,ãìÄ‡    Ü- ìå‡    Ü<ãî§‡    Ü < î∞‡    ÜVå‹ï»‡    Ücåßï‘‡    ÜcCxñÏ‡    ÜqC@Gñ¯‡    Üe+ãó·    Üs+ ó·    ÜäCxò4·    ÜõC@Gò@·    ÜádãôX·    Üôd ôd·    Ü«Rãö|·    Ü“R öà·    Ü-ã‹õ†·    Ü:ãßõ¨·    Ü†å‹úƒ·    ÜÆåßú–·    Üuã‹ùË·    ÜÑãßùÙ·    Ü«å‹û‚    Ü‘åßû‚    Ü,ãü0‚    Ü#, ü<‚    Ü»Ej†T‚    Ü÷E †`‚    ÜÎå‹°x‚    Ü¯åß°Ñ‚    Ü4ñj¢ú‚    ÜBñ ¢®‚    Üµ]ã£¿‚    Ü≈] £Ã‚    Ü¸ã‹§‰‚    Ü
+åß§‚    Ü#å‹•„    Ü5åß•„    ∆ DNã¶˙¨    Ü›s ¶Ê    Ü‘«¶0Ê    ÜﬂµF¶<Ê    ÜYcãßTÊ    Üdc ß`Ê    ÜÒBx®xÊ    Ü˛B@G®ÑÊ    Ü<;j©úÊ    ÜI; ©®Ê    Üö1ã™¿Ê    Üß1 ™ÃÊ    Üh5ã´‰Ê    Üy5 ´Ê    ÜÎå‹¨Á    Ü¯åß¨Á    ÜcCx≠,Á    ÜqC@G≠8Á    Üe+ãÆPÁ    Üs+ Æ\Á    ÜWîãØtÁ    Ücî ØÄÁ    Üpàã∞òÁ    ÜÄà ∞§Á    Ü›Rã±ºÁ    ÜÏR ±»Á    Ü,ã≤‡Á    Ü#, ≤ÏÁ    Üå+ã≥Ë    Üõ+ ≥Ë    Ü∫Cx¥(Ë    Ü…C@G¥4Ë    ÜÔEjµLË    Ü˝E µXË    ∆ DNã∂˙¨    Ü›s ∂ÃÈ    Üâ«∂‰È    ÜïµF∂È    ÜYcã∑Í    Üdc ∑Í    Ü0kj∏,Í    Ü=k ∏8Í    ÜãπPÍ    Ü) π\Í    ÜÂ:ã∫tÍ    ÜÛ: ∫ÄÍ    Ü‹3ãªòÍ    ÜÍ3 ª§Í    ÜDÜ‹ººÍ    ÜSÜßº»Í    ÜNSãΩ‡Í    Ü`S ΩÏÍ    Ü∞)‹æÎ    Üø)ßæÎ    Ü«Rãø(Î    Ü“R ø4Î    ∆ DNã¿˙¨    Ü›s ¿$Ï    Ü‘«¿<Ï    ÜﬂµF¿HÏ    ÜYcã¡`Ï    Üdc ¡lÏ    ÜÒBx¬ÑÏ    Ü˛B@G¬êÏ    Ü<;j√®Ï    ÜI; √¥Ï    Üö1ãƒÃÏ    Üß1 ƒÿÏ    Üh5ã≈Ï    Üy5 ≈¸Ï    ÜÎå‹∆Ì    Ü¯åß∆ Ì    ÜcCx«8Ì    ÜqC@G«DÌ    Üe+ã»\Ì    Üs+ »hÌ    ÜWîã…ÄÌ    Ücî …åÌ    Üpàã §Ì    ÜÄà  ∞Ì    Ü›RãÀ»Ì    ÜÏR À‘Ì    Ü,ãÃÏÌ    Ü#, Ã¯Ì    Üå+ãÕÓ    Üõ+ ÕÓ    Ü∫CxŒ4Ó    Ü…C@GŒ@Ó    ÜÔEjœXÓ    Ü˝E œdÓ    ∆ DNã–˙¨    Ü›s –ÿÔ    Ü«–Ô    ÜµF–¸Ô    ÜæO‹—    ÜÕOß—     Ü•Å‹“8    Ü¥Åß“D    Ü“P‹”\    Ü·Pß”h    ÜK)‹‘Ä    ÜZ)ß‘å    Ü§Ä‹’§    Ü∏Äß’∞    Ü¸ã÷»    Ü ÷‘    ∆ DNã◊˙¨    Ü›s ◊òÒ    ÜLéã◊∞Ò    ÜZé ◊ºÒ    ÜSãÿ‘Ò    Ü&S ÿ‡Ò    ÜBãŸ¯Ò    ÜP ŸÚ    ÜÄã⁄Ú    Ü"Ä ⁄(Ú    ÜÈã€@Ú    Ü˘ €LÚ    ÜMã‹dÚ    Ü] ‹pÚ    ∆ DNã›˙¨    Ü›s › Û    ÜYcã›Û    Üdc ›$Û    Ü\«ﬁ<Û    ÜlµFﬁHÛ    Üö1ãﬂ`Û    Üß1 ﬂlÛ    ÜÖ3ã‡ÑÛ    Üó3 ‡êÛ    Ü:ã·®Û    Ü%: ·¥Û    Ü„5ã‚ÃÛ    ÜÛ5 ‚ÿÛ    Ü@j„Û    ÜO „¸Û    Ü¶.j‰Ù    Ü∂. ‰ Ù    ÜKçjÂ8Ù    Ü^ç ÂDÙ    Ü≤:jÊ\Ù    Üƒ: ÊhÙ    Üp?jÁÄÙ    ÜÄ? ÁåÙ    ÜZ>jË§Ù    Ük> Ë∞Ù    Ü0îãÈ»Ù    Ü>î È‘Ù    ÜCxÍÏÙ    Ü"C@GÍ¯Ù    ÜkEjÎı    ÜzE Îı    Ü<;jÏ4ı    ÜI; Ï@ı    Üh5ãÌXı    Üy5 Ìdı    Ü+òãÓ|ı    Ü?ò Óàı    ÜF\ãÔ†ı    Ü\\ Ô¨ı    Ü¯)ãƒı    Ü
+* –ı    ÜÕ8ãÒËı    Ü·8 ÒÙı    Ü…DãÚˆ    ÜﬁD Úˆ    Ü„LãÛ0ˆ    Ü˜L Û<ˆ    ÜÔ,ãÙTˆ    Ü- Ù`ˆ    ÜDxıxˆ    Ü!D@GıÑˆ    ÜØAxˆúˆ    Ü¡A@Gˆ®ˆ    ÜAx˜¿ˆ    Ü+A@G˜Ãˆ    Ü‚Ax¯‰ˆ    ÜÙA@G¯ˆ    ÜLAx˘˜    Ü^A@G˘˜    ÜBx˙,˜    Ü&B@G˙8˜    ÜAx˚P˜    ÜêA@G˚\˜    ÜcCx¸t˜    ÜqC@G¸Ä˜    Üe+ã˝ò˜    Üs+ ˝§˜    Ü¯óã˛º˜    Ü
+ò ˛»˜    Ü,ãˇ‡˜    Ü#, ˇÏ˜    Ü»[ã ¯    Üÿ[  ¯    Üeã(¯    Üe 4¯    Ü£VãL¯    Ü≥V X¯    Üìgãp¯    Ü§g |¯    Ü7sãî¯    ÜJs †¯    Üeã∏¯    Üy ƒ¯    Ü dã‹¯    Üd Ë¯    ∆ DNã˙¨    Ü›s Ä¸    Üâ«ò¸    ÜïµF§¸    Ü\«º¸    ÜlµF»¸    Ü0kj	‡¸    Ü=k 	Ï¸    Üã
+˝    Ü) 
+˝    Ü0dã(˝    ÜAd 4˝    ÜMãL˝    Ü+M X˝    ÜDÜ‹p˝    ÜSÜß|˝    Ü%-ãî˝    Ü4- †˝    Ü˛=ã∏˝    Ü> ƒ˝    ÜŒ=ã‹˝    Üﬂ= Ë˝    Ü2lã ˛    Ü?l ˛    ÜjQã$˛    ÜxQ 0˛    Ü∫QãH˛    ÜŒQ T˛    ÜEãl˛    ÜE x˛    Ü`dãê˛    Ünd ú˛    Ü37ã¥˛    ÜA7 ¿˛    ÜEVãÿ˛    ÜUV ‰˛    Üÿqã¸˛    ÜÎq ˇ    Ü¬îã ˇ    Ü◊î ,ˇ    Ü¡_ãDˇ    Ü‘_ Pˇ    Ü"ìãhˇ    Ü0ì tˇ    Ü·dãåˇ    ÜÒd òˇ    Ü©lã∞ˇ    ÜΩl ºˇ    Ühã‘ˇ    Ü)h ‡ˇ    Ü«Rã¯ˇ    Ü“R     ∆ DNã ˙¨    Ü›s     ÜYcã ,   Üdc  8   Ü«!P   ÜµF!\   Üæ1ã"t   Üœ1 "Ä   ÜÖ3ã#ò   Üó3 #§   ÜæO‹$º   ÜÕOß$»   Ü•P‹%‡   ÜµPß%Ï   Ü>á‹&   ÜMáß&   ÜK)‹'(   ÜZ)ß'4   Ü§Ä‹(L   Ü∏Äß(X   Ü¸ã)p   Ü )|   Ü\«*î   ÜlµF*†   ÜCx+∏   Ü"C@G+ƒ   ÜñDj,‹   Ü®D ,Ë   Ü<;j-    ÜI; -   Üh5ã.$   Üy5 .0   Ü¯)ã/H   Ü
+* /T   ÜØAx0l   Ü¡A@G0x   ÜAx1ê   Ü+A@G1ú   Ü‚Ax2¥   ÜÙA@G2¿   ÜLAx3ÿ   Ü^A@G3‰   ÜBx4¸   Ü&B@G4   ÜAx5    ÜêA@G5,   ÜcCx6D   ÜqC@G6P   Üe+ã7h   Üs+ 7t   Ü,ã8å   Ü#, 8ò   ∆ DNã9˙¨    Ü›s 9Ë   ÜA+ã9    ÜN+ 9   Üâ«:$   ÜïµF:0   Ü«;H   ÜµF;T   ÜDÜ‹<l   ÜSÜß<x   Ü'4ã=ê   Ü64 =ú   Ü∏3ã>¥   Ü≈3 >¿   Ü˜ã?ÿ   Ü ?‰   ÜñÇã@¸   Ü£Ç @	   Ü2ãA 	   Ü&2 A,	   ÜÅ‹BD	   Ü'ÅßBP	   ∆ DNãC˙¨    Ü›s C@
+   ÜLéãCX
+   ÜZé Cd
+   ÜSãD|
+   Ü&S Dà
+   Üm ãE†
+   Üz  E¨
+   ÜI ãFƒ
+   ÜV  F–
+   ∆ DNãG˙¨    Ü›s G<   ÜxÅ‹GT   ÜàÅßG`   Ü¸ãHx   Ü HÑ   Ü{xãIú   Üâx I®   Ün«J¿   ÜyµFJÃ   ∆ DNãK˙¨    Ü›s K@   ÜA+ãKX   ÜN+ Kd   Ü∏3ãL|   Ü≈3 Là   Ü˜ãM†   Ü M¨   ÜñÇãNƒ   Ü£Ç N–   Ü(%ãOË   Ü7% OÙ   ÜÌ*ãP   Ü˚* P   ÜÅ‹Q0   Ü'ÅßQ<   ∆ DNãR˙¨    Ü›s R‰   ÜÌ*ãR¸   Ü˚* R   Ü2ãS    Ü&2 S,   ÜïTjTD   Ü§T TP   ÜœÑãUh   ÜﬂÑ Ut   ∆ DNãV˙¨    Ü›s V‰   Ü,ãV¸   Ü#, V   Ü9CãW    ÜHC W,   Ü;cjXD   ÜFc XP   ∆ DNãY˙¨    Ü›s Y∞   Üâ«Y»   ÜïµFY‘   ÜYcãZÏ   Üdc Z¯   Ü0kj[   Ü=k [   Üã\4   Ü) \@   ÜÂ:ã]X   ÜÛ: ]d   Ü&5ã^|   Ü75 ^à   Üá‹_†   Üáß_¨   Ü·Çã`ƒ   ÜÚÇ `–   ∆ DNãa˙¨    Ü›s aò   ÜYcãa∞   Üdc aº   ÜGOãb‘   ÜOO b‡   ÜcCxc¯   ÜqC@Gc   Üe+ãd   Üs+ d(   Ü€Nãe@   ÜËN eL   Ü∫dãfd   Ü»d fp   ∆ DNãg˙¨    Ü›s g   ÜYcãg    Üdc g,   ÜTkjhD   Ü`k hP   ÜCxih   Ü"C@Git   ÜFjjå   Ü$F jò   Ü<;jk∞   ÜI; kº   Üö1ãl‘   Üß1 l‡   Üæ\ãm¯   ÜÃ\ m   ÜQãn   ÜQ n(   Ü&|ão@   Ü5| oL   Ü¶8ãpd   Ü¥8 pp   Ü√íãqà   Üœí qî   Ü◊2ãr¨   Ü„2 r∏   ÜÂ\ãs–   ÜÚ\ s‹   Ü.QãtÙ   Ü;Q t    ÜP|ãu   Ü^| u$   ÜO9ãv<   Ü\9 vH   Ü•4ãw`   Üµ4 wl   Ü"3ãxÑ   Ü33 xê   Üwcãy®   ÜÖc y¥   Ü∂+ãzÃ   Ü∆+ zÿ   Üh5ã{   Üy5 {¸   Ü‹|   Ü.ß|    Üt@ã}8   Üà@ }D   Ü+òã~\   Ü?ò ~h   ÜF\ãÄ   Ü\\ å   Ü¯)ãÄ§   Ü
+* Ä∞   ÜÕ8ãÅ»   Ü·8 Å‘   Ü…DãÇÏ   ÜﬁD Ç¯   Ü„LãÉ   Ü˜L É   ÜÔ,ãÑ4   Ü- Ñ@   Ü<ãÖX   Ü < Öd   ÜDxÜ|   Ü!D@GÜà   ÜØAxá†   Ü¡A@Gá¨   ÜAxàƒ   Ü+A@Gà–   Ü‚AxâË   ÜÙA@GâÙ   ÜLAxä   Ü^A@Gä   ÜBxã0   Ü&B@Gã<   ÜAxåT   ÜêA@Gå`   ÜVå‹çx   ÜcåßçÑ   ÜcCxéú   ÜqC@Gé®   Üe+ãè¿   Üs+ èÃ   Ü˛$ãê‰   Ü% ê   ÜÚ«ë   Ü˝µFë   Ü4ãí,   Ü4 í8   ÜW^ãìP   Üg^ ì\   Ü¯óãît   Ü
+ò îÄ   Üµ]ãïò   Ü≈] ï§   ∆ DNãñ˙¨    Ü›s ñå   ÜYcãñ§   Üdc ñ∞   Ü|è:'ó»   Üâè"ó‘   Ü«@:'òÏ   Ü÷@"ò¯   Üîãô   Üî ô   ∆ DNãö˙¨    Ü›s öà   Ü¬«ö†   ÜœµFö¨   Ü¯2ãõƒ   Ü3 õ–   ÜbãúË   Üb úÙ   Ü7*‹ù   ÜJ*ßù   Üüã‹û0   ÜÆãßû<   ÜÊ«üT   ÜÒµFü`   ∆ DNã†˙¨    Ü›s †    Ü¬«†    ÜœµF†(    Ü?2ã°@    ÜN2 °L    Üå«¢d    ÜöµF¢p    ÜøTj£à    Ü…T £î    ∆ DNã§˙¨    Ü›s §!   ÜD«§(!   ÜSµF§4!   Ü&5ã•L!   Ü75 •X!   Ü·Çã¶p!   ÜÚÇ ¶|!   Ü;c‹ßî!   ÜFcßß†!   ∆ DNã®˙¨    Ü›s ®"   ÜD«®,"   ÜSµF®8"   Ü6ã©P"   Ü"6 ©\"   Ü=«™t"   ÜMµF™Ä"   ÜŸk‹´ò"   ÜÍkß´§"   ÜÉã¨º"   Ü#É ¨»"   Üij≠‡"   Üu ≠Ï"   ∆ DNãÆ˙¨    Ü›s Æê#   ÜYcãÆ®#   Üdc Æ¥#   Ü\«ØÃ#   ÜlµFØÿ#   Üö1ã∞#   Üß1 ∞¸#   ÜÖ3ã±$   Üó3 ± $   Ü„5ã≤8$   ÜÛ5 ≤D$   Ü≤:j≥\$   Üƒ: ≥h$   ÜQFj¥Ä$   Ü`F ¥å$   Ü<;jµ§$   ÜI; µ∞$   Üh5ã∂»$   Üy5 ∂‘$   Ü¯)ã∑Ï$   Ü
+* ∑¯$   ÜcCx∏%   ÜqC@G∏%   Üe+ãπ4%   Üs+ π@%   Ü,ã∫X%   Ü#, ∫d%   ∆ DNãª˙¨    Ü›s ªî&   Ü\«ª¨&   ÜlµFª∏&   Üâ«º–&   ÜïµFº‹&   Ü‹3ãΩÙ&   ÜÍ3 Ω '   Ü∫Çãæ'   Ü»Ç æ$'   Üó‹ø<'   Ü"óßøH'   Ü∞)‹¿`'   Üø)ß¿l'   ÜèRã¡Ñ'   ÜùR ¡ê'   Ü«Rã¬®'   Ü“R ¬¥'   ÜòÉj√Ã'   Ü¨É √ÿ'   ÜKjƒ'   ÜK ƒ¸'   Ü¶Bx≈(   Ü¥B@G≈ (   ∆ DNã∆˙¨    Ü›s ∆4)   Üµ]ã∆L)   Ü≈] ∆X)   Ü,ã«p)   Ü#, «|)   Ü/«»î)   Ü=µF»†)   Ü‰Cx…∏)   ÜÛC@G…ƒ)   ÜcCx ‹)   ÜqC@G Ë)   Üe+ãÀ *   Üs+ À*   Ü˚É‹Ã$*   ÜÑßÃ0*   ∆ DNãÕ˙¨    Ü›s ÕË*   Üµ]ãÕ +   Ü≈] Õ+   Üpå‹Œ$+   ÜÅåßŒ0+   Üç‹œH+   ÜçßœT+   ÜG[ã–l+   ÜW[ –x+   Ü‰J‹—ê+   ÜÚJß—ú+   Ü˚ï‹“¥+   Üñß“¿+   ÜÉ)‹”ÿ+   Üì)ß”‰+   ÜcCx‘¸+   ÜqC@G‘,   Üe+ã’ , 

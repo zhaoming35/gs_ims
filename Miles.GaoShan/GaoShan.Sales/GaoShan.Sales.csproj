@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55A64546-36FD-4923-96D4-68CF73A449C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GaoShan.Sales</RootNamespace>
+    <AssemblyName>GaoShan.Sales</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Words, Version=14.2.0.0, Culture=neutral, PublicKeyToken=00725b1ceb58d0a9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v14.2, Version=14.2.3.0, Culture=neutral, PublicKeyToken=3ff030972d840edb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress.Data.v14.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v14.2.Core, Version=14.2.3.0, Culture=neutral, PublicKeyToken=3ff030972d840edb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\DevExpress.RichEdit.v14.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Miles.Coro.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.DataBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.DataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.ORM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.ORM.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Dev.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Dev.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Framework.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.IMSFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.IMSFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.ReoGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="unvell.ReoGrid, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="unvell.ReoScript, Version=1.5.0.0, Culture=neutral, PublicKeyToken=85339a558a3a0c58" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Words.NET, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Admin\FmOrderFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\FmOrderFind.Designer.cs">
+      <DependentUpon>FmOrderFind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Admin\FmOrderSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\FmOrderSelect.Designer.cs">
+      <DependentUpon>FmOrderSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Admin\FmOrderTermination.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\FmOrderTermination.Designer.cs">
+      <DependentUpon>FmOrderTermination.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Admin\FmProjectCostCorrect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Admin\FmProjectCostCorrect.Designer.cs">
+      <DependentUpon>FmProjectCostCorrect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Carriage\FmCarriageCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Carriage\FmCarriageCreate.Designer.cs">
+      <DependentUpon>FmCarriageCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Carriage\FmCarriageManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Carriage\FmCarriageManager.Designer.cs">
+      <DependentUpon>FmCarriageManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Carriage\FmCarriageQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Carriage\FmCarriageQuery.Designer.cs">
+      <DependentUpon>FmCarriageQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Carriage\UCCarriageInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Carriage\UCCarriageInfo.Designer.cs">
+      <DependentUpon>UCCarriageInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Carriage\UCCarriageList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Carriage\UCCarriageList.Designer.cs">
+      <DependentUpon>UCCarriageList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fin\FmOutcomeCheckManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Fin\FmOutcomeCheckManager.Designer.cs">
+      <DependentUpon>FmOutcomeCheckManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fin\FmIncomeCheckManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Fin\FmIncomeCheckManager.Designer.cs">
+      <DependentUpon>FmIncomeCheckManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fin\FmOrderIncomeQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Fin\FmOrderIncomeQuery.Designer.cs">
+      <DependentUpon>FmOrderIncomeQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fin\FmGenSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Fin\FmGenSelect.Designer.cs">
+      <DependentUpon>FmGenSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fin\FmProjectOutcomeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Fin\FmProjectOutcomeManager.Designer.cs">
+      <DependentUpon>FmProjectOutcomeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fin\FmProjectIncomeManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Fin\FmProjectIncomeManager.Designer.cs">
+      <DependentUpon>FmProjectIncomeManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fin\UCOutcomeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Fin\UCOutcomeList.Designer.cs">
+      <DependentUpon>UCOutcomeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Fin\UCIncomeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Fin\UCIncomeList.Designer.cs">
+      <DependentUpon>UCIncomeList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Gen\FmGenItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Gen\FmGenItem.Designer.cs">
+      <DependentUpon>FmGenItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Gen\FmOrderGenCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Gen\FmOrderGenCheck.Designer.cs">
+      <DependentUpon>FmOrderGenCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Gen\FmOrderGenManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Gen\FmOrderGenManager.Designer.cs">
+      <DependentUpon>FmOrderGenManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Gen\FmOrderGenRecordQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Gen\FmOrderGenRecordQuery.Designer.cs">
+      <DependentUpon>FmOrderGenRecordQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Gen\UCGenInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Gen\UCGenInfo.Designer.cs">
+      <DependentUpon>UCGenInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Gen\UCGenList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Gen\UCGenList.Designer.cs">
+      <DependentUpon>UCGenList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmCancelBillInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmCancelBillInfo.Designer.cs">
+      <DependentUpon>FmCancelBillInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmBackBillInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmBackBillInfo.Designer.cs">
+      <DependentUpon>FmBackBillInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmLinkBillInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmLinkBillInfo.Designer.cs">
+      <DependentUpon>FmLinkBillInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmLinkBillManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmLinkBillManager.Designer.cs">
+      <DependentUpon>FmLinkBillManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmOrderLinkRecordQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\LinkBill\FmOrderLinkRecordQuery.Designer.cs">
+      <DependentUpon>FmOrderLinkRecordQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LinkBill\UCLinkBillInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LinkBill\UCLinkBillInfo.Designer.cs">
+      <DependentUpon>UCLinkBillInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LinkBill\UCLinkBillList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LinkBill\UCLinkBillList.Designer.cs">
+      <DependentUpon>UCLinkBillList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderInfo.Designer.cs">
+      <DependentUpon>FmOrderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderItemInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderItemInfo.Designer.cs">
+      <DependentUpon>FmOrderItemInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderCheckManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderCheckManager.Designer.cs">
+      <DependentUpon>FmOrderCheckManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderManager.Designer.cs">
+      <DependentUpon>FmOrderManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderCheckRecordQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderCheckRecordQuery.Designer.cs">
+      <DependentUpon>FmOrderCheckRecordQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderRecordQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderRecordQuery.Designer.cs">
+      <DependentUpon>FmOrderRecordQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Order\FmOrderQuery.Designer.cs">
+      <DependentUpon>FmOrderQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderBodySales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderBodySales.Designer.cs">
+      <DependentUpon>UCOrderBodySales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderBodyService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderBodyService.Designer.cs">
+      <DependentUpon>UCOrderBodyService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderBodyAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderBodyAdd.Designer.cs">
+      <DependentUpon>UCOrderBodyAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderBodyLease.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderBodyLease.Designer.cs">
+      <DependentUpon>UCOrderBodyLease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderItem.Designer.cs">
+      <DependentUpon>UCOrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderProtocol.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderProtocol.Designer.cs">
+      <DependentUpon>UCOrderProtocol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderTwoParties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderTwoParties.Designer.cs">
+      <DependentUpon>UCOrderTwoParties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProjectCost\FmProjectCostInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProjectCost\FmProjectCostInfo.Designer.cs">
+      <DependentUpon>FmProjectCostInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProjectCost\FmProjectCostManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProjectCost\FmProjectCostManager.Designer.cs">
+      <DependentUpon>FmProjectCostManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProjectCost\FmProjectCostSelfQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProjectCost\FmProjectCostSelfQuery.Designer.cs">
+      <DependentUpon>FmProjectCostSelfQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProjectCost\FmProjectCostQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ProjectCost\FmProjectCostQuery.Designer.cs">
+      <DependentUpon>FmProjectCostQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProjectCost\UCProjectCostInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ProjectCost\UCProjectCostInfo.Designer.cs">
+      <DependentUpon>UCProjectCostInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProjectCost\UCProjectCostList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ProjectCost\UCProjectCostList.Designer.cs">
+      <DependentUpon>UCProjectCostList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Order\UCOrderList.Designer.cs">
+      <DependentUpon>UCOrderList.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="记录.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\FmOrderFind.resx">
+      <DependentUpon>FmOrderFind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\FmOrderSelect.resx">
+      <DependentUpon>FmOrderSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\FmOrderTermination.resx">
+      <DependentUpon>FmOrderTermination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Admin\FmProjectCostCorrect.resx">
+      <DependentUpon>FmProjectCostCorrect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Carriage\FmCarriageCreate.resx">
+      <DependentUpon>FmCarriageCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Carriage\FmCarriageManager.resx">
+      <DependentUpon>FmCarriageManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Carriage\FmCarriageQuery.resx">
+      <DependentUpon>FmCarriageQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Carriage\UCCarriageInfo.resx">
+      <DependentUpon>UCCarriageInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Carriage\UCCarriageList.resx">
+      <DependentUpon>UCCarriageList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fin\FmOutcomeCheckManager.resx">
+      <DependentUpon>FmOutcomeCheckManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fin\FmIncomeCheckManager.resx">
+      <DependentUpon>FmIncomeCheckManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fin\FmOrderIncomeQuery.resx">
+      <DependentUpon>FmOrderIncomeQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fin\FmGenSelect.resx">
+      <DependentUpon>FmGenSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fin\FmProjectOutcomeManager.resx">
+      <DependentUpon>FmProjectOutcomeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fin\FmProjectIncomeManager.resx">
+      <DependentUpon>FmProjectIncomeManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fin\UCOutcomeList.resx">
+      <DependentUpon>UCOutcomeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Fin\UCIncomeList.resx">
+      <DependentUpon>UCIncomeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Gen\FmGenItem.resx">
+      <DependentUpon>FmGenItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Gen\FmOrderGenCheck.resx">
+      <DependentUpon>FmOrderGenCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Gen\FmOrderGenManager.resx">
+      <DependentUpon>FmOrderGenManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Gen\FmOrderGenRecordQuery.resx">
+      <DependentUpon>FmOrderGenRecordQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Gen\UCGenInfo.resx">
+      <DependentUpon>UCGenInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Gen\UCGenList.resx">
+      <DependentUpon>UCGenList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LinkBill\FmCancelBillInfo.resx">
+      <DependentUpon>FmCancelBillInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LinkBill\FmBackBillInfo.resx">
+      <DependentUpon>FmBackBillInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LinkBill\FmLinkBillInfo.resx">
+      <DependentUpon>FmLinkBillInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LinkBill\FmLinkBillManager.resx">
+      <DependentUpon>FmLinkBillManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LinkBill\FmOrderLinkRecordQuery.resx">
+      <DependentUpon>FmOrderLinkRecordQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LinkBill\UCLinkBillInfo.resx">
+      <DependentUpon>UCLinkBillInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LinkBill\UCLinkBillList.resx">
+      <DependentUpon>UCLinkBillList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\FmOrderInfo.resx">
+      <DependentUpon>FmOrderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\FmOrderItemInfo.resx">
+      <DependentUpon>FmOrderItemInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\FmOrderCheckManager.resx">
+      <DependentUpon>FmOrderCheckManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\FmOrderManager.resx">
+      <DependentUpon>FmOrderManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\FmOrderCheckRecordQuery.resx">
+      <DependentUpon>FmOrderCheckRecordQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\FmOrderRecordQuery.resx">
+      <DependentUpon>FmOrderRecordQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\FmOrderQuery.resx">
+      <DependentUpon>FmOrderQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\UCOrderBodySales.resx">
+      <DependentUpon>UCOrderBodySales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\UCOrderBodyService.resx">
+      <DependentUpon>UCOrderBodyService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\UCOrderBodyAdd.resx">
+      <DependentUpon>UCOrderBodyAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\UCOrderBodyLease.resx">
+      <DependentUpon>UCOrderBodyLease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\UCOrderItem.resx">
+      <DependentUpon>UCOrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\UCOrderProtocol.resx">
+      <DependentUpon>UCOrderProtocol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\UCOrderTwoParties.resx">
+      <DependentUpon>UCOrderTwoParties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProjectCost\FmProjectCostInfo.resx">
+      <DependentUpon>FmProjectCostInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProjectCost\FmProjectCostManager.resx">
+      <DependentUpon>FmProjectCostManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProjectCost\FmProjectCostSelfQuery.resx">
+      <DependentUpon>FmProjectCostSelfQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProjectCost\FmProjectCostQuery.resx">
+      <DependentUpon>FmProjectCostQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProjectCost\UCProjectCostInfo.resx">
+      <DependentUpon>UCProjectCostInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ProjectCost\UCProjectCostList.resx">
+      <DependentUpon>UCProjectCostList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Order\UCOrderList.resx">
+      <DependentUpon>UCOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Old\" />
+    <Folder Include="RDLC\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\LinkBill\LinkBillItem.xlsx" />
+    <EmbeddedResource Include="UI\LinkBill\LinkBillHead.xlsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GaoShan.Base\GaoShan.Base.csproj">
+      <Project>{74f763f6-a222-48c2-a480-a80d99adb635}</Project>
+      <Name>GaoShan.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Miles.App.Entity\Miles.App.Entity.csproj">
+      <Project>{e95f2eda-f0f0-4cf3-8694-3b6ac39993f7}</Project>
+      <Name>Miles.App.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EE7EAD53-B254-4E5E-822C-DC3795101438}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GaoShan.Sales.Quote</RootNamespace>
+    <AssemblyName>GaoShan.Sales.Quote</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Miles.Coro.Common">
+      <HintPath>..\lib\Miles.Coro.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.DataBase">
+      <HintPath>..\lib\Miles.Coro.DataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.ORM">
+      <HintPath>..\lib\Miles.Coro.ORM.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Framework.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.ReoGrid">
+      <HintPath>..\lib\Miles.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="unvell.ReoGrid">
+      <HintPath>..\lib\unvell.ReoGrid.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Class1.cs" />
+    <Compile Include="UI\Product\FmProductQuote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Product\FmProductQuote.Designer.cs">
+      <DependentUpon>FmProductQuote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Transport\CalResult.cs" />
+    <Compile Include="UI\Transport\FmPlaceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transport\FmPlaceInfo.Designer.cs">
+      <DependentUpon>FmPlaceInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransFeeInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransFeeInfo.Designer.cs">
+      <DependentUpon>FmTransFeeInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransportMaxConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransportMaxConfig.Designer.cs">
+      <DependentUpon>FmTransportMaxConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransportMaxInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransportMaxInfo.Designer.cs">
+      <DependentUpon>FmTransportMaxInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransportPlaceConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransportPlaceConfig.Designer.cs">
+      <DependentUpon>FmTransportPlaceConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransportVarConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransportVarConfig.Designer.cs">
+      <DependentUpon>FmTransportVarConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransUseTruckManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transport\FmTransUseTruckManager.Designer.cs">
+      <DependentUpon>FmTransUseTruckManager.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GaoShan.Base\GaoShan.Base.csproj">
+      <Project>{74f763f6-a222-48c2-a480-a80d99adb635}</Project>
+      <Name>GaoShan.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Miles.App.Entity\Miles.App.Entity.csproj">
+      <Project>{e95f2eda-f0f0-4cf3-8694-3b6ac39993f7}</Project>
+      <Name>Miles.App.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="UI\Product\FmProductQuote.resx">
+      <DependentUpon>FmProductQuote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transport\FmPlaceInfo.resx">
+      <DependentUpon>FmPlaceInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transport\FmTransFeeInfo.resx">
+      <DependentUpon>FmTransFeeInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transport\FmTransportMaxConfig.resx">
+      <DependentUpon>FmTransportMaxConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transport\FmTransportMaxInfo.resx">
+      <DependentUpon>FmTransportMaxInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transport\FmTransportPlaceConfig.resx">
+      <DependentUpon>FmTransportPlaceConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transport\FmTransportVarConfig.resx">
+      <DependentUpon>FmTransportVarConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transport\FmTransUseTruckManager.resx">
+      <DependentUpon>FmTransUseTruckManager.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

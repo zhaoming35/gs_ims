@@ -1,0 +1,42 @@
+OIN tb_expend_item tb_expend_item
+ON tb_project_Cost_Item.Item_Value=tb_expend_item.Item_Value
+Where (tb_project_Cost.Odr_No=@Parm1 AND tb_project_Cost.Cost_State=@Parm2)
+ AND (tb_expend_item.Define_Flag=@Parm3)
+
+Parameter:Parm1:069/20181116-01-S,Parm2:1,Parm3:1,
+【2018-11-17 20:57:49】:[1]Miles.Coro.DataBase.DbManager类中:[Info]SQL:
+Select 
+tb_carriage_bill.carriage_Id,
+tb_carriage_bill.carriage_Type,
+tb_carriage_bill.product_Name,
+tb_carriage_bill.max_Length,
+tb_carriage_bill.product_Weight,
+tb_carriage_bill.product_Volume,
+tb_carriage_bill.product_Count,
+tb_carriage_bill.load_Date,
+tb_carriage_bill.arrive_Date,
+tb_carriage_bill.load_Place_Text,
+tb_carriage_bill.unload_Place_Text,
+tb_carriage_bill.transport_Type,
+tb_carriage_bill.receive_Man,
+tb_carriage_bill.transport_Nature,
+tb_carriage_bill.oper_Date,
+tb_carriage_bill.oper_Code,
+tb_carriage_bill.odr_No,
+tb_carriage_bill.carriage_State,
+tb_carriage_bill.receive_Phone,
+tb_carriage_bill.pay_Part,
+tb_carriage_bill.pay_Way,
+tb_carriage_bill.carriage_Cost,
+tb_carriage_bill.carrier_Name,
+tb_carriage_bill.carrier_Phone,
+tb_carriage_bill.trunk_Spec,
+tb_carriage_bill.plate_Number,
+tb_carriage_bill.driving_Num,
+tb_carriage_bill.linkBill_Name,
+tb_carriage_bill.carriage_Name,
+tb_carriage_bill.linkBill_Id,
+tb_carriage_bill.load_Place_Id,
+tb_carriage_bill.unload_Place_Id,
+tb_carriage_bill.is_return_visit
+From tb_carriage_b

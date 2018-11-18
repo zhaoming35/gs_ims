@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C0C6DF5-FFAD-467E-929C-28B365A15EB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GaoShan.Sales.Salary</RootNamespace>
+    <AssemblyName>GaoShan.Sales.Salary</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Miles.Coro.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Framework.UI">
+      <HintPath>..\lib\Miles.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.IMSFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.IMSFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.ReoGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Cal\FmGuidePriceInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cal\FmGuidePriceInfo.Designer.cs">
+      <DependentUpon>FmGuidePriceInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Cal\FmSalaryCalManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cal\FmSalaryCalManager.Designer.cs">
+      <DependentUpon>FmSalaryCalManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Cal\FmSalaryCalQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cal\FmSalaryCalQuery.Designer.cs">
+      <DependentUpon>FmSalaryCalQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Cal\FmSalaryGrantInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cal\FmSalaryGrantInfo.Designer.cs">
+      <DependentUpon>FmSalaryGrantInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Cal\FmSalaryGrantManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Cal\FmSalaryGrantManager.Designer.cs">
+      <DependentUpon>FmSalaryGrantManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Cal\SalaryCal.cs" />
+    <Compile Include="UI\Cal\SalaryFactory.cs" />
+    <Compile Include="UI\Cal\UCSumOrderCost.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Cal\UCSumOrderCost.Designer.cs">
+      <DependentUpon>UCSumOrderCost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Tmp\FmSalaryRanageFormula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Tmp\FmSalaryRanageFormula.Designer.cs">
+      <DependentUpon>FmSalaryRanageFormula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Tmp\FmRanageFormula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Tmp\FmRanageFormula.Designer.cs">
+      <DependentUpon>FmRanageFormula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Tmp\FmSalaryTmpManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Tmp\FmSalaryTmpManager.Designer.cs">
+      <DependentUpon>FmSalaryTmpManager.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\Cal\FmGuidePriceInfo.resx">
+      <DependentUpon>FmGuidePriceInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cal\FmSalaryCalManager.resx">
+      <DependentUpon>FmSalaryCalManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cal\FmSalaryCalQuery.resx">
+      <DependentUpon>FmSalaryCalQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cal\FmSalaryGrantInfo.resx">
+      <DependentUpon>FmSalaryGrantInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cal\FmSalaryGrantManager.resx">
+      <DependentUpon>FmSalaryGrantManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Cal\UCSumOrderCost.resx">
+      <DependentUpon>UCSumOrderCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Tmp\FmSalaryRanageFormula.resx">
+      <DependentUpon>FmSalaryRanageFormula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Tmp\FmRanageFormula.resx">
+      <DependentUpon>FmRanageFormula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Tmp\FmSalaryTmpManager.resx">
+      <DependentUpon>FmSalaryTmpManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logic\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GaoShan.Base\GaoShan.Base.csproj">
+      <Project>{74f763f6-a222-48c2-a480-a80d99adb635}</Project>
+      <Name>GaoShan.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Miles.App.Entity\Miles.App.Entity.csproj">
+      <Project>{e95f2eda-f0f0-4cf3-8694-3b6ac39993f7}</Project>
+      <Name>Miles.App.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

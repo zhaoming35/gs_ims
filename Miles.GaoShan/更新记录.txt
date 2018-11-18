@@ -1,0 +1,25 @@
+1.增加表tb_fin_act
+2.添加页面GaoShan.Sales.Com.dll的GaoShan.Sales.Com.UI.FmFinActManager，合同账户管理，挂到基础信息-公司信息-合同账户管理
+3.tb_company_act表去掉，pay_Act_Name，pay_Bank_Name，pay_Act_No，增加字段define_Name varchar 200
+4.基础信息枚举，增加类型lld_buildWay，联络单-搭建情况说明，范围：1，全程搭建；2，指导搭建
+5.tb_link_bill表增加build_Way字段varchar 200
+6.项目联络单，更新，参数绑定build_Way-搭建情况说明。
+7.tb_fin_order_gen表增加discount_Cost,优惠金额 decimal 10,2
+8.合同摘要模板更新，行数增加一行，数据绑定增加，优惠金额绑定。
+9.提成算法，增加Discount_Cost，优惠金额参数
+10.新建表tb_expend_item
+11.添加页面GaoShan.Sales.Com.dll的GaoShan.Sales.Com.UI.FmExpendItemManager，工程费用项目管理。挂到基础信息-枚举下
+12.基础数据-枚举信息中去掉Expend_Item:   DELETE from tb_enum WHERE enum_Kind='Expend_Item'
+13.添加页面GaoShan.Sales.dll的GaoShan.Sales.UI.Admin.FmOrderTermination,合同手工终止，挂到“特权处理模块”
+14.tb_project_Cost_Item表增加 item_Value,费用项目值, int ;增加item_Date，费用产生时间,dateTime
+15.添加页面GaoShan.Sales.dll的GaoShan.Sales.UI.Order.FmOrderRecordQuery的业务员合同记录查询，挂到业务员查询统计下
+16.GaoShan.Sales.dll，GaoShan.Sales.UI.Gen.FmOrderGenRecordQuery，业务员合同摘要查询，挂到业务员查询统计下
+17.GaoShan.Sales.dll，GaoShan.Sales.UI.LinkBill.FmOrderLinkRecordQuery，业务员项目联络单查询，挂到业务员查询统计下。
+18.GaoShan.Sales.dll，GaoShan.Sales.UI.Order.FmOrderCheckRecordQuery，合同审核记录查询，挂到审核模块，查询统计下。
+19.GaoShan.Sales.dll，GaoShan.Sales.UI.Admin.FmProjectCostCorrect，管理员工程费用修改，挂到特殊处理模块，费用处理下。
+20.GaoShan.Sales.dll，GaoShan.Sales.UI.ProjectCost.FmProjectCostSelfQuery，业务员工程费用查询，挂到业务员查询统计下。
+21.GaoShan.Sales.MatchTb.dll，GaoShan.Sales.MatchTb.UI.MatchTb.FmMatchTbQuery，配套表记录查询，挂到配套表查询统计下。
+22.表tb_product_info增加seq_No 序号，字段 decimal。
+23.GaoShan.Sales.Salary.dll，GaoShan.Sales.Salary.UI.Cal.FmSalaryCalQuery，提成结果查询管理，挂到财务管理，提成下。
+24.tb_salary_grant_item表增加grant_Date，datetime字段
+25.tb_salary_main表，增加cal_Process，varchar(MAX) 。增加字段recal_Flag , 需要重新计算标志 int

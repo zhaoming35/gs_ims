@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sqls>
+  <sql name="SalaryCalManager.QueryChangeCalSalaryMainList">
+    <![CDATA[
+     SELECT
+	t.Odr_No_Main,
+	t.pay_Cost,
+	t.tot_Cost,
+	s.cal_pay_Cost,
+	s.cal_tot_Cost,
+	s.related_Man,
+  f.odr_Type,
+  f.employ_Code,
+  f.jia_Name,
+  f.odr_Prt_Name
+FROM
+	(
+		SELECT
+			SUM (tot_Cost) AS tot_Cost,
+			SUM (pay_Cost) AS pay_Cost,
+			Odr_No_Main
+		FROM
+			tb_fin_order_gen
+		WHERE
+			is_Salary = 1
+		GROUP BY
+			Odr_No_Main
+	) t
+INNER JOIN tb_salary_main s ON t.Odr_No_Main = s.Odr_No_Main
+INNER JOIN tb_fin_order_gen f on t.Odr_No_Main=f.odr_No
+WHERE
+	t.tot_Cost > s.cal_tot_Cost
+OR t.pay_Cost < s.cal_pay_Cost
+    ]]>
+  </sql>
+  <sql name="SalaryCalManager.GetNoGrantDoneSalary">
+    <![CDATA[
+SELECT
+	*
+FROM
+	(
+		SELECT
+			t.odr_No_Main,
+			d.employ_Code,
+			d.salary_Kind,
+			t.cal_base_Salary,
+			t.cal_Value,
+			d.salary_Ratio,
+			t.oper_date,
+			SUM (ISNULL(g.salary_Grant, 0)) AS salary_Grant
+		FROM
+			tb_salary_main t
+		LEFT JOIN tb_salary_main_item d ON d.odr_No_Main = t.odr_No_Main
+		LEFT JOIN tb_salary_grant_item g ON d.odr_No_Main = g.odr_No_Main
+		AND d.employ_Code = g.employ_Code
+		GROUP BY
+			t.odr_No_Main,
+			d.employ_Code,
+			d.salary_Kind,
+			t.cal_base_Salary,
+			t.cal_Value,
+			t.oper_date,
+			d.salary_Ratio
+	) s
+WHERE
+	s.cal_base_Salary * s.cal_Value * s.salary_Ratio / 100 > s.salary_Grant
+    ]]>
+  </sql>
+  <sql name="ReturnVisitManager.GetNeedReturnVisitList">
+    <![CDATA[
+SELECT
+	c.carriage_Id AS item_id,
+	c.odr_No,
+	c.carriage_Cost AS tot_cost,
+	'运输' AS cost_type,
+	c.carrier_Phone AS phone,
+	c.oper_Date,
+  1 as item_type
+FROM
+	tb_carriage_bill c
+WHERE
+	c.carriage_State = 1
+AND c.is_return_visit = 0
+UNION
+	SELECT
+		i.item_Id,
+		p.odr_No,
+		i.item_Price * i.item_Qty,
+		i.item_Name,
+		i.item_Link,
+		p.oper_Date,
+    2 as item_type
+	FROM
+		tb_project_Cost p
+	INNER JOIN tb_project_Cost_Item i ON p.linkBill_Id = i.linkBill_Id
+	WHERE
+		p.cost_State = 1
+	AND i.is_return_visit = 0
+    ]]>
+  </sql>
+</sqls>

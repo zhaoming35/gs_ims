@@ -1,0 +1,13 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table1>
+    <ID>Chinese</ID>
+	<Name>简体中文</Name>
+    <FileName>Chinese.xml</FileName>
+  </Table1>
+   <Table1>
+    <ID>English</ID>
+	<Name>English</Name>
+    <FileName>English.xml</FileName>
+  </Table1>
+</NewDataSet>

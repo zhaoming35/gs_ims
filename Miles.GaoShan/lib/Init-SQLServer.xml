@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="yes"?>
+<Init>
+  <Skin>
+  </Skin>
+  <!--配置需要系统初始化的操作,不配置则没有操作，dll,Class-->
+  <StaticInfo DLL="Miles.Static.dll" Class="Miles.Static.ReadStaticInfo" />
+  <Language>Chinese</Language>
+  <!--是否启动自动更新系统标志，1自动更新，0不自动更新-->
+  <AutoUpdate Flag="1" Date="2014/01/11 15:31:21" />
+  <!--配置好数据库name，dllname,ClassName,ConStr-->
+  <DataBase Name="DbName" Type="sqlserver" Encrypt="0" DllName="Miles.DbProviderSqlServer.dll" ClassName="Miles.DbProviderSqlServer" ConStr="Data Source=127.0.0.1;Initial Catalog=miles_db;User Id=sa;Password=tonish;Connect Timeout=2" />
+</Init>

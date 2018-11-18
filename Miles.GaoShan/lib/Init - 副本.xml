@@ -1,0 +1,22 @@
+<?xml version="1.0" standalone="yes"?>
+<Init>
+  <Skin>
+  </Skin>
+  <!--配置需要系统初始化的操作,不配置则没有操作，dll,ClassName
+  <StaticInfo DLL="Miles.Static.dll" ClassName="Miles.Static.ReadStaticInfo" />
+  -->
+  
+  <!-- 配置使用第三方日志类库操作，使用
+   <Log LogFactoryDll="Miles.Log.Log4Net.dll" LogFactoryClassName="Miles.Log.Log4Net.LogFactory" />   
+    -->
+  <ShowSql>true</ShowSql>
+  <Ver>V2.0</Ver>
+  <Language>Chinese</Language>
+  <!--是否启动自动更新系统标志，1自动更新，0不自动更新-->
+  <AutoUpdate Flag="1" Date="2014/01/11 15:31:21" />
+  <!--配置好数据库name，dllname,ClassName,ConStr-->
+ <DataBases default="DbName">
+	 <DataBase Name="DbName" Type="sqlserver" Encrypt="0" DbProviderDll="Miles.DbProviderSqlServer.dll" DbProviderClassName="Miles.DbProviderSqlServer" ConStr="Data Source=127.0.0.1;Initial Catalog=miles_db;User Id=sa;Password=tonish;Connect Timeout=2" />
+	 <DataBase Name="DbName1" Type="Sqlite" Encrypt="0" DbProviderDll="Miles.DbProviderSQLite.dll" DbProviderClassName="Miles.DbProviderSQLite" ConStr="Version=3;uri=file:|path|\DataBase\miles_db.s3db" />
+</DataBases>
+  </Init>

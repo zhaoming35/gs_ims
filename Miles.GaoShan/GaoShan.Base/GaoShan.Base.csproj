@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74F763F6-A222-48C2-A480-A80D99ADB635}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GaoShan.Sales</RootNamespace>
+    <AssemblyName>GaoShan.Base</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Words, Version=14.2.0.0, Culture=neutral, PublicKeyToken=00725b1ceb58d0a9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.DataBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.DataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.ORM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.ORM.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Dev.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Dev.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Framework.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.IMSFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.IMSFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.ReoGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="unvell.ReoGrid, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\unvell.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Xceed.Words.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cache\LogicCache.cs" />
+    <Compile Include="Com\VarParse.cs" />
+    <Compile Include="Doc\DocBuilder.cs" />
+    <Compile Include="Enum\CarriageState.cs" />
+    <Compile Include="Enum\EnumSet.cs" />
+    <Compile Include="Enum\EnumText.cs" />
+    <Compile Include="Enum\FinState.cs" />
+    <Compile Include="Enum\GenState.cs" />
+    <Compile Include="Enum\InStoreState.cs" />
+    <Compile Include="Enum\InStoreType.cs" />
+    <Compile Include="Enum\IsFlag.cs" />
+    <Compile Include="Enum\LinkBillType.cs" />
+    <Compile Include="Enum\LinkState.cs" />
+    <Compile Include="Enum\MatchTbState.cs" />
+    <Compile Include="Enum\OrderState.cs" />
+    <Compile Include="Enum\OutStoreState.cs" />
+    <Compile Include="Enum\OutStoreType.cs" />
+    <Compile Include="Enum\ProjectCostState.cs" />
+    <Compile Include="Enum\ReturnVisitItemType.cs" />
+    <Compile Include="Enum\StoreState.cs" />
+    <Compile Include="Logic\AccountManager.cs" />
+    <Compile Include="Logic\CarriageManager.cs" />
+    <Compile Include="Logic\DefaultAdressManager.cs" />
+    <Compile Include="Logic\EmployManager.cs" />
+    <Compile Include="Logic\ExpendItemManager.cs" />
+    <Compile Include="Logic\FinActManager.cs" />
+    <Compile Include="Logic\FinTransportMaxManager.cs" />
+    <Compile Include="Logic\FinTransportTmpManager.cs" />
+    <Compile Include="Logic\GenManager.cs" />
+    <Compile Include="Logic\LinkBillManager.cs" />
+    <Compile Include="Logic\MatchTbManager.cs" />
+    <Compile Include="Logic\MatchTbTmpManager.cs" />
+    <Compile Include="Logic\MtlManager.cs" />
+    <Compile Include="Logic\OrderCodeManager.cs" />
+    <Compile Include="Logic\OrderManager.cs" />
+    <Compile Include="Logic\PlaceFeeManager.cs" />
+    <Compile Include="Logic\PlaceInfoManager.cs" />
+    <Compile Include="Logic\ProcessManager.cs" />
+    <Compile Include="Logic\ProductManager.cs" />
+    <Compile Include="Logic\ProductPropertyManager.cs" />
+    <Compile Include="Logic\ProjectCostManager.cs" />
+    <Compile Include="Logic\ProjectIncomeManager.cs" />
+    <Compile Include="Logic\ProjectOutcomeManager.cs" />
+    <Compile Include="Logic\ReturnVisitManager.cs" />
+    <Compile Include="Logic\SalaryCalManager.cs" />
+    <Compile Include="Logic\SalaryTmpManager.cs" />
+    <Compile Include="Logic\SendSmsInfoManager.cs" />
+    <Compile Include="Logic\StoreManager.cs" />
+    <Compile Include="Logic\TmpManager.cs" />
+    <Compile Include="Logic\TmpXlsManager.cs" />
+    <Compile Include="Logic\TruckInfoManager.cs" />
+    <Compile Include="Logic\Utils.cs" />
+    <Compile Include="Logic\XlsDocManager.cs" />
+    <Compile Include="Model\Bu_CalSalaryGen.cs" />
+    <Compile Include="Model\Bu_GutterInfo.cs" />
+    <Compile Include="Model\Bu_ItemSpec.cs" />
+    <Compile Include="Model\Bu_MatchTb_Item.cs" />
+    <Compile Include="Model\Bu_OrderNoSelect.cs" />
+    <Compile Include="Model\Bu_place_fee.cs" />
+    <Compile Include="Model\Bu_SteelDrill.cs" />
+    <Compile Include="Model\Bu_store_check.cs" />
+    <Compile Include="Model\CalParmResult.cs" />
+    <Compile Include="Model\DecValue.cs" />
+    <Compile Include="Model\DecValueText.cs" />
+    <Compile Include="Model\DbDecValue.cs" />
+    <Compile Include="Model\Info_carriage_bill.cs" />
+    <Compile Include="Model\Info_dept_role.cs" />
+    <Compile Include="Model\Info_fin_order_gen.cs" />
+    <Compile Include="Model\Info_fin_order_income.cs" />
+    <Compile Include="Model\Info_fin_order_item.cs" />
+    <Compile Include="Model\Info_fin_order_outcome.cs" />
+    <Compile Include="Model\Info_fin_transport_tmp.cs" />
+    <Compile Include="Model\Info_link_bill.cs" />
+    <Compile Include="Model\Info_link_bill_tent.cs" />
+    <Compile Include="Model\Info_matchTb.cs" />
+    <Compile Include="Model\Info_matchTb_item.cs" />
+    <Compile Include="Model\Info_MatchTb_Tmp.cs" />
+    <Compile Include="Model\Info_matchTb_tmp_set.cs" />
+    <Compile Include="Model\Info_mtl_item.cs" />
+    <Compile Include="Model\Info_mtl_kind.cs" />
+    <Compile Include="Model\Info_OrderMain.cs" />
+    <Compile Include="Model\Info_order_code.cs" />
+    <Compile Include="Model\Info_order_item.cs" />
+    <Compile Include="Model\Info_place_fee.cs" />
+    <Compile Include="Model\Info_place_info.cs" />
+    <Compile Include="Model\Info_product_info.cs" />
+    <Compile Include="Model\Info_product_property.cs" />
+    <Compile Include="Model\Info_project_Cost.cs" />
+    <Compile Include="Model\Info_project_Cost_Item.cs" />
+    <Compile Include="Model\Info_salary_grant_item.cs" />
+    <Compile Include="Model\Info_salary_main.cs" />
+    <Compile Include="Model\Info_salary_main_item.cs" />
+    <Compile Include="Model\Info_salary_tmp.cs" />
+    <Compile Include="Model\Info_store_check.cs" />
+    <Compile Include="Model\Info_store_in.cs" />
+    <Compile Include="Model\Info_store_in_item.cs" />
+    <Compile Include="Model\Info_store_main.cs" />
+    <Compile Include="Model\Info_store_out.cs" />
+    <Compile Include="Model\Info_store_out_item.cs" />
+    <Compile Include="Model\Info_tmp.cs" />
+    <Compile Include="Model\Info_tmp_map.cs" />
+    <Compile Include="Model\Info_tmp_xls.cs" />
+    <Compile Include="Model\Info_xls_doc.cs" />
+    <Compile Include="Model\PostSalary.cs" />
+    <Compile Include="Model\Q_project_Cost_Item.cs" />
+    <Compile Include="Model\Q_salary_main_item.cs" />
+    <Compile Include="Model\Q_store_in_item.cs" />
+    <Compile Include="Model\Q_store_out_item.cs" />
+    <Compile Include="Model\RanageFormula.cs" />
+    <Compile Include="Model\ReturnVisitInfo.cs" />
+    <Compile Include="Model\SalaryRanageFormula.cs" />
+    <Compile Include="Model\StringValue.cs" />
+    <Compile Include="Model\Tb_carriage_bill.cs" />
+    <Compile Include="Model\Tb_company_act.cs" />
+    <Compile Include="Model\Tb_default_adress.cs" />
+    <Compile Include="Model\Tb_expend_item.cs" />
+    <Compile Include="Model\Tb_fin_act.cs" />
+    <Compile Include="Model\Tb_fin_order_gen.cs" />
+    <Compile Include="Model\Tb_fin_order_income.cs" />
+    <Compile Include="Model\Tb_fin_order_item.cs" />
+    <Compile Include="Model\Tb_fin_order_outcome.cs" />
+    <Compile Include="Model\Tb_fin_transport_max.cs" />
+    <Compile Include="Model\Tb_fin_transport_tmp.cs" />
+    <Compile Include="Model\Tb_link_bill.cs" />
+    <Compile Include="Model\Tb_link_bill_tent.cs" />
+    <Compile Include="Model\Tb_matchTb.cs" />
+    <Compile Include="Model\Tb_matchTb_item.cs" />
+    <Compile Include="Model\Tb_matchTb_tmp.cs" />
+    <Compile Include="Model\Tb_matchTb_tmp_set.cs" />
+    <Compile Include="Model\Tb_mtl_item.cs" />
+    <Compile Include="Model\Tb_mtl_kind.cs" />
+    <Compile Include="Model\Tb_order_code.cs" />
+    <Compile Include="Model\Tb_order_item.cs" />
+    <Compile Include="Model\Tb_order_log.cs" />
+    <Compile Include="Model\Tb_order_main.cs" />
+    <Compile Include="Model\Tb_order_text.cs" />
+    <Compile Include="Model\Tb_place_fee.cs" />
+    <Compile Include="Model\Tb_place_info.cs" />
+    <Compile Include="Model\Tb_product_info.cs" />
+    <Compile Include="Model\Tb_product_property.cs" />
+    <Compile Include="Model\Tb_project_Cost.cs" />
+    <Compile Include="Model\Tb_project_Cost_Item.cs" />
+    <Compile Include="Model\Tb_salary_grant_item.cs" />
+    <Compile Include="Model\Tb_salary_main.cs" />
+    <Compile Include="Model\Tb_salary_main_item.cs" />
+    <Compile Include="Model\Tb_salary_tmp.cs" />
+    <Compile Include="Model\Tb_send_sms_info.cs" />
+    <Compile Include="Model\Tb_store_check.cs" />
+    <Compile Include="Model\Tb_store_check_log.cs" />
+    <Compile Include="Model\Tb_store_in.cs" />
+    <Compile Include="Model\Tb_store_in_item.cs" />
+    <Compile Include="Model\Tb_store_main.cs" />
+    <Compile Include="Model\Tb_store_out.cs" />
+    <Compile Include="Model\Tb_store_out_item.cs" />
+    <Compile Include="Model\Tb_store_state.cs" />
+    <Compile Include="Model\Tb_tmp_info.cs" />
+    <Compile Include="Model\Tb_tmp_main.cs" />
+    <Compile Include="Model\Tb_tmp_map.cs" />
+    <Compile Include="Model\Tb_tmp_part.cs" />
+    <Compile Include="Model\Tb_tmp_var.cs" />
+    <Compile Include="Model\Tb_tmp_xls.cs" />
+    <Compile Include="Model\Tb_tmp_xls_doc.cs" />
+    <Compile Include="Model\Tb_tmp_xls_map.cs" />
+    <Compile Include="Model\Tb_tmp_xls_var.cs" />
+    <Compile Include="Model\Tb_truck_info.cs" />
+    <Compile Include="Model\TransFixedItem.cs" />
+    <Compile Include="Model\VarCal.cs" />
+    <Compile Include="Model\VarInput.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQL\SqlInfo.cs" />
+    <Compile Include="SQL\SqlManager.cs" />
+    <Compile Include="UI\Ctr\CmbBuildParty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbBuildParty.Designer.cs">
+      <DependentUpon>CmbBuildParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbBuildWay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbBuildWay.Designer.cs">
+      <DependentUpon>CmbBuildWay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbCompanyAccount.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbCompanyAccount.Designer.cs">
+      <DependentUpon>CmbCompanyAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbCompanyInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbCompanyInfo.Designer.cs">
+      <DependentUpon>CmbCompanyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbDeptRole.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbDeptRole.Designer.cs">
+      <DependentUpon>CmbDeptRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbExpendItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbExpendItem.Designer.cs">
+      <DependentUpon>CmbExpendItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbFinActInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbFinActInfo.Designer.cs">
+      <DependentUpon>CmbFinActInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbFixedMode.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbFixedMode.Designer.cs">
+      <DependentUpon>CmbFixedMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbGroundState.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbGroundState.Designer.cs">
+      <DependentUpon>CmbGroundState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbMatchTbVars.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbModelType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbModelType.Designer.cs">
+      <DependentUpon>CmbModelType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbMtlInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbMtlInfo.Designer.cs">
+      <DependentUpon>CmbMtlInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbOrderType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbOrderType.Designer.cs">
+      <DependentUpon>CmbOrderType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbPayPart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbPayPart.Designer.cs">
+      <DependentUpon>CmbPayPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbPayWay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbPayWay.Designer.cs">
+      <DependentUpon>CmbPayWay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbPlaceSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbPlaceSelect.Designer.cs">
+      <DependentUpon>CmbPlaceSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbProductInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbProductInfo.Designer.cs">
+      <DependentUpon>CmbProductInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbReceivePayWay.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbReceivePayWay.Designer.cs">
+      <DependentUpon>CmbReceivePayWay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbSalaryMan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbSalaryMan.Designer.cs">
+      <DependentUpon>CmbSalaryMan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbSalaryType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbSalaryType.Designer.cs">
+      <DependentUpon>CmbSalaryType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTaxType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTaxType.Designer.cs">
+      <DependentUpon>CmbTaxType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTmpTheType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTmpType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTmpType.Designer.cs">
+      <DependentUpon>CmbTmpType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransBothDirection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransBothDirection.Designer.cs">
+      <DependentUpon>CmbTransBothDirection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransEdgeHeight.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransEdgeHeight.Designer.cs">
+      <DependentUpon>CmbTransEdgeHeight.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransFixed.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransFixed.Designer.cs">
+      <DependentUpon>CmbTransFixed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransMainSpec.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransMainSpec.Designer.cs">
+      <DependentUpon>CmbTransMainSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransPlace.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransPlace.Designer.cs">
+      <DependentUpon>CmbTransPlace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransportNature.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransportNature.Designer.cs">
+      <DependentUpon>CmbTransportNature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransportParty.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransportParty.Designer.cs">
+      <DependentUpon>CmbTransportParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbCarriageType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbCarriageType.Designer.cs">
+      <DependentUpon>CmbCarriageType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransportType.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransportType.Designer.cs">
+      <DependentUpon>CmbTransportType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransSpace.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTransSpace.Designer.cs">
+      <DependentUpon>CmbTransSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTruckSpec.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTruckSpec.Designer.cs">
+      <DependentUpon>CmbTruckSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTrunkSpec.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbTrunkSpec.Designer.cs">
+      <DependentUpon>CmbTrunkSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\DropDownGutterInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\DropDownProductSpec.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\DropDownSteelDrill.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\MultiSelectControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\MultiSelectControl.Designer.cs">
+      <DependentUpon>MultiSelectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\TxtBindMember.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\TxtBindMember.Designer.cs">
+      <DependentUpon>TxtBindMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\TxtBindOrderMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\TxtBindOrderMain.Designer.cs">
+      <DependentUpon>TxtBindOrderMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\TxtCompanyInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\TxtCompanyInfo.Designer.cs">
+      <DependentUpon>TxtCompanyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\UCDropDownSpec.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\UCDropDownSpec.Designer.cs">
+      <DependentUpon>UCDropDownSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\UCGutterInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\UCGutterInfo.Designer.cs">
+      <DependentUpon>UCGutterInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\UCPlace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\UCPlace.Designer.cs">
+      <DependentUpon>UCPlace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Ctr\UCSteelDrill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\UCSteelDrill.Designer.cs">
+      <DependentUpon>UCSteelDrill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Win\FmCheckCommentInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Win\FmCheckCommentInfo.Designer.cs">
+      <DependentUpon>FmCheckCommentInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Win\FmOrderNoSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Win\FmOrderNoSelect.Designer.cs">
+      <DependentUpon>FmOrderNoSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Win\FmReoGridShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Win\FmReoGridShow.Designer.cs">
+      <DependentUpon>FmReoGridShow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Report\FmCarriageManagerReport.cs" />
+    <Compile Include="UI\Report\FmLinkBillManagerReport.cs" />
+    <Compile Include="UI\Report\FmMatchTbManagerReport.cs" />
+    <Compile Include="UI\Report\FmOrderGenManagerReport.cs" />
+    <Compile Include="UI\Report\ReportTemplateBase.cs" />
+    <Compile Include="UI\UC\UCBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCBase.Designer.cs">
+      <DependentUpon>UCBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC\UCLinkBillPend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCLinkBillPend.Designer.cs">
+      <DependentUpon>UCLinkBillPend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC\UCTent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCTent.Designer.cs">
+      <DependentUpon>UCTent.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Miles.App.Entity\Miles.App.Entity.csproj">
+      <Project>{e95f2eda-f0f0-4cf3-8694-3b6ac39993f7}</Project>
+      <Name>Miles.App.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\Ctr\UCDropDownSpec.resx">
+      <DependentUpon>UCDropDownSpec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Ctr\UCGutterInfo.resx">
+      <DependentUpon>UCGutterInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Ctr\UCPlace.resx">
+      <DependentUpon>UCPlace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Ctr\UCSteelDrill.resx">
+      <DependentUpon>UCSteelDrill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Win\FmCheckCommentInfo.resx">
+      <DependentUpon>FmCheckCommentInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Win\FmOrderNoSelect.resx">
+      <DependentUpon>FmOrderNoSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Win\FmReoGridShow.resx">
+      <DependentUpon>FmReoGridShow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCBase.resx">
+      <DependentUpon>UCBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCLinkBillPend.resx">
+      <DependentUpon>UCLinkBillPend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCTent.resx">
+      <DependentUpon>UCTent.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="SQL\Sql.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

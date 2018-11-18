@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68982F4D-1950-4EC9-992D-3D03E3734A46}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GaoShan.Sales.Xls</RootNamespace>
+    <AssemblyName>GaoShan.Sales.Xls</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Miles.Coro.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.DataBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.DataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.ORM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.ORM.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Framework.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.ReoGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="unvell.ReoGrid, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\unvell.ReoGrid.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\FmMapXlsInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmMapXlsInfo.Designer.cs">
+      <DependentUpon>FmMapXlsInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmMapXlsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmMapXlsManager.Designer.cs">
+      <DependentUpon>FmMapXlsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmTmpXlsDocManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmTmpXlsDocManager.Designer.cs">
+      <DependentUpon>FmTmpXlsDocManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmTmpXlsInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmTmpXlsInfo.Designer.cs">
+      <DependentUpon>FmTmpXlsInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmTmpXlsManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmTmpXlsManager.Designer.cs">
+      <DependentUpon>FmTmpXlsManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmXlsDocInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmXlsDocInfo.Designer.cs">
+      <DependentUpon>FmXlsDocInfo.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GaoShan.Base\GaoShan.Base.csproj">
+      <Project>{74f763f6-a222-48c2-a480-a80d99adb635}</Project>
+      <Name>GaoShan.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Miles.App.Entity\Miles.App.Entity.csproj">
+      <Project>{e95f2eda-f0f0-4cf3-8694-3b6ac39993f7}</Project>
+      <Name>Miles.App.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UI\FmMapXlsInfo.resx">
+      <DependentUpon>FmMapXlsInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmMapXlsManager.resx">
+      <DependentUpon>FmMapXlsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmTmpXlsDocManager.resx">
+      <DependentUpon>FmTmpXlsDocManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmTmpXlsInfo.resx">
+      <DependentUpon>FmTmpXlsInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmTmpXlsManager.resx">
+      <DependentUpon>FmTmpXlsManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmXlsDocInfo.resx">
+      <DependentUpon>FmXlsDocInfo.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

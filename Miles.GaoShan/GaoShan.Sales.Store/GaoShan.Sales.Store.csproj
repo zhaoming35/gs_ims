@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01A60F96-51B3-4D7D-9E60-EB2940377719}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GaoShan.Sales.Store</RootNamespace>
+    <AssemblyName>GaoShan.Sales.Store</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Miles.Coro.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.DataBase, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.DataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Coro.ORM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Coro.ORM.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.Framework.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.Framework.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.IMSFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.IMSFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Miles.ReoGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Miles.ReoGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="unvell.ReoGrid, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\unvell.ReoGrid.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\FmStoreCheckManagerReport.cs" />
+    <Compile Include="UI\Ctr\CmbMtlKind.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Ctr\CmbMtlKind.Designer.cs">
+      <DependentUpon>CmbMtlKind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmMtlSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmMtlSelect.Designer.cs">
+      <DependentUpon>FmMtlSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmInOrderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmInOrderInfo.Designer.cs">
+      <DependentUpon>FmInOrderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmOutOrderInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmOutOrderInfo.Designer.cs">
+      <DependentUpon>FmOutOrderInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreBackOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreBackOrder.Designer.cs">
+      <DependentUpon>FmStoreBackOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreCheckPermitManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreCheckPermitManager.Designer.cs">
+      <DependentUpon>FmStoreCheckPermitManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreCheckManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreCheckManager.Designer.cs">
+      <DependentUpon>FmStoreCheckManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreInDir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreInDir.Designer.cs">
+      <DependentUpon>FmStoreInDir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreInOrderDone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreInOrderDone.Designer.cs">
+      <DependentUpon>FmStoreInOrderDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreOutQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreOutQuery.Designer.cs">
+      <DependentUpon>FmStoreOutQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreInQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreInQuery.Designer.cs">
+      <DependentUpon>FmStoreInQuery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreManager.Designer.cs">
+      <DependentUpon>FmStoreManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FmStoreOutOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FmStoreOutOrder.Designer.cs">
+      <DependentUpon>FmStoreOutOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC\UCBackOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCBackOrder.Designer.cs">
+      <DependentUpon>UCBackOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC\UCOutOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCOutOrder.Designer.cs">
+      <DependentUpon>UCOutOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC\UCBackOrderList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCBackOrderList.Designer.cs">
+      <DependentUpon>UCBackOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC\UCInOrderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCInOrderItem.Designer.cs">
+      <DependentUpon>UCInOrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC\UCOutOrderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCOutOrderItem.Designer.cs">
+      <DependentUpon>UCOutOrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UC\UCOutOrderList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UC\UCOutOrderList.Designer.cs">
+      <DependentUpon>UCOutOrderList.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="记录.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmMtlSelect.resx">
+      <DependentUpon>FmMtlSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmInOrderInfo.resx">
+      <DependentUpon>FmInOrderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmOutOrderInfo.resx">
+      <DependentUpon>FmOutOrderInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreBackOrder.resx">
+      <DependentUpon>FmStoreBackOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreCheckPermitManager.resx">
+      <DependentUpon>FmStoreCheckPermitManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreCheckManager.resx">
+      <DependentUpon>FmStoreCheckManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreInDir.resx">
+      <DependentUpon>FmStoreInDir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreInOrderDone.resx">
+      <DependentUpon>FmStoreInOrderDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreOutQuery.resx">
+      <DependentUpon>FmStoreOutQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreInQuery.resx">
+      <DependentUpon>FmStoreInQuery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreManager.resx">
+      <DependentUpon>FmStoreManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FmStoreOutOrder.resx">
+      <DependentUpon>FmStoreOutOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCBackOrder.resx">
+      <DependentUpon>UCBackOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCOutOrder.resx">
+      <DependentUpon>UCOutOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCBackOrderList.resx">
+      <DependentUpon>UCBackOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCInOrderItem.resx">
+      <DependentUpon>UCInOrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCOutOrderItem.resx">
+      <DependentUpon>UCOutOrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UC\UCOutOrderList.resx">
+      <DependentUpon>UCOutOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GaoShan.Base\GaoShan.Base.csproj">
+      <Project>{74f763f6-a222-48c2-a480-a80d99adb635}</Project>
+      <Name>GaoShan.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Miles.App.Entity\Miles.App.Entity.csproj">
+      <Project>{e95f2eda-f0f0-4cf3-8694-3b6ac39993f7}</Project>
+      <Name>Miles.App.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logic\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

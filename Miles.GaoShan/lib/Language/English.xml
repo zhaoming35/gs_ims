@@ -1,0 +1,1120 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="en-US">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Table1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" type="xs:string" minOccurs="0" />
+                <xs:element name="Value" type="xs:string" minOccurs="0" />
+                <xs:element name="ZH" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Table1>
+    <ID>languagechanged</ID>
+    <Value>System language has been revised, please close the program and then restart it.</Value>
+    <ZH>系统语言已经修改，请关闭程序重新启动</ZH>
+  </Table1>
+  <Table1>
+    <ID>2e5ea95287656368</ID>
+    <Value>HELP</Value>
+    <ZH>帮助文档</ZH>
+  </Table1>
+  <Table1>
+    <ID>f665f495b56b8551e06570656e63</ID>
+    <Value>NO DATA IN TIME PERIOD</Value>
+    <ZH>时间段内无数据</ZH>
+  </Table1>
+  <Table1>
+    <ID>3a6768567a7a6c8f</ID>
+    <Value>MACHINE NOT IN USE</Value>
+    <ZH>机器空转</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f287527598e4e34000f5cf665</ID>
+    <Value>USE OVER 4 HOURS</Value>
+    <ZH>使用大于4小时</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f28750d4eb38d34000f5cf665</ID>
+    <Value>USE LESS THAN 4 HOURS</Value>
+    <ZH>使用不足4小时</ZH>
+  </Table1>
+  <Table1>
+    <ID>db560f5cf665</ID>
+    <Value>4 HOURS</Value>
+    <ZH>四小时</ZH>
+  </Table1>
+  <Table1>
+    <ID>cf6b29597f4f28750f5cf6657065fe566888</ID>
+    <Value>DAILY USE-HOUR CHART</Value>
+    <ZH>每天使用小时数图表</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f28750f5cf6657065</ID>
+    <Value>HOURS OF USING</Value>
+    <ZH>使用小时数</ZH>
+  </Table1>
+  <Table1>
+    <ID>6e6f146ccf917f951f678b8dbf52fe56</ID>
+    <Value>TIDAL VOLUME OF LONGTERM TENDENCY CHART</Value>
+    <ZH>潮气量长期趋势图</ZH>
+  </Table1>
+  <Table1>
+    <ID>735e47576e6f146ccf91</ID>
+    <Value>AVERAGE TIDAL VOLUME</Value>
+    <ZH>平均潮气量</ZH>
+  </Table1>
+  <Table1>
+    <ID>6e6f146ccf91</ID>
+    <Value>TIDAL VOLUME</Value>
+    <ZH>潮气量</ZH>
+  </Table1>
+  <Table1>
+    <ID>6e6f146ccf91fe56</ID>
+    <Value>CHART OF TIDAL VOLUME</Value>
+    <ZH>潮气量图</ZH>
+  </Table1>
+  <Table1>
+    <ID>8b539b527f951f678b8dbf52fe56</ID>
+    <Value>PRESSURE OF LONGTERM TENDENCY CHART</Value>
+    <ZH>压力长期趋势图</ZH>
+  </Table1>
+  <Table1>
+    <ID>735e4757</ID>
+    <Value>AVERAGE</Value>
+    <ZH>平均</ZH>
+  </Table1>
+  <Table1>
+    <ID>8b539b52fe56</ID>
+    <Value>PRESSURE CHART</Value>
+    <ZH>压力图</ZH>
+  </Table1>
+  <Table1>
+    <ID>8b539b52</ID>
+    <Value>PRESSURE</Value>
+    <ZH>压力</ZH>
+  </Table1>
+  <Table1>
+    <ID>0f6f146ccf91fe56</ID>
+    <Value>LEAK VOLUME CHART</Value>
+    <ZH>漏气量图</ZH>
+  </Table1>
+  <Table1>
+    <ID>735e47570f6f146ccf91</ID>
+    <Value>AVERAGE LEAK VOLUME</Value>
+    <ZH>平均漏气量</ZH>
+  </Table1>
+  <Table1>
+    <ID>0f6f146ccf917f958b8dbf52fe56</ID>
+    <Value>LEAK VOLUME OF LONGTERM TENDENCY CHART</Value>
+    <ZH>漏气量长趋势图</ZH>
+  </Table1>
+  <Table1>
+    <ID>0f6f146ccf91</ID>
+    <Value>LEAK VOLUME</Value>
+    <ZH>漏气量</ZH>
+  </Table1>
+  <Table1>
+    <ID>7c543854919887737f951f678b8dbf52fe56</ID>
+    <Value>RESPIROTORY RATE OF LONGTERM TENDENCY CHART</Value>
+    <ZH>呼吸频率长期趋势图</ZH>
+  </Table1>
+  <Table1>
+    <ID>735e47577c54385491988773</ID>
+    <Value>AVERAGE RESPIROTORY RATE</Value>
+    <ZH>平均呼吸频率</ZH>
+  </Table1>
+  <Table1>
+    <ID>7c543854216b7065</ID>
+    <Value>BTREATH RATE</Value>
+    <ZH>呼吸次数</ZH>
+  </Table1>
+  <Table1>
+    <ID>f665f495</ID>
+    <Value>TIME</Value>
+    <ZH>时间</ZH>
+  </Table1>
+  <Table1>
+    <ID>cf6b06529f947c543854216b7065</ID>
+    <Value>BMP</Value>
+    <ZH>每分钟呼吸次数</ZH>
+  </Table1>
+  <Table1>
+    <ID>7c54385491988773fe56</ID>
+    <Value>RESPIROTORY RATE CHART</Value>
+    <ZH>呼吸频率图</ZH>
+  </Table1>
+  <Table1>
+    <ID>7359eb58</ID>
+    <Value>FEMALE</Value>
+    <ZH>女士</ZH>
+  </Table1>
+  <Table1>
+    <ID>70656e63a0527d8f8c5b1062</ID>
+    <Value>DATA UPLOAD ACCOMPLISH</Value>
+    <ZH>数据加载完成</ZH>
+  </Table1>
+  <Table1>
+    <ID>636b2857e567e28b</ID>
+    <Value>DEMANDING</Value>
+    <ZH>正在查询</ZH>
+  </Table1>
+  <Table1>
+    <ID>0b4e004e205f</ID>
+    <Value>NEXT GRAPH</Value>
+    <ZH>下一张</ZH>
+  </Table1>
+  <Table1>
+    <ID>0a4e004e205f</ID>
+    <Value>PREVIOUS GRAPH</Value>
+    <ZH>上一张</ZH>
+  </Table1>
+  <Table1>
+    <ID>fb7cdf7eed8b008a</ID>
+    <Value>LANGUAGE</Value>
+    <ZH>系统语言</ZH>
+  </Table1>
+  <Table1>
+    <ID>0990e962fb7cdf7eed8b008a</ID>
+    <Value>SELECT LANGUAGE</Value>
+    <ZH>选择系统语言</ZH>
+  </Table1>
+  <Table1>
+    <ID>a562668be14f6f60</ID>
+    <Value>ALARM INFO</Value>
+    <ZH>报警信息</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f287570656e6358648189</ID>
+    <Value>APPLY SUMMARY DATA</Value>
+    <ZH>使用数据摘要</ZH>
+  </Table1>
+  <Table1>
+    <ID>e567e28b</ID>
+    <Value>DEMAND</Value>
+    <ZH>查询</ZH>
+  </Table1>
+  <Table1>
+    <ID>70656e63555c3a79</ID>
+    <Value>DATA DISPLAY</Value>
+    <ZH>数据展示</ZH>
+  </Table1>
+  <Table1>
+    <ID>cf6b2959668b8b4ef64e</ID>
+    <Value>DAILY ALARM RECORD</Value>
+    <ZH>每天警事件</ZH>
+  </Table1>
+  <Table1>
+    <ID>216b7065</ID>
+    <Value>NUMBERS OF ALARM</Value>
+    <ZH>次数</ZH>
+  </Table1>
+  <Table1>
+    <ID>a562668b</ID>
+    <Value>ALARM</Value>
+    <ZH>报警</ZH>
+  </Table1>
+  <Table1>
+    <ID>e5651f67</ID>
+    <Value>DATE</Value>
+    <ZH>日期</ZH>
+  </Table1>
+  <Table1>
+    <ID>cf6be565e68bc67ee14f6f60</ID>
+    <Value>DAILY DETAIL INFO</Value>
+    <ZH>每日详细信息</ZH>
+  </Table1>
+  <Table1>
+    <ID>f665f495b56b</ID>
+    <Value>TIME PERIOD</Value>
+    <ZH>时间段</ZH>
+  </Table1>
+  <Table1>
+    <ID>e5651f670383f456</ID>
+    <Value>DATA BETWEEN</Value>
+    <ZH>日期范围</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f2875be8b075929597065</ID>
+    <Value>DAYS OF USING</Value>
+    <ZH>使用设备天数</ZH>
+  </Table1>
+  <Table1>
+    <ID>2a677f4f2875be8b075929597065</ID>
+    <Value>DAYS OF NOT USING</Value>
+    <ZH>未使用设备天数</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f2875be8b0759295970657e760652d46b</ID>
+    <Value>PERSENTAGE OF DAYS OF USING</Value>
+    <ZH>使用设备天数百分比</ZH>
+  </Table1>
+  <Table1>
+    <ID>2f7da18b7f4f2875be8b0759f665f495</ID>
+    <Value>TOTAL WORKING TIME</Value>
+    <ZH>累计使用设备时间</ZH>
+  </Table1>
+  <Table1>
+    <ID>00671a597f4f2875be8b0759f665f4952800004e29592900</ID>
+    <Value>MOST USE OF HOURS PER DAY</Value>
+    <ZH>最多使用设备时间(一天)</ZH>
+  </Table1>
+  <Table1>
+    <ID>735e47577f4f2875be8b0759f665f495280040620967295970652900</ID>
+    <Value>AVERAGE USE OF HOURS(ALL DAYS IN RECORD)</Value>
+    <ZH>平均使用设备时间(所有天数)</ZH>
+  </Table1>
+  <Table1>
+    <ID>735e47577f4f2875be8b0759f665f49528007f4f2875295970652900</ID>
+    <Value>AVERAGE USE OF HOURS(ALL USING DAYS)</Value>
+    <ZH>平均使用设备时间(使用天数)</ZH>
+  </Table1>
+  <Table1>
+    <ID>0067115c7f4f2875be8b0759f665f4952800004e29592900</ID>
+    <Value>LEST USE OF HOURS PER DAY</Value>
+    <ZH>最少使用设备时间(一天)</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f2875f665f4953e003d0034000f5cf665295970657e760652d46b</ID>
+    <Value>WORKING TIME&gt;=4HOURS OF DAYS PERSENTAGE</Value>
+    <ZH>使用时间&gt;=4小时天数百分比</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f2875f665f4953c0034000f5cf665295970657e760652d46b</ID>
+    <Value>WORKING TIME&lt;4HOURS OF DAYS PERSENTAGE</Value>
+    <ZH>使用时间&lt;4小时天数百分比</ZH>
+  </Table1>
+  <Table1>
+    <ID>3b600190146c0f5cf6657065</ID>
+    <Value>TOTAL HOURS OF VENTILATION</Value>
+    <ZH>总送气小时数</ZH>
+  </Table1>
+  <Table1>
+    <ID>be8b07597f4f2875c560b551</ID>
+    <Value>MACHINE STATUS</Value>
+    <ZH>设备使用情况</ZH>
+  </Table1>
+  <Table1>
+    <ID>3e663a798551b95b</ID>
+    <Value>CONTENT</Value>
+    <ZH>显示内容</ZH>
+  </Table1>
+  <Table1>
+    <ID>005fcb59f665f495</ID>
+    <Value>START TIME</Value>
+    <ZH>开始时间</ZH>
+  </Table1>
+  <Table1>
+    <ID>2a62626bf665f495</ID>
+    <Value>END TIME</Value>
+    <ZH>截止时间</ZH>
+  </Table1>
+  <Table1>
+    <ID>f665f4950383f456</ID>
+    <Value>TIME PERIOD</Value>
+    <ZH>时间范围</ZH>
+  </Table1>
+  <Table1>
+    <ID>a562668b7b7c8b57</ID>
+    <Value>ALARM TYPE</Value>
+    <ZH>报警类型</ZH>
+  </Table1>
+  <Table1>
+    <ID>a562668b216b7065</ID>
+    <Value>TIMES OF ALARM</Value>
+    <ZH>报警次数</ZH>
+  </Table1>
+  <Table1>
+    <ID>3b60a18b</ID>
+    <Value>SUMMARY</Value>
+    <ZH>总计</ZH>
+  </Table1>
+  <Table1>
+    <ID>a562668be5651f67</ID>
+    <Value>DATE OF ALARM</Value>
+    <ZH>报警日期</ZH>
+  </Table1>
+  <Table1>
+    <ID>a562668b70656e63</ID>
+    <Value>DATA OF ALARM</Value>
+    <ZH>报警数据</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f951f678b8dbf52fe56</ID>
+    <Value>LONGTERM TENDENCY CHART</Value>
+    <ZH>长期趋势图</ZH>
+  </Table1>
+  <Table1>
+    <ID>7f4f2875c560b551</ID>
+    <Value>WORKING STATUS</Value>
+    <ZH>使用情况</ZH>
+  </Table1>
+  <Table1>
+    <ID>cc53346c735e7c5438543a67</ID>
+    <Value>BI-LEVEL VENTILATOR</Value>
+    <ZH>双水平呼吸机</ZH>
+  </Table1>
+  <Table1>
+    <ID>b0657e673b539775d1798062a180fd4e096750966c51f8537c5438543a67b75e0d59a5624a54</ID>
+    <Value>PATIENT PROFILE</Value>
+    <ZH>新松医疗科技股份有限公司呼吸机康复报告</ZH>
+  </Table1>
+  <Table1>
+    <ID>fc5bfa51</ID>
+    <Value>EXPORT</Value>
+    <ZH>导出</ZH>
+  </Table1>
+  <Table1>
+    <ID>53627053</ID>
+    <Value>PRINT</Value>
+    <ZH>打印</ZH>
+  </Table1>
+  <Table1>
+    <ID>536270538498c889</ID>
+    <Value>PRINT PREVIEW</Value>
+    <ZH>打印预览</ZH>
+  </Table1>
+  <Table1>
+    <ID>1f751062a5624a54</ID>
+    <Value>CREAT REPORT</Value>
+    <ZH>生成报告</ZH>
+  </Table1>
+  <Table1>
+    <ID>f78b0990e962a3600580</ID>
+    <Value>SELECT PATIENT</Value>
+    <ZH>请选择患者</ZH>
+  </Table1>
+  <Table1>
+    <ID>e58b53004400615370656e63585ba8501a59f053be8b075970656e632c00f78b0990e962636b6e788476be8b0759</ID>
+    <Value>THIS SD CARD CONTAIN MULTI-EQUIPMENTS' DATA,PLEASE SELECT THE CORRECT EQUIPMENT</Value>
+    <ZH>该SD卡数据存储多台设备数据,请选择正确的设备</ZH>
+  </Table1>
+  <Table1>
+    <ID>be8b0759167ff753</ID>
+    <Value>EQUIPMENT SERIAL NUMBER</Value>
+    <ZH>设备编号</ZH>
+  </Table1>
+  <Table1>
+    <ID>be8b075917526888</ID>
+    <Value>LIST OF WQUIPMENT</Value>
+    <ZH>设备列表</ZH>
+  </Table1>
+  <Table1>
+    <ID>5300440061538765f64e</ID>
+    <Value>SD CARD FILE</Value>
+    <ZH>SD卡文件</ZH>
+  </Table1>
+  <Table1>
+    <ID>a3600580d3590d54</ID>
+    <Value>PATIENT NAME</Value>
+    <ZH>患者姓名</ZH>
+  </Table1>
+  <Table1>
+    <ID>a0527d8f53004400615370656e63</ID>
+    <Value>UPLOAD SD CARD DATA</Value>
+    <ZH>加载SD卡数据</ZH>
+  </Table1>
+  <Table1>
+    <ID>ea81a8521f751062</ID>
+    <Value>AUTO</Value>
+    <ZH>自动生成</ZH>
+  </Table1>
+  <Table1>
+    <ID>406209678765f64e</ID>
+    <Value>ALL FILE</Value>
+    <ZH>所有文件</ZH>
+  </Table1>
+  <Table1>
+    <ID>fe5647728765f64e</ID>
+    <Value>GRAPH FILE</Value>
+    <ZH>图片文件</ZH>
+  </Table1>
+  <Table1>
+    <ID>0990e962fe564772</ID>
+    <Value>SELECT GRAPH</Value>
+    <ZH>选择图片</ZH>
+  </Table1>
+  <Table1>
+    <ID>ee4f3965a36005803159258d</ID>
+    <Value>PATIENT MODIFICATION FAIL</Value>
+    <ZH>修改患者失败</ZH>
+  </Table1>
+  <Table1>
+    <ID>b065fa5ea36005803159258d</ID>
+    <Value>ADD NEW PATIENT FAIL</Value>
+    <ZH>新建患者失败</ZH>
+  </Table1>
+  <Table1>
+    <ID>7359</ID>
+    <Value>FEMALE</Value>
+    <ZH>女</ZH>
+  </Table1>
+  <Table1>
+    <ID>3775</ID>
+    <Value>MALE</Value>
+    <ZH>男</ZH>
+  </Table1>
+  <Table1>
+    <ID>2a592a59</ID>
+    <Value>MRS</Value>
+    <ZH>太太</ZH>
+  </Table1>
+  <Table1>
+    <ID>0f5cd059</ID>
+    <Value>MISS</Value>
+    <ZH>小姐</ZH>
+  </Table1>
+  <Table1>
+    <ID>73591f75</ID>
+    <Value>LADY</Value>
+    <ZH>女生</ZH>
+  </Table1>
+  <Table1>
+    <ID>48511f75</ID>
+    <Value>MR</Value>
+    <ZH>先生</ZH>
+  </Table1>
+  <Table1>
+    <ID>0d4efd803a4e7a7a</ID>
+    <Value>MUST FILL IN</Value>
+    <ZH>不能为空</ZH>
+  </Table1>
+  <Table1>
+    <ID>c2537065</ID>
+    <Value>PARAMETER</Value>
+    <ZH>参数</ZH>
+  </Table1>
+  <Table1>
+    <ID>2052649610629f52</ID>
+    <Value>DELETE SUCCESSFUL</Value>
+    <ZH>删除成功</ZH>
+  </Table1>
+  <Table1>
+    <ID>a3600580</ID>
+    <Value>PATIENT</Value>
+    <ZH>患者</ZH>
+  </Table1>
+  <Table1>
+    <ID>2f6626546e789a5b818920526496</ID>
+    <Value>DELETE CONFIRM</Value>
+    <ZH>是否确定要删除</ZH>
+  </Table1>
+  <Table1>
+    <ID>555c3a79</ID>
+    <Value>DISPLAY</Value>
+    <ZH>展示</ZH>
+  </Table1>
+  <Table1>
+    <ID>a0527d8f</ID>
+    <Value>LOAD</Value>
+    <ZH>加载</ZH>
+  </Table1>
+  <Table1>
+    <ID>20526496a3600580</ID>
+    <Value>DELETE PATIENT</Value>
+    <ZH>删除患者</ZH>
+  </Table1>
+  <Table1>
+    <ID>ee4f3965a3600580</ID>
+    <Value>MODIFY PATIENT</Value>
+    <ZH>修改患者</ZH>
+  </Table1>
+  <Table1>
+    <ID>b065fa5ea3600580</ID>
+    <Value>ADD NEW PATIENT</Value>
+    <ZH>新建患者</ZH>
+  </Table1>
+  <Table1>
+    <ID>d3590d54</ID>
+    <Value>NAME</Value>
+    <ZH>姓名</ZH>
+  </Table1>
+  <Table1>
+    <ID>f0797c54</ID>
+    <Value>SIR/MADAM</Value>
+    <ZH>称呼</ZH>
+  </Table1>
+  <Table1>
+    <ID>27602b52</ID>
+    <Value>SEX</Value>
+    <ZH>性别</ZH>
+  </Table1>
+  <Table1>
+    <ID>1f75e565</ID>
+    <Value>BIRTH OF DATE</Value>
+    <ZH>生日</ZH>
+  </Table1>
+  <Table1>
+    <ID>3575dd8b</ID>
+    <Value>TEL</Value>
+    <ZH>电话</ZH>
+  </Table1>
+  <Table1>
+    <ID>3575505bae90b17b</ID>
+    <Value>EMAIL</Value>
+    <ZH>电子邮箱</ZH>
+  </Table1>
+  <Table1>
+    <ID>ae90167f</ID>
+    <Value>POST CODE</Value>
+    <ZH>邮编</ZH>
+  </Table1>
+  <Table1>
+    <ID>30574057</ID>
+    <Value>ADDRESS</Value>
+    <ZH>地址</ZH>
+  </Table1>
+  <Table1>
+    <ID>b0657e673b5397757c5438543a67b75e0d596f8ff64e</ID>
+    <Value>PATIENT PROFILE</Value>
+    <ZH>新松医疗呼吸机康复软件</ZH>
+  </Table1>
+  <Table1>
+    <ID>b0657e673b539775d1798062a180fd4e096750966c51f853</ID>
+    <Value>SYSMED</Value>
+    <ZH>新松医疗科技股份有限公司</ZH>
+  </Table1>
+  <Table1>
+    <ID>be8b6e7f</ID>
+    <Value>SETTING</Value>
+    <ZH>设置</ZH>
+  </Table1>
+  <Table1>
+    <ID>a360058017526888</ID>
+    <Value>PATIENT LIST</Value>
+    <ZH>患者列表</ZH>
+  </Table1>
+  <Table1>
+    <ID>fb7cdf7e</ID>
+    <Value>SYSTEM</Value>
+    <ZH>系统</ZH>
+  </Table1>
+  <Table1>
+    <ID>a3600580e14f6f60</ID>
+    <Value>PATIENT INFO</Value>
+    <ZH>患者信息</ZH>
+  </Table1>
+  <Table1>
+    <ID>226bce8f7f4f2875b0657e673b5397757c5438543a67b75e0d596f8ff64e</ID>
+    <Value>WELCOME USING PATIENT PROFILE</Value>
+    <ZH>欢迎使用新松医疗呼吸机康复软件</ZH>
+  </Table1>
+  <Table1>
+    <ID>636b2857db8f6551fb7cdf7e</ID>
+    <Value>SYSTEM LOADING</Value>
+    <ZH>正在进入系统</ZH>
+  </Table1>
+  <Table1>
+    <ID>8765f64e</ID>
+    <Value>FILE</Value>
+    <ZH>文件</ZH>
+  </Table1>
+  <Table1>
+    <ID>f4663965ed8b008a</ID>
+    <Value>LANGUAGE</Value>
+    <ZH>更改语言</ZH>
+  </Table1>
+  <Table1>
+    <ID>0990e962ed8b008a</ID>
+    <Value>SELECT LANGUAGE</Value>
+    <ZH>选择语言</ZH>
+  </Table1>
+  <Table1>
+    <ID>be8b6e7ffb7cdf7eed8b008a</ID>
+    <Value>SYSTEM LANGUAGE SETTING</Value>
+    <ZH>设置系统语言</ZH>
+  </Table1>
+  <Table1>
+    <ID>6e789a5b81890090fa51fb7cdf7e17543f00</ID>
+    <Value>CONFIRM TO QUITE?</Value>
+    <ZH>确定要退出系统吗?</ZH>
+  </Table1>
+  <Table1>
+    <ID>dc835553038c28758476977a534fc55f7b982f664d0069006c00650073002e004600720061006d00650077006f0072006b002e00550049002e0046006f0072006d0073002e0046006d004d00640069008476505b7b7c</ID>
+    <Value>菜单调用的窗体必须是Miles.Framework.UI.Forms.FmMdi的子类</Value>
+    <ZH>菜单调用的窗体必须是Miles.Framework.UI.Forms.FmMdi的子类</ZH>
+  </Table1>
+  <Table1>
+    <ID>1b52fa5e977a534ffa511995</ID>
+    <Value>WINDOW CREATING FAILED</Value>
+    <ZH>创建窗体出错</ZH>
+  </Table1>
+  <Table1>
+    <ID>f4663965ae76a480</ID>
+    <Value>SKIN</Value>
+    <ZH>更改皮肤</ZH>
+  </Table1>
+  <Table1>
+    <ID>ee4f3965c65b0178</ID>
+    <Value>PASSWORD MODIFICATION</Value>
+    <ZH>修改密码</ZH>
+  </Table1>
+  <Table1>
+    <ID>f46639657b764696</ID>
+    <Value>NEW PATIENT LOGIN</Value>
+    <ZH>更改登陆</ZH>
+  </Table1>
+  <Table1>
+    <ID>2e5ea952</ID>
+    <Value>HELP</Value>
+    <ZH>帮助</ZH>
+  </Table1>
+  <Table1>
+    <ID>70656e63935e0759fd4ed88f9f53</ID>
+    <Value>BACK-UP DATA RECOVERY</Value>
+    <ZH>数据库备份还原</ZH>
+  </Table1>
+  <Table1>
+    <ID>ea81a852f466b0654d916e7f</ID>
+    <Value>AUTO CONFIGURATION</Value>
+    <ZH>自动更新配置</ZH>
+  </Table1>
+  <Table1>
+    <ID>385e7065f47ea462</ID>
+    <Value>DAILY MAINTAIN</Value>
+    <ZH>常数维护</ZH>
+  </Table1>
+  <Table1>
+    <ID>fb7cdf7ee14f6f60f47ea462</ID>
+    <Value>SYSTEM DATA MAINTAIN</Value>
+    <ZH>系统信息维护</ZH>
+  </Table1>
+  <Table1>
+    <ID>e58b28753762a16c0967fb4e554f216a575743675096</ID>
+    <Value>NO AUTHORITY OF ENTERING ANY MODE</Value>
+    <ZH>该用户没有任何模块权限</ZH>
+  </Table1>
+  <Table1>
+    <ID>fb7cdf7e4d916e7f</ID>
+    <Value>SYSTEM SETING</Value>
+    <ZH>系统配置</ZH>
+  </Table1>
+  <Table1>
+    <ID>759862974d916e7f</ID>
+    <Value>DISPLAY SETING</Value>
+    <ZH>页面配置</ZH>
+  </Table1>
+  <Table1>
+    <ID>385e70657b7c8b57</ID>
+    <Value>常数类型</Value>
+    <ZH>常数类型</ZH>
+  </Table1>
+  <Table1>
+    <ID>385e70650d54f079</ID>
+    <Value>常数名称</Value>
+    <ZH>常数名称</ZH>
+  </Table1>
+  <Table1>
+    <ID>216a5757ee4f3965</ID>
+    <Value>MODE MODIFICATION</Value>
+    <ZH>模块修改</ZH>
+  </Table1>
+  <Table1>
+    <ID>0d54f079</ID>
+    <Value>MODE NAME</Value>
+    <ZH>名称</ZH>
+  </Table1>
+  <Table1>
+    <ID>b065216a5757</ID>
+    <Value>NEW MODE</Value>
+    <ZH>新模块</ZH>
+  </Table1>
+  <Table1>
+    <ID>b065dc835553</ID>
+    <Value>NEW MANUAL</Value>
+    <ZH>新菜单</ZH>
+  </Table1>
+  <Table1>
+    <ID>f78b48510990e962dc835553</ID>
+    <Value>SELECT MANUAL FIRST</Value>
+    <ZH>请先选择菜单</ZH>
+  </Table1>
+  <Table1>
+    <ID>216a57574d916e7f</ID>
+    <Value>MODE CONFIGURATION</Value>
+    <ZH>模块配置</ZH>
+  </Table1>
+  <Table1>
+    <ID>fb6da052</ID>
+    <Value>ADD</Value>
+    <ZH>添加</ZH>
+  </Table1>
+  <Table1>
+    <ID>216a575717526888</ID>
+    <Value>MODE LIST</Value>
+    <ZH>模块列表</ZH>
+  </Table1>
+  <Table1>
+    <ID>4c75629749004400</ID>
+    <Value>DISPLAY ID</Value>
+    <ZH>界面ID</ZH>
+  </Table1>
+  <Table1>
+    <ID>dc8355530d54f079</ID>
+    <Value>MANUAL NAME</Value>
+    <ZH>菜单名称</ZH>
+  </Table1>
+  <Table1>
+    <ID>4c7562970d54f079</ID>
+    <Value>DISPLAY NAME</Value>
+    <ZH>界面名称</ZH>
+  </Table1>
+  <Table1>
+    <ID>7a988f5e</ID>
+    <Value>SEQUENCY</Value>
+    <ZH>顺序</ZH>
+  </Table1>
+  <Table1>
+    <ID>9e58a052</ID>
+    <Value>CREAT</Value>
+    <ZH>增加</ZH>
+  </Table1>
+  <Table1>
+    <ID>ee4f3965</ID>
+    <Value>MODIFY</Value>
+    <ZH>修改</ZH>
+  </Table1>
+  <Table1>
+    <ID>20526496</ID>
+    <Value>DELETE</Value>
+    <ZH>删除</ZH>
+  </Table1>
+  <Table1>
+    <ID>216a5757dc835553</ID>
+    <Value>MODE MANUAL</Value>
+    <ZH>模块菜单</ZH>
+  </Table1>
+  <Table1>
+    <ID>0b4e7d8f8765f64eee4f3965</ID>
+    <Value>DOWNLOAD FILE MODIFICATION</Value>
+    <ZH>下载文件修改</ZH>
+  </Table1>
+  <Table1>
+    <ID>ea81a852f466b0658765f64ea17b0674</ID>
+    <Value>PROFILE MANAGEMENT AUTO UPDATE</Value>
+    <ZH>自动更新文件管理</ZH>
+  </Table1>
+  <Table1>
+    <ID>8765f64e8551b95b</ID>
+    <Value>CONTENT</Value>
+    <ZH>文件内容</ZH>
+  </Table1>
+  <Table1>
+    <ID>cd645c4fba4e</ID>
+    <Value>OPERATOR</Value>
+    <ZH>操作人</ZH>
+  </Table1>
+  <Table1>
+    <ID>cd645c4fe5651f67</ID>
+    <Value>OPRATION DATE</Value>
+    <ZH>操作日期</ZH>
+  </Table1>
+  <Table1>
+    <ID>8765f64e0d54f079</ID>
+    <Value>FILE NAME</Value>
+    <ZH>文件名称</ZH>
+  </Table1>
+  <Table1>
+    <ID>0b4e7d8f8765f64efb6da052</ID>
+    <Value>ADD TO DOWNLOAD</Value>
+    <ZH>下载文件添加</ZH>
+  </Table1>
+  <Table1>
+    <ID>de8fed7efb6da052</ID>
+    <Value>ADD MORE</Value>
+    <ZH>连续添加</ZH>
+  </Table1>
+  <Table1>
+    <ID>dd4f585b</ID>
+    <Value>SAVE</Value>
+    <ZH>保存</ZH>
+  </Table1>
+  <Table1>
+    <ID>fa572c67e14f6f60</ID>
+    <Value>BASIC INFO</Value>
+    <ZH>基本信息</ZH>
+  </Table1>
+  <Table1>
+    <ID>f876f95bef8d845f</ID>
+    <Value>PATH</Value>
+    <ZH>相对路径</ZH>
+  </Table1>
+  <Table1>
+    <ID>0990e9628765f64e</ID>
+    <Value>SELECT FILE</Value>
+    <ZH>选择文件</ZH>
+  </Table1>
+  <Table1>
+    <ID>0d4e2f6609674865847644004c004c00</ID>
+    <Value>NOT VALID DLL</Value>
+    <ZH>不是有效的DLL</ZH>
+  </Table1>
+  <Table1>
+    <ID>75986297fb6da052</ID>
+    <Value>ADD PAGE</Value>
+    <ZH>页面添加</ZH>
+  </Table1>
+  <Table1>
+    <ID>7b7c0d54f079</ID>
+    <Value>NAME OF TYPE</Value>
+    <ZH>类名称</ZH>
+  </Table1>
+  <Table1>
+    <ID>759862970d54f079</ID>
+    <Value>NAME OF PAGE</Value>
+    <ZH>页面名称</ZH>
+  </Table1>
+  <Table1>
+    <ID>44004c004c000d54f079</ID>
+    <Value>DLL NAME</Value>
+    <ZH>DLL名称</ZH>
+  </Table1>
+  <Table1>
+    <ID>167f0178f25d585b2857</ID>
+    <Value>CODE ALREADY EXIST</Value>
+    <ZH>编码已存在</ZH>
+  </Table1>
+  <Table1>
+    <ID>dd4f585b10629f52</ID>
+    <Value>SAVED</Value>
+    <ZH>保存成功</ZH>
+  </Table1>
+  <Table1>
+    <ID>385e706517526888</ID>
+    <Value>常数列表</Value>
+    <ZH>常数列表</ZH>
+  </Table1>
+  <Table1>
+    <ID>8551b95b</ID>
+    <Value>CONTENT</Value>
+    <ZH>内容</ZH>
+  </Table1>
+  <Table1>
+    <ID>167f0178</ID>
+    <Value>CODE</Value>
+    <ZH>编码</ZH>
+  </Table1>
+  <Table1>
+    <ID>e68bc67ee14f6f60</ID>
+    <Value>DETAIED INFO</Value>
+    <ZH>详细信息</ZH>
+  </Table1>
+  <Table1>
+    <ID>f466b0653159258d</ID>
+    <Value>UPDATE FAILED</Value>
+    <ZH>更新失败</ZH>
+  </Table1>
+  <Table1>
+    <ID>f466b06510629f52</ID>
+    <Value>UPDATE SUCCESS</Value>
+    <ZH>更新成功</ZH>
+  </Table1>
+  <Table1>
+    <ID>0759fd4e8c5b1062</ID>
+    <Value>BACK-UP SUCCESS</Value>
+    <ZH>备份完成</ZH>
+  </Table1>
+  <Table1>
+    <ID>530051004c00ed8be553f47ea4624d916e7f</ID>
+    <Value>SQL语句维护配置</Value>
+    <ZH>SQL语句维护配置</ZH>
+  </Table1>
+  <Table1>
+    <ID>f48b0e66</ID>
+    <Value>INSTRUCTION</Value>
+    <ZH>说明</ZH>
+  </Table1>
+  <Table1>
+    <ID>ed8be5538551b95b</ID>
+    <Value>语句内容</Value>
+    <ZH>语句内容</ZH>
+  </Table1>
+  <Table1>
+    <ID>e5677e62</ID>
+    <Value>SEARCH</Value>
+    <ZH>查找</ZH>
+  </Table1>
+  <Table1>
+    <ID>530051004c001a812c67200028002a002e00730071006c0029007c002a002e00730071006c00</ID>
+    <Value>SQL SCRIPT (*.sql)|*.sql</Value>
+    <ZH>SQL脚本 (*.sql)|*.sql</ZH>
+  </Table1>
+  <Table1>
+    <ID>d88f9f53</ID>
+    <Value>RECOVER</Value>
+    <ZH>还原</ZH>
+  </Table1>
+  <Table1>
+    <ID>0759fd4e</ID>
+    <Value>BACKUP</Value>
+    <ZH>备份</ZH>
+  </Table1>
+  <Table1>
+    <ID>8765f64eef8d845f3a00</ID>
+    <Value>PATH:</Value>
+    <ZH>文件路径:</ZH>
+  </Table1>
+  <Table1>
+    <ID>53006b0069006e00f466b0653159258d</ID>
+    <Value>Skin UPDATE FAILED</Value>
+    <ZH>Skin更新失败</ZH>
+  </Table1>
+  <Table1>
+    <ID>ee4f3965ae76a480</ID>
+    <Value>CHANGE SKIN</Value>
+    <ZH>修改皮肤</ZH>
+  </Table1>
+  <Table1>
+    <ID>c65b0178ee4f3965</ID>
+    <Value>PASSWORD MODIFY</Value>
+    <ZH>密码修改</ZH>
+  </Table1>
+  <Table1>
+    <ID>c65b0178ee4f39653159258d</ID>
+    <Value>PASSWORD MODIFICATION FAILED</Value>
+    <ZH>密码修改失败</ZH>
+  </Table1>
+  <Table1>
+    <ID>244e216b938f6551b065c65b01780d4e004ef481</ID>
+    <Value>TWO new password entered are inconsistent</Value>
+    <ZH>两次输入新密码不一致</ZH>
+  </Table1>
+  <Table1>
+    <ID>9f53cb59c65b01781995ef8b</ID>
+    <Value>ORIGIN PASSWORD UNCORRECT</Value>
+    <ZH>原始密码错误</ZH>
+  </Table1>
+  <Table1>
+    <ID>b065c65b0178</ID>
+    <Value>NEW PASSWORD</Value>
+    <ZH>新密码</ZH>
+  </Table1>
+  <Table1>
+    <ID>e765c65b0178</ID>
+    <Value>PREVIOUS PASSWORD</Value>
+    <ZH>旧密码</ZH>
+  </Table1>
+  <Table1>
+    <ID>be8b6e7f10629f52</ID>
+    <Value>SET SUCCESSFUL</Value>
+    <ZH>设置成功</ZH>
+  </Table1>
+  <Table1>
+    <ID>be8b6e7f3159258d</ID>
+    <Value>SET FAILED</Value>
+    <ZH>设置失败</ZH>
+  </Table1>
+  <Table1>
+    <ID>e065d8531653</ID>
+    <Value>NO CHANGE</Value>
+    <ZH>无变化</ZH>
+  </Table1>
+  <Table1>
+    <ID>5e5c2760</ID>
+    <Value>PROPERTY</Value>
+    <ZH>属性</ZH>
+  </Table1>
+  <Table1>
+    <ID>0090fa51</ID>
+    <Value>EXIT</Value>
+    <ZH>退出</ZH>
+  </Table1>
+  <Table1>
+    <ID>7b764696</ID>
+    <Value>LOGIN</Value>
+    <ZH>登陆</ZH>
+  </Table1>
+  <Table1>
+    <ID>287537620d541662c65b01781995ef8b</ID>
+    <Value>USER NAME OR PASSWORD UNCORRECT</Value>
+    <ZH>用户名或密码错误</ZH>
+  </Table1>
+  <Table1>
+    <ID>c65b01780d4efd803a4e7a7a</ID>
+    <Value>MUST FILL IN PASSWORD</Value>
+    <ZH>密码不能为空</ZH>
+  </Table1>
+  <Table1>
+    <ID>287537620d540d4efd803a4e7a7a</ID>
+    <Value>MUST FILL IN USER NAME</Value>
+    <ZH>用户名不能为空</ZH>
+  </Table1>
+  <Table1>
+    <ID>c65b0178</ID>
+    <Value>PASSWORD</Value>
+    <ZH>密码</ZH>
+  </Table1>
+  <Table1>
+    <ID>287537620d54</ID>
+    <Value>USER NAME</Value>
+    <ZH>用户名</ZH>
+  </Table1>
+  <Table1>
+    <ID>d653886d</ID>
+    <Value>CANCEL</Value>
+    <ZH>取消</ZH>
+  </Table1>
+  <Table1>
+    <ID>6e789a5b</ID>
+    <Value>CONFIRM</Value>
+    <ZH>确定</ZH>
+  </Table1>
+  <Table1>
+    <ID>9f52fd80216a5757</ID>
+    <Value>FUNCTIONAL MODULE</Value>
+    <ZH>功能模块</ZH>
+  </Table1>
+  <Table1>
+    <ID>70656e63935ede8fa5633159258d</ID>
+    <Value>CONNECT DATA BASE FAILED</Value>
+    <ZH>数据库连接失败</ZH>
+  </Table1>
+  <Table1>
+    <ID>fb8bd6534d916e7f8765f64e440061007400610042006100730065001995ef8b</ID>
+    <Value>READ DataBase FAILED</Value>
+    <ZH>读取配置文件DataBase错误</ZH>
+  </Table1>
+  <Table1>
+    <ID>49006e00690074002e0078006d006c008765f64e3a7f3159</ID>
+    <Value>Init.xml MISSING</Value>
+    <ZH>Init.xml文件缺失</ZH>
+  </Table1>
+  <Table1>
+    <ID>e14f6f60a17b0674fb7cdf7e</ID>
+    <Value>INFORMATION MANAGEMENT SYSTEM</Value>
+    <ZH>信息管理系统</ZH>
+  </Table1>
+  <Table1>
+    <ID>4d916e7f</ID>
+    <Value>SETING</Value>
+    <ZH>配置</ZH>
+  </Table1>
+  <Table1>
+    <ID>6f8ff64e5c4f05802d00758d0e66</ID>
+    <Value>AUTHOR-MR ZHAO</Value>
+    <ZH>软件作者-赵明</ZH>
+  </Table1>
+  <Table1>
+    <ID>535f4d52f665f495</ID>
+    <Value>CURRENT TIME</Value>
+    <ZH>当前时间</ZH>
+  </Table1>
+  <Table1>
+    <ID>2d4efd56</ID>
+    <Value>CHINA</Value>
+    <ZH>中国</ZH>
+  </Table1>
+  <Table1>
+    <ID>758d0e66</ID>
+    <Value>MR ZHAO</Value>
+    <ZH>赵明</ZH>
+  </Table1>
+</NewDataSet>
